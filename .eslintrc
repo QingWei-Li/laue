@@ -1,0 +1,6 @@
+{
+  "extends": "xo-space",
+  "rules": {
+    "semi": [2, "never"]
+  }
+}
