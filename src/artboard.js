@@ -1,9 +1,41 @@
 export default {
-  name: 'Artboard',
+  name: 'LaArtboard',
 
-  props: {},
+  props: {
+    data: {
+      type: Array,
+      default: () => []
+    },
+
+    height: {
+      type: [Number, String],
+      default: '25%'
+    },
+
+    width: {
+      type: [Number, String],
+      default: '100%'
+    }
+  },
+
+  provide() {
+    return {
+      Artboard: this
+    }
+  },
 
   render(h) {
-    return h('svg', this.$slots.default)
+    const {width, height} = this
+
+    return h(
+      'svg',
+      {
+        attrs: {
+          width,
+          height
+        }
+      },
+      this.$slots.default
+    )
   }
 }

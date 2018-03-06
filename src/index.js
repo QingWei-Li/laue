@@ -2,10 +2,10 @@ import Artboard from './artboard'
 import Line from './line'
 
 export default function install(Vue) {
-  Vue.use(Artboard)
-  Vue.use(Line)
+  Vue.component(Artboard.name, Artboard)
+  Vue.component(Line.name, Line)
 }
 
-if (typeof window !== 'undefined') {
+if (typeof window.use !== 'undefined') {
   window.Vue.use(install)
 }
