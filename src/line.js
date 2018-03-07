@@ -10,10 +10,7 @@ export default {
   mixins: [Chart],
 
   props: {
-    color: {
-      default: 'black',
-      type: String
-    },
+    color: String,
 
     smooth: Boolean,
 
@@ -26,6 +23,7 @@ export default {
   },
 
   render(h) {
+    const dotSlot = this.$scopedSlots.default
     const {x0, y0, x, y} = this.canvas
     const points = getCoordinates(this.values, x0, y0, x, y)
     const l = line()
@@ -41,18 +39,30 @@ export default {
           d: l(points)
         }
       }),
-      this.dot &&
-        points.map(p =>
-          h('circle', {
-            attrs: {
+      h(
+        'g',
+        dotSlot ?
+          points.map((p, i) =>
+            dotSlot({
               cx: p[0],
               cy: p[1],
-              r: int(this.width) + 1,
-              stroke: '#fff',
-              fill: this.color
-            }
-          })
-        )
+              value: this.values[i],
+              index: i
+            })
+          ) :
+          this.dot &&
+            points.map(p =>
+              h('circle', {
+                attrs: {
+                  cx: p[0],
+                  cy: p[1],
+                  r: int(this.width) + 1,
+                  stroke: '#fff',
+                  fill: this.color
+                }
+              })
+            )
+      )
     ])
   }
 }
