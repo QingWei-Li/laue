@@ -20,3 +20,9 @@ Legend
 
 animation
 http://gionkunz.github.io/chartist-js/examples.html
+
+先画直线，画曲线
+
+画点
+
+画 x，y

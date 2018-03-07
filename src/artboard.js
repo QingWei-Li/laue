@@ -7,14 +7,19 @@ export default {
       default: () => []
     },
 
-    height: {
-      type: [Number, String],
-      default: '25%'
+    vh: {
+      type: Number,
+      default: 75
     },
 
-    width: {
-      type: [Number, String],
-      default: '100%'
+    vw: {
+      type: Number,
+      default: 300
+    },
+
+    padding: {
+      default: 8,
+      type: Number
     }
   },
 
@@ -25,14 +30,13 @@ export default {
   },
 
   render(h) {
-    const {width, height} = this
+    const {vw, vh} = this
 
     return h(
       'svg',
       {
         attrs: {
-          width,
-          height
+          viewBox: `0 0 ${vw} ${vh}`
         }
       },
       this.$slots.default

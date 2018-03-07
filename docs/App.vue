@@ -1,7 +1,7 @@
 <template>
   <div>
     <la-artboard :data="data">
-      <la-line color="#ccc" prop="pv"></la-line>
+      <la-line dot smooth :width="1" color="#5CC0C0" prop="pv"></la-line>
     </la-artboard>
   </div>
 </template>
