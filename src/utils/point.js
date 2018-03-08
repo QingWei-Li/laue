@@ -5,7 +5,7 @@ export function getCoordinates(values, {x0, y0, width, height}) {
   const xRatio = width / (values.length - 1)
 
   return values.map(function (value, i) {
-    const y = y0 + height - (value - min) / yRatio
+    const y = y0 + height - ((value - min) / yRatio || 0)
     const x = x0 + xRatio * i
     return [x, y]
   })

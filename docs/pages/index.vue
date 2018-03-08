@@ -1,7 +1,8 @@
 <template>
   <div>
+    <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
     <la-artboard :width="750" :height="300" :data="data" :padding="20">
-      <la-line dot curve color="#5CC0C0" prop="pv">
+      <la-line animated dot curve color="#5CC0C0" :prop="prop">
       </la-line>
     </la-artboard>
   </div>
@@ -11,6 +12,7 @@
 export default {
   data: () => {
     return {
+      prop: 'pv',
       data: [
         { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
         { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },

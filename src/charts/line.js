@@ -4,6 +4,7 @@ import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
 import {isFn} from '../utils/core'
+import Mask from '../motions/mask'
 
 export default {
   name: 'LaLine',
@@ -24,23 +25,35 @@ export default {
   },
 
   render(h) {
-    const {curve} = this
-    const dotSlot = this.$scopedSlots.default
+    const {curve, animated, animationDuration, animationEffect} = this
+    const pointSlot = this.$scopedSlots.default
     const points = getCoordinates(this.values, this.canvas)
     const l = line()
+    const style = {}
+    // Let hasMask = false
 
     if (curve) {
       l.curve(isFn(curve) ? curve : cardinal)
     }
+    if (animated) {
+      if (!this.appear) {
+        this.appear = true
+        // HasMask = true
+      }
+      style.transition = `all ${animationDuration}s ${animationEffect}`
+    }
 
-    return h('g', [
+    const path = l(points)
+
+    const graph = h('g', [
       h('path', {
         attrs: {
           stroke: this.color,
           fill: 'none',
           'stroke-width': this.width,
-          d: l(points)
-        }
+          d: path
+        },
+        style
       }),
       this.dot &&
         h(
@@ -53,15 +66,16 @@ export default {
                 r: int(this.width) + 1,
                 stroke: '#fff',
                 fill: this.color
-              }
+              },
+              style
             })
           )
         ),
-      dotSlot &&
+      pointSlot &&
         h(
           'g',
           points.map((p, i) =>
-            dotSlot({
+            pointSlot({
               x: p[0],
               y: p[1],
               value: this.values[i],
@@ -70,5 +84,11 @@ export default {
           )
         )
     ])
+
+    // If (hasMask) {
+    //   return h(Mask, {}, [graph])
+    // }
+
+    return graph
   }
 }

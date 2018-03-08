@@ -6,9 +6,15 @@ export default {
 
     animated: Boolean,
 
-    animationDuration: Number,
+    animationDuration: {
+      default: 1,
+      type: Number
+    },
 
-    animationEasing: String
+    animationEffect: {
+      default: 'ease',
+      type: String
+    }
   },
 
   inject: ['Artboard'],
