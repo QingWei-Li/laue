@@ -7,19 +7,23 @@ export default {
       default: () => []
     },
 
-    vh: {
-      type: Number,
-      default: 75
-    },
+    height: Number,
 
-    vw: {
-      type: Number,
-      default: 300
-    },
+    width: Number,
 
     padding: {
       default: 8,
       type: Number
+    }
+  },
+
+  computed: {
+    vw() {
+      return this.width || 300
+    },
+
+    vh() {
+      return this.height || 75
     }
   },
 
@@ -30,12 +34,14 @@ export default {
   },
 
   render(h) {
-    const {vw, vh} = this
+    const {width, height, vw, vh} = this
 
     return h(
       'svg',
       {
         attrs: {
+          width,
+          height,
           viewBox: `0 0 ${vw} ${vh}`
         }
       },

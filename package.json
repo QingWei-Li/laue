@@ -18,12 +18,10 @@
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "license": "MIT",
   "eslintConfig": {
-    "extends": "xo-space",
+    "extends": "xo-space/browser",
     "rules": {
-      "semi": [
-        2,
-        "never"
-      ]
+      "semi": [2, "never"],
+      "no-mixed-operators": "off"
     }
   },
   "poi": {

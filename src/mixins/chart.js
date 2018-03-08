@@ -23,10 +23,10 @@ export default {
       // Todo 加上 axis 等信息
       const x0 = padding
       const y0 = padding
-      const x = vw - padding * 2
-      const y = vh - padding * 2
+      const width = vw - padding * 2
+      const height = vh - padding * 2
 
-      return {x0, y0, x, y}
+      return {x0, y0, width, height}
     }
   }
 }

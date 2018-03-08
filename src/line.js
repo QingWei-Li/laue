@@ -3,6 +3,7 @@ import {getCoordinates} from './utils/point'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from './utils/math'
+import {isFn} from './utils/core'
 
 export default {
   name: 'LaLine',
@@ -12,7 +13,7 @@ export default {
   props: {
     color: String,
 
-    smooth: Boolean,
+    curve: [Boolean, Function],
 
     dot: Boolean,
 
@@ -23,12 +24,16 @@ export default {
   },
 
   render(h) {
+    const {curve} = this
     const dotSlot = this.$scopedSlots.default
-    const {x0, y0, x, y} = this.canvas
-    const points = getCoordinates(this.values, x0, y0, x, y)
+    const points = getCoordinates(this.values, this.canvas)
     const l = line()
 
-    this.smooth && l.curve(cardinal)
+    if (curve === true) {
+      l.curve(cardinal)
+    } else if (isFn(curve)) {
+      l.curve(curve)
+    }
 
     return h('g', [
       h('path', {
