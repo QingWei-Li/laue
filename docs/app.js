@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Laue from '../dist/laue.es'
+import {Laue} from '../dist/laue'
 
 Vue.use(Laue)
 

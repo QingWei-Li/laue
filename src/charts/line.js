@@ -1,9 +1,9 @@
-import Chart from './mixins/chart'
-import {getCoordinates} from './utils/point'
+import Chart from '../mixins/chart'
+import {getCoordinates} from '../utils/point'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
-import {int} from './utils/math'
-import {isFn} from './utils/core'
+import {int} from '../utils/math'
+import {isFn} from '../utils/core'
 
 export default {
   name: 'LaLine',

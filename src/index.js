@@ -1,11 +1,9 @@
-import Artboard from './artboard'
-import Line from './line'
+import Artboard from './objects/artboard'
+import Line from './charts/line'
 
-export default function install(Vue) {
+export function Laue(Vue) {
   Vue.component(Artboard.name, Artboard)
   Vue.component(Line.name, Line)
 }
 
-if (typeof window.use !== 'undefined') {
-  window.Vue.use(install)
-}
+export {Line, Artboard}
