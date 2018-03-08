@@ -29,10 +29,8 @@ export default {
     const points = getCoordinates(this.values, this.canvas)
     const l = line()
 
-    if (curve === true) {
-      l.curve(cardinal)
-    } else if (isFn(curve)) {
-      l.curve(curve)
+    if (curve) {
+      l.curve(isFn(curve) ? curve : cardinal)
     }
 
     return h('g', [
@@ -44,30 +42,33 @@ export default {
           d: l(points)
         }
       }),
-      h(
-        'g',
-        dotSlot ?
+      this.dot &&
+        h(
+          'g',
+          points.map(p =>
+            h('circle', {
+              attrs: {
+                cx: p[0],
+                cy: p[1],
+                r: int(this.width) + 1,
+                stroke: '#fff',
+                fill: this.color
+              }
+            })
+          )
+        ),
+      dotSlot &&
+        h(
+          'g',
           points.map((p, i) =>
             dotSlot({
-              cx: p[0],
-              cy: p[1],
+              x: p[0],
+              y: p[1],
               value: this.values[i],
               index: i
             })
-          ) :
-          this.dot &&
-            points.map(p =>
-              h('circle', {
-                attrs: {
-                  cx: p[0],
-                  cy: p[1],
-                  r: int(this.width) + 1,
-                  stroke: '#fff',
-                  fill: this.color
-                }
-              })
-            )
-      )
+          )
+        )
     ])
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <la-artboard :data="data">
+    <la-artboard :width="750" :height="300" :data="data" :padding="20">
       <la-line dot curve color="#5CC0C0" prop="pv">
       </la-line>
     </la-artboard>
