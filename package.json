@@ -17,7 +17,10 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [2, "never"],
+      "semi": [
+        2,
+        "never"
+      ],
       "no-mixed-operators": "off"
     }
   },

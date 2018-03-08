@@ -30,16 +30,11 @@ export default {
     const points = getCoordinates(this.values, this.canvas)
     const l = line()
     const style = {}
-    // Let hasMask = false
 
     if (curve) {
       l.curve(isFn(curve) ? curve : cardinal)
     }
     if (animated) {
-      if (!this.appear) {
-        this.appear = true
-        // HasMask = true
-      }
       style.transition = `all ${animationDuration}s ${animationEffect}`
     }
 
@@ -85,9 +80,18 @@ export default {
         )
     ])
 
-    // If (hasMask) {
-    //   return h(Mask, {}, [graph])
-    // }
+    if (animated) {
+      return h(
+        Mask,
+        {
+          props: {
+            axis: 'x',
+            transition: style.transition
+          }
+        },
+        [graph]
+      )
+    }
 
     return graph
   }
