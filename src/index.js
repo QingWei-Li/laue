@@ -1,11 +1,12 @@
 import Artboard from './objects/artboard'
 import Line from './charts/line'
 import Area from './charts/area'
+import XAxis from './objects/x-axis'
 
 export function Laue(Vue) {
-  Vue.component(Artboard.name, Artboard)
-  Vue.component(Line.name, Line)
-  Vue.component(Area.name, Area)
+  [Artboard, Line, Area, XAxis].forEach(c => {
+    Vue.component(c.name, c)
+  })
 }
 
-export {Line, Artboard, Area}
+export {Line, Artboard, Area, XAxis}
