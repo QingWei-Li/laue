@@ -16,7 +16,11 @@ export default {
       type: String
     },
 
-    transition: String
+    transition: String,
+
+    points: Array,
+
+    color: String
   },
 
   inject: ['Artboard'],
@@ -36,6 +40,14 @@ export default {
         (this.animated &&
           `all ${this.animationDuration}s ${this.animationEffect}`)
       )
+    },
+
+    curPoints() {
+      return this.points || this.Artboard.getPoints(this.values)
+    },
+
+    curColor() {
+      return this.color || this.Artboard.genColor(this.id)
     }
   }
 }

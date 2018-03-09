@@ -6,9 +6,8 @@
         <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4"></circle>
       </la-line> -->
 
-      <la-area curve animated color="#5CC0C0" :prop="prop">
-        <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4" :style="props.style"></circle>
-      </la-area>
+      <la-area animated curve dot prop="amt"></la-area>
+
     </la-artboard>
   </div>
 </template>

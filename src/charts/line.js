@@ -11,8 +11,6 @@ export default {
   mixins: [Chart],
 
   props: {
-    color: String,
-
     curve: [Boolean, Function],
 
     dot: Boolean,
@@ -22,26 +20,23 @@ export default {
       default: 1
     },
 
-    points: Array,
-
     transition: String
   },
 
   render(h) {
-    const {curve, animated, values, width, color} = this
+    const {curve, animated, values, width, curPoints, curColor} = this
     const pointSlot = this.$scopedSlots.default
-    const points = this.points || this.Artboard.getPoints(values)
     const draw = line()
 
     if (curve) {
       draw.curve(isFn(curve) ? curve : cardinal)
     }
 
-    const path = draw(points)
+    const path = draw(curPoints)
     const graphs = [
       h('path', {
         attrs: {
-          stroke: color,
+          stroke: curColor,
           fill: 'none',
           'stroke-width': width,
           d: path
@@ -54,14 +49,14 @@ export default {
       this.dot &&
         h(
           'g',
-          points.map(p =>
+          curPoints.map(p =>
             h('circle', {
               attrs: {
                 cx: p[0],
                 cy: p[1],
                 r: int(width) + 1,
                 stroke: '#fff',
-                fill: color
+                fill: curColor
               },
               style: {
                 transition: this.trans
@@ -72,7 +67,7 @@ export default {
       pointSlot &&
         h(
           'g',
-          points.map((p, i) =>
+          curPoints.map((p, i) =>
             pointSlot({
               x: p[0],
               y: p[1],

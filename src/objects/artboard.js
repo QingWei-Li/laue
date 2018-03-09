@@ -1,3 +1,6 @@
+import {randomHSL} from '../utils/math'
+import {isFn} from '../utils/core'
+
 export default {
   name: 'LaArtboard',
 
@@ -14,7 +17,9 @@ export default {
     padding: {
       default: 8,
       type: Number
-    }
+    },
+
+    colors: {}
   },
 
   computed: {
@@ -52,16 +57,34 @@ export default {
   methods: {
     getPoints(values) {
       const {x0, y0, width, height} = this.canvas
-      const min = Math.floor(Math.min.apply(null, values, this.min) * 0.95)
-      const max = Math.ceil(Math.max.apply(null, values, this.max) * 1.05)
+      const min = Math.floor(Math.min(...values, this.min))
+      const max = Math.ceil(Math.max(...values, this.max))
       const yRatio = (max - min) / height
       const xRatio = width / (values.length - 1)
 
-      return values.map(function (value, i) {
+      this.min = Math.min(min, this.min)
+      this.max = Math.max(max, this.max)
+
+      return values.map((value, i) => {
         const y = y0 + height - ((value - min) / yRatio || 0)
         const x = x0 + xRatio * i
         return [x, y]
       })
+    },
+
+    genColor(index) {
+      const {colors = {}} = this
+
+      if (isFn(colors)) {
+        return colors(index)
+      }
+
+      if (Array.isArray(colors)) {
+        return colors[index % colors.length]
+      }
+
+      const hsl = randomHSL(index + 1, colors.s, colors.v)
+      return `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`
     }
   },
 

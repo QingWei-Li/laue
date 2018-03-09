@@ -1,7 +1,7 @@
 import Line from './line'
 import area from 'd3-shape/src/area'
-import {extend, isFn} from '../utils/core'
 import cardinal from 'd3-shape/src/curve/cardinal'
+import {extend, isFn} from '../utils/core'
 
 export default {
   name: 'LaArea',
@@ -9,9 +9,8 @@ export default {
   mixins: [Line],
 
   render(h) {
-    const {getPoints, canvas} = this.Artboard
-    const {curve, trans, color, id} = this
-    const points = getPoints(this.values)
+    const {canvas} = this.Artboard
+    const {curve, trans, id, curPoints, curColor} = this
     const draw = area().y0(canvas.height + canvas.y0)
     const areaId = `la-area-${id}`
 
@@ -19,7 +18,7 @@ export default {
       draw.curve(isFn(curve) ? curve : cardinal)
     }
 
-    const path = draw(points)
+    const path = draw(curPoints)
 
     return h('g', [
       h('defs', [
@@ -34,7 +33,7 @@ export default {
             this.$slots.area ||
               h('stop', {
                 attrs: {
-                  'stop-color': color,
+                  'stop-color': curColor,
                   'stop-opacity': 0.5
                 }
               })
@@ -44,13 +43,11 @@ export default {
       h(
         Line,
         {
-          props: extend(
-            {
-              points,
-              transition: trans
-            },
-            this.$props
-          ),
+          props: extend(extend({}, this.$props), {
+            color: curColor,
+            points: curPoints,
+            transition: trans
+          }),
           scopedSlots: this.$scopedSlots
         },
         [
