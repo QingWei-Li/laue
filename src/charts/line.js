@@ -1,5 +1,4 @@
 import Chart from '../mixins/chart'
-import {getCoordinates} from '../utils/point'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
@@ -21,13 +20,15 @@ export default {
     width: {
       type: Number,
       default: 1
-    }
+    },
+
+    points: Array
   },
 
   render(h) {
-    const {curve, animated, animationDuration, animationEffect} = this
+    const {curve, animated, values, width, color} = this
     const pointSlot = this.$scopedSlots.default
-    const points = getCoordinates(this.values, this.canvas)
+    const points = this.points || this.Artboard.getPoints(values)
     const l = line()
     const style = {}
 
@@ -35,17 +36,18 @@ export default {
       l.curve(isFn(curve) ? curve : cardinal)
     }
     if (animated) {
-      style.transition = `all ${animationDuration}s ${animationEffect}`
+      style.transition = `all ${this.animationDuration}s ${
+        this.animationEffect
+      }`
     }
 
     const path = l(points)
-
-    const graph = h('g', [
+    const graphs = [
       h('path', {
         attrs: {
-          stroke: this.color,
+          stroke: color,
           fill: 'none',
-          'stroke-width': this.width,
+          'stroke-width': width,
           d: path
         },
         style
@@ -58,9 +60,9 @@ export default {
               attrs: {
                 cx: p[0],
                 cy: p[1],
-                r: int(this.width) + 1,
+                r: int(width) + 1,
                 stroke: '#fff',
-                fill: this.color
+                fill: color
               },
               style
             })
@@ -73,12 +75,12 @@ export default {
             pointSlot({
               x: p[0],
               y: p[1],
-              value: this.values[i],
+              value: values[i],
               index: i
             })
           )
         )
-    ])
+    ]
 
     if (animated) {
       return h(
@@ -89,10 +91,10 @@ export default {
             transition: style.transition
           }
         },
-        [graph]
+        graphs
       )
     }
 
-    return graph
+    return h('g', graphs)
   }
 }

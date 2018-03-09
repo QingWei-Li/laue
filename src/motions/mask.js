@@ -1,3 +1,5 @@
+import Trans from './trans'
+
 export default {
   name: 'LaMask',
 
@@ -6,14 +8,8 @@ export default {
   props: ['axis', 'transition'],
 
   render(h, {children, props, parent}) {
-    const vnode = Array.isArray(children) ? children[0] : children
     const maskId = `la-mask-${parent._uid}`
-    const data = vnode.data || {}
     const {axis, transition} = props
-
-    data.attrs = data.attrs || {}
-    data.attrs['clip-path'] = `url(#${maskId})`
-    vnode.data = data
 
     return h('g', [
       h('defs', [
@@ -26,15 +22,12 @@ export default {
           },
           [
             h(
-              'transition',
+              Trans,
               {
                 props: {
-                  appear: true
-                },
-                on: {
-                  beforeEnter(el) {
-                    el.style.width = '100%'
-                    el.style.height = '100%'
+                  to: {
+                    width: '100%',
+                    height: '100%'
                   }
                 }
               },
@@ -55,7 +48,15 @@ export default {
           ]
         )
       ]),
-      vnode
+      h(
+        'g',
+        {
+          attrs: {
+            'clip-path': `url(#${maskId})`
+          }
+        },
+        children
+      )
     ])
   }
 }

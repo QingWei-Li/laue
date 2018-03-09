@@ -2,7 +2,7 @@
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
     <la-artboard :width="750" :height="300" :data="data" :padding="20">
-      <la-line animated dot curve color="#5CC0C0" :prop="prop">
+      <la-line animated dot color="#5CC0C0" :prop="prop">
       </la-line>
     </la-artboard>
   </div>
