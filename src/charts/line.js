@@ -22,26 +22,22 @@ export default {
       default: 1
     },
 
-    points: Array
+    points: Array,
+
+    transition: String
   },
 
   render(h) {
     const {curve, animated, values, width, color} = this
     const pointSlot = this.$scopedSlots.default
     const points = this.points || this.Artboard.getPoints(values)
-    const l = line()
-    const style = {}
+    const draw = line()
 
     if (curve) {
-      l.curve(isFn(curve) ? curve : cardinal)
-    }
-    if (animated) {
-      style.transition = `all ${this.animationDuration}s ${
-        this.animationEffect
-      }`
+      draw.curve(isFn(curve) ? curve : cardinal)
     }
 
-    const path = l(points)
+    const path = draw(points)
     const graphs = [
       h('path', {
         attrs: {
@@ -50,8 +46,11 @@ export default {
           'stroke-width': width,
           d: path
         },
-        style
+        style: {
+          transition: this.trans
+        }
       }),
+      this.$slots.default,
       this.dot &&
         h(
           'g',
@@ -64,7 +63,9 @@ export default {
                 stroke: '#fff',
                 fill: color
               },
-              style
+              style: {
+                transition: this.trans
+              }
             })
           )
         ),
@@ -76,7 +77,10 @@ export default {
               x: p[0],
               y: p[1],
               value: values[i],
-              index: i
+              index: i,
+              style: {
+                transition: this.trans
+              }
             })
           )
         )
@@ -88,7 +92,7 @@ export default {
         {
           props: {
             axis: 'x',
-            transition: style.transition
+            transition: this.trans
           }
         },
         graphs

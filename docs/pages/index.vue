@@ -2,8 +2,13 @@
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
     <la-artboard :width="750" :height="300" :data="data" :padding="20">
-      <la-line animated dot color="#5CC0C0" :prop="prop">
-      </la-line>
+      <!-- <la-line animated dot color="#5CC0C0" :prop="prop">
+        <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4"></circle>
+      </la-line> -->
+
+      <la-area curve animated color="#5CC0C0" :prop="prop">
+        <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4" :style="props.style"></circle>
+      </la-area>
     </la-artboard>
   </div>
 </template>

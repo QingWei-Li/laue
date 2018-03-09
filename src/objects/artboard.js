@@ -67,6 +67,7 @@ export default {
 
   render(h) {
     const {width, height, vw, vh} = this
+    const slots = this.$slots.default
 
     return h(
       'svg',
@@ -77,7 +78,11 @@ export default {
           viewBox: `0 0 ${vw} ${vh}`
         }
       },
-      this.$slots.default
+      slots &&
+        slots.map((vnode, i) => {
+          vnode.index = i
+          return vnode
+        })
     )
   }
 }
