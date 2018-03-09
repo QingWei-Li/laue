@@ -19,7 +19,7 @@ export default {
       type: Number
     },
 
-    colors: {}
+    colors: [Object, Array, Function]
   },
 
   computed: {
@@ -83,7 +83,7 @@ export default {
         return colors[index % colors.length]
       }
 
-      const hsl = randomHSL(index + 1, colors.s, colors.v)
+      const hsl = randomHSL(index + (colors.start || 1), colors.s, colors.v)
       return `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`
     }
   },
