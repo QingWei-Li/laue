@@ -1,6 +1,3 @@
-import {randomHSL} from '../utils/math'
-import {isFn} from '../utils/core'
-
 export default {
   name: 'LaArtboard',
 
@@ -19,7 +16,21 @@ export default {
       type: Number
     },
 
-    colors: [Object, Array, Function]
+    /**
+     * The default colors is "walden" from ECharts
+     * @see http://echarts.baidu.com/theme-builder/
+     */
+    colors: {
+      default: () => [
+        '#3fb1e3',
+        '#6be6c1',
+        '#626c91',
+        '#a0a7e6',
+        '#c4ebad',
+        '#96dee8'
+      ],
+      type: [Array, Function]
+    }
   },
 
   computed: {
@@ -73,18 +84,13 @@ export default {
     },
 
     genColor(index) {
-      const {colors = {}} = this
-
-      if (isFn(colors)) {
-        return colors(index)
-      }
+      const {colors} = this
 
       if (Array.isArray(colors)) {
         return colors[index % colors.length]
       }
 
-      const hsl = randomHSL(index + (colors.start || 1), colors.s, colors.v)
-      return `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`
+      return colors(index)
     }
   },
 

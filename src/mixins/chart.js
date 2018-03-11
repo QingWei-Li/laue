@@ -1,9 +1,9 @@
+import values from './values'
+
 export default {
+  mixins: [values],
+
   props: {
-    prop: String,
-
-    data: Array,
-
     animated: Boolean,
 
     animationDuration: {
@@ -23,15 +23,9 @@ export default {
     color: String
   },
 
-  inject: ['Artboard'],
-
   computed: {
     id() {
       return this.$vnode.index
-    },
-
-    values() {
-      return this.data || this.Artboard.data.map(o => o[this.prop])
     },
 
     trans() {

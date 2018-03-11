@@ -9,7 +9,7 @@
     "watch:docs": "nuxt",
     "build:lib":
       "rollup -c --environment BUILD:production && banner-cli dist/*.js",
-    "build:docs": "",
+    "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
     "build": "run-p build:*"
@@ -41,6 +41,7 @@
     "rollup-plugin-uglify": "^3.0.0"
   },
   "dependencies": {
+    "d3-array": "^1.2.1",
     "d3-shape": "^1.2.0"
   }
 }
