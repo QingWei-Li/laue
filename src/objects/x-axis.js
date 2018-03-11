@@ -1,5 +1,5 @@
-import values from '../mixins/values'
 import axes from '../mixins/axes'
+import values from '../mixins/values'
 
 export default {
   name: 'LaXAxis',
@@ -15,14 +15,14 @@ export default {
 
   computed: {
     points() {
-      const {width, height} = this.Artboard.canvas
-      const len = this.values.length
-      const xRatio = width / (len - 1)
+      if (!this.values) {
+        const {canvas, len} = this.Artboard
+        const xRatio = canvas.width / len
 
-      return this.values.map((v, i) => {
-        const x = i * xRatio
-        return [x, height]
-      })
+        console.log(xRatio)
+
+        // Todo
+      }
     }
   },
 

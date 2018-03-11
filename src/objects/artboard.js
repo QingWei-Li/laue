@@ -1,3 +1,5 @@
+import {isArr} from '../utils/core'
+
 export default {
   name: 'LaArtboard',
 
@@ -56,7 +58,8 @@ export default {
 
   data: () => ({
     max: -Infinity,
-    min: Infinity
+    min: Infinity,
+    len: 0
   }),
 
   provide() {
@@ -72,9 +75,11 @@ export default {
       const max = Math.ceil(Math.max(...values, this.max))
       const yRatio = (max - min) / height
       const xRatio = width / (values.length - 1)
+      const len = values.length
 
       this.min = Math.min(min, this.min)
       this.max = Math.max(max, this.max)
+      this.len = Math.max(len, this.len)
 
       return values.map((value, i) => {
         const y = y0 + height - ((value - min) / yRatio || 0)
@@ -86,7 +91,7 @@ export default {
     genColor(index) {
       const {colors} = this
 
-      if (Array.isArray(colors)) {
+      if (isArr(colors)) {
         return colors[index % colors.length]
       }
 

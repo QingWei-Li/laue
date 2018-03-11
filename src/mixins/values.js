@@ -9,7 +9,9 @@ export default {
 
   computed: {
     values() {
-      return this.data || this.Artboard.data.map(o => o[this.prop])
+      const {data, prop} = this
+
+      return data || (prop && this.Artboard.data.map(o => o[prop]))
     }
   }
 }
