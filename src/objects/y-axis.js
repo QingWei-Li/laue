@@ -5,7 +5,7 @@ export default {
 
   axis: 'y',
 
-  space: [3, 40],
+  space: [0, 0, 0, 40],
 
   mixins: [axes],
 
@@ -41,7 +41,7 @@ export default {
               stroke: 'none'
             }
           },
-          val
+          val + this.unit
         )
       ])
     })

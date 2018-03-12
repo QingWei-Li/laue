@@ -1,4 +1,4 @@
-# laue
+# Laue
 
 [![Build Status](https://img.shields.io/travis/QingWei-Li/laue.svg?style=flat-square)](https://travis-ci.org/QingWei-Li/laue)
 [![Coverage Status](https://img.shields.io/coveralls/QingWei-Li/laue.svg?style=flat-square)](https://coveralls.io/github/QingWei-Li/laue?branch=master)

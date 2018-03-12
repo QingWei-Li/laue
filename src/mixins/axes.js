@@ -10,7 +10,10 @@ export default {
   props: {
     name: String,
 
-    unit: String,
+    unit: {
+      type: String,
+      default: ''
+    },
 
     /**
      * @example [0, 2000]
@@ -35,7 +38,7 @@ export default {
     fontSize: {
       type: Number,
       default: 15
-    },
+    }
   },
 
   type: 'object',
@@ -61,10 +64,6 @@ export default {
         values = genTicks(min, max, length)
         board.min = values[0]
         board.max = values[values.length - 1]
-      }
-
-      if (this.unit) {
-        values = values.map(v => v + this.unit)
       }
 
       return values

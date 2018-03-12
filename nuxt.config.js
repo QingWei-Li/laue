@@ -1,4 +1,13 @@
+// eslint-disable-next-line
 module.exports = {
+  head: {
+    titleTemplate: '%s - Laue',
+    meta: [
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: 'Meta description'}
+    ]
+  },
   srcDir: 'docs',
   plugins: ['~/plugins/laue.js']
 }

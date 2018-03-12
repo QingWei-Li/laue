@@ -143,7 +143,9 @@ export default {
           break
         case 'object':
           if (!this.space && sealed.space) {
-            this.curSpace[sealed.space[0]] += sealed.space[1]
+            sealed.space.forEach((val, i) => {
+              this.curSpace[i] += val || 0
+            })
           }
           objects.push(slot)
           break
