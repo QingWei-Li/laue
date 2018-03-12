@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
-    <la-artboard :max-value="10000" :min-value="0" :space="[0,20,20,50]" :width="750" :height="300" :data="data">
+    <la-artboard :max-value="10000" :min-value="0" :width="750" :height="300" :data="data">
       <!-- <la-line animated dot color="#5CC0C0" :prop="prop">
         <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4"></circle>
       </la-line> -->

@@ -1,4 +1,4 @@
-import {isArr} from '../utils/core'
+import {isArr, isFn} from '../utils/core'
 
 export default {
   name: 'LaArtboard',
@@ -37,7 +37,10 @@ export default {
     /**
      * Top, right, bottom, left
      */
-    space: Array,
+    space: {
+      type: Array,
+      default: () => [null, null, null, null]
+    },
 
     /**
      * @todo
@@ -86,7 +89,7 @@ export default {
     return {
       max: this.maxValue,
       min: this.minValue,
-      curSpace: this.space ? this.space.slice() : [0, 0, 0, 0]
+      curSpace: this.space.slice()
     }
   },
 
@@ -126,7 +129,7 @@ export default {
   },
 
   render(h) {
-    const {width, height, vw, vh} = this
+    const {width, height, vw, vh, space, curSpace} = this
     const slots = this.$slots.default || []
 
     const charts = []
@@ -142,9 +145,10 @@ export default {
           charts.push(slot)
           break
         case 'object':
-          if (!this.space && sealed.space) {
+          if (sealed.space) {
             sealed.space.forEach((val, i) => {
-              this.curSpace[i] += val || 0
+              const cur = curSpace[i]
+              curSpace[i] = isNaN(cur) ? val : Math.max(val, cur)
             })
           }
           objects.push(slot)
@@ -152,6 +156,12 @@ export default {
         default:
           widgets.push(slot)
           break
+      }
+    })
+
+    space.forEach((o, i) => {
+      if (isFn(o)) {
+        curSpace[i] = o(curSpace[i])
       }
     })
 

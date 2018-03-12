@@ -34,8 +34,8 @@ export default {
             attrs: {
               x: point[0],
               y: point[1] + tickSize,
-              'text-anchor': 'middle',
               dy: fontSize,
+              'text-anchor': 'middle',
               'font-size': fontSize,
               fill: color,
               stroke: 'none'
