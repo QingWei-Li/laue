@@ -19,6 +19,32 @@ export default {
     },
 
     /**
+     * Manual optimization
+     */
+    maxValue: {
+      type: Number,
+      default: -Infinity
+    },
+
+    /**
+     * Manual optimization
+     */
+    minValue: {
+      type: Number,
+      default: Infinity
+    },
+
+    /**
+     * Top, right, bottom, left
+     */
+    space: Array,
+
+    /**
+     * @todo
+     */
+    horizontal: Boolean,
+
+    /**
      * The default colors is "walden" from ECharts
      * @see http://echarts.baidu.com/theme-builder/
      */
@@ -45,22 +71,24 @@ export default {
     },
 
     canvas() {
-      const {vw, vh, padding} = this
-      // Todo 加上 axis 等信息
-      const x0 = padding
-      const y0 = padding
-      const width = vw - padding * 2
-      const height = vh - padding * 2
+      const {vw, vh, padding, curSpace} = this
+
+      const x0 = padding + curSpace[3]
+      const y0 = padding + curSpace[0]
+      const width = vw - x0 - padding - curSpace[1]
+      const height = vh - y0 - padding - curSpace[2]
 
       return {x0, y0, width, height}
     }
   },
 
-  data: () => ({
-    max: -Infinity,
-    min: Infinity,
-    len: 0
-  }),
+  data() {
+    return {
+      max: this.maxValue,
+      min: this.minValue,
+      curSpace: this.space ? this.space.slice() : [0, 0, 0, 0]
+    }
+  },
 
   provide() {
     return {
@@ -73,16 +101,14 @@ export default {
       const {x0, y0, width, height} = this.canvas
       const min = Math.floor(Math.min(...values, this.min))
       const max = Math.ceil(Math.max(...values, this.max))
-      const yRatio = (max - min) / height
+      const yRatio = height / (max - min)
       const xRatio = width / (values.length - 1)
-      const len = values.length
 
       this.min = Math.min(min, this.min)
       this.max = Math.max(max, this.max)
-      this.len = Math.max(len, this.len)
 
       return values.map((value, i) => {
-        const y = y0 + height - ((value - min) / yRatio || 0)
+        const y = y0 + height - (value - min) * yRatio
         const x = x0 + xRatio * i
         return [x, y]
       })
@@ -101,22 +127,45 @@ export default {
 
   render(h) {
     const {width, height, vw, vh} = this
-    const slots = this.$slots.default
+    const slots = this.$slots.default || []
 
-    return h(
-      'svg',
-      {
-        attrs: {
-          width,
-          height,
-          viewBox: `0 0 ${vw} ${vh}`
-        }
-      },
-      slots &&
-        slots.map((vnode, i) => {
-          vnode.index = i
-          return vnode
-        })
-    )
+    const charts = []
+    const objects = []
+    const widgets = []
+
+    slots.forEach(slot => {
+      const sealed = slot.componentOptions.Ctor.sealedOptions
+
+      switch (sealed.type) {
+        case 'chart':
+          slot.index = charts.length
+          charts.push(slot)
+          break
+        case 'object':
+          if (!this.space && sealed.space) {
+            this.curSpace[sealed.space[0]] += sealed.space[1]
+          }
+          objects.push(slot)
+          break
+        default:
+          widgets.push(slot)
+          break
+      }
+    })
+
+    return h('div', [
+      h(
+        'svg',
+        {
+          attrs: {
+            width,
+            height,
+            viewBox: `0 0 ${vw} ${vh}`
+          }
+        },
+        [].concat(charts, objects)
+      ),
+      widgets
+    ])
   }
 }

@@ -1,7 +1,5 @@
 export default {
   props: {
-    data: Array,
-
     prop: String
   },
 
@@ -9,9 +7,9 @@ export default {
 
   computed: {
     values() {
-      const {data, prop} = this
+      const {prop} = this
 
-      return data || (prop && this.Artboard.data.map(o => o[prop]))
+      return prop && this.Artboard.data.map(o => o[prop])
     }
   }
 }

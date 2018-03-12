@@ -3,6 +3,8 @@ import values from './values'
 export default {
   mixins: [values],
 
+  type: 'chart',
+
   props: {
     animated: Boolean,
 

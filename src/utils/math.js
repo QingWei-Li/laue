@@ -4,7 +4,7 @@ export function int(str) {
   return parseInt(str, 10)
 }
 
-export function ticks(min, max, count) {
+export function genTicks(min, max, count) {
   if (max < min) {
     [min, max] = [max, min]
   }
