@@ -20,7 +20,22 @@ export default {
     domain: {
       type: Array,
       default: () => []
-    }
+    },
+
+    color: {
+      type: String,
+      default: '#999'
+    },
+
+    tickSize: {
+      type: Number,
+      default: 5
+    },
+
+    fontSize: {
+      type: Number,
+      default: 15
+    },
   },
 
   type: 'object',
@@ -44,6 +59,8 @@ export default {
         const max = getDomainValue(this.domain[1], board.max)
 
         values = genTicks(min, max, length)
+        board.min = values[0]
+        board.max = values[values.length - 1]
       }
 
       if (this.unit) {
@@ -64,13 +81,12 @@ export default {
 
         points = labels.map((value, i) => {
           const x = x0 + xRatio * i
-          const y = height
+          const y = y0 + height
 
           return [x, y]
         })
       } else {
-        const min = labels[0]
-        const max = labels[labels.length - 1]
+        const {min, max} = board
         const yRatio = height / (max - min)
 
         points = labels.map(value => {
