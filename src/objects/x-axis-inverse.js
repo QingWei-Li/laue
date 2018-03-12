@@ -1,7 +1,7 @@
 import XAxis from './x-axis'
 
 export default {
-  name: 'XAxisInverse',
+  name: 'LaXAxisInverse',
 
   space: [15, 20, 0, 20],
 

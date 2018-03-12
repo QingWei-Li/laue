@@ -1,7 +1,7 @@
 import YAxis from './y-axis'
 
 export default {
-  name: 'YAxisInverse',
+  name: 'LaYAxisInverse',
 
   space: [0, 40, 0, 0],
 

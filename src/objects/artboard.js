@@ -9,9 +9,15 @@ export default {
       default: () => []
     },
 
-    height: Number,
+    height: {
+      type: Number,
+      default: 75
+    },
 
-    width: Number,
+    width: {
+      type: Number,
+      default: 300
+    },
 
     padding: {
       default: 8,
@@ -65,21 +71,14 @@ export default {
   },
 
   computed: {
-    vw() {
-      return this.width || 300
-    },
-
-    vh() {
-      return this.height || 75
-    },
-
     canvas() {
-      const {vw, vh, padding, curSpace} = this
+      let {width, height, padding, curSpace} = this
 
       const x0 = padding + curSpace[3]
       const y0 = padding + curSpace[0]
-      const width = vw - x0 - padding - curSpace[1]
-      const height = vh - y0 - padding - curSpace[2]
+
+      width = width - x0 - padding - curSpace[1]
+      height = height - y0 - padding - curSpace[2]
 
       return {x0, y0, width, height}
     }
@@ -129,7 +128,7 @@ export default {
   },
 
   render(h) {
-    const {width, height, vw, vh, space, curSpace} = this
+    const {width, height, space, curSpace} = this
     const slots = this.$slots.default || []
 
     const charts = []
@@ -172,7 +171,7 @@ export default {
           attrs: {
             width,
             height,
-            viewBox: `0 0 ${vw} ${vh}`
+            viewBox: `0 0 ${width} ${height}`
           }
         },
         [].concat(charts, objects)
