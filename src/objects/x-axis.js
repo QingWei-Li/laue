@@ -5,7 +5,7 @@ export default {
 
   axis: 'x',
 
-  space: [0, 20, 15, 0],
+  space: [0, 20, 15, 20],
 
   mixins: [axes],
 

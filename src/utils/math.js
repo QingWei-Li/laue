@@ -1,4 +1,4 @@
-import {tickStep} from 'd3-array'
+import {tickStep} from 'd3-array/src/ticks'
 
 export function int(str) {
   return parseInt(str, 10)

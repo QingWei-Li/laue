@@ -7,7 +7,8 @@
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib": "rollup -c --environment BUILD:production && banner-cli dist/*.js",
+    "build:lib":
+      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
@@ -20,10 +21,7 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [
-        2,
-        "never"
-      ],
+      "semi": [2, "never"],
       "no-mixed-operators": "off"
     }
   },

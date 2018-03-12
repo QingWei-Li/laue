@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 module.exports = {
   head: {
     titleTemplate: '%s - Laue',
