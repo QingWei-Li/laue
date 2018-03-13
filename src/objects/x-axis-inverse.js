@@ -5,5 +5,9 @@ export default {
 
   space: [15, 20, 0, 20],
 
+  beforeCreate() {
+    this.inverse = true
+  },
+
   mixins: [XAxis]
 }

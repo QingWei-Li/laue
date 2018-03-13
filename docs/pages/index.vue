@@ -12,7 +12,6 @@
 
       <la-y-axis></la-y-axis>
 
-
     </la-artboard>
   </div>
 </template>

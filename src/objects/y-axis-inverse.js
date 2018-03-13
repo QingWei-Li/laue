@@ -5,5 +5,9 @@ export default {
 
   space: [0, 40, 0, 0],
 
+  beforeCreate() {
+    this.inverse = true
+  },
+
   mixins: [YAxis]
 }
