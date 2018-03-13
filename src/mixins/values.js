@@ -7,9 +7,9 @@ export default {
 
   computed: {
     values() {
-      const {prop} = this
+      const {prop, Artboard} = this
 
-      return prop && this.Artboard.data.map(o => o[prop])
+      return prop && Artboard.data.map(o => o[prop])
     }
   }
 }

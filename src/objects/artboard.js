@@ -1,4 +1,4 @@
-import {isArr, isFn} from '../utils/core'
+import {isArr, isFn, isNil} from '../utils/core'
 
 export default {
   name: 'LaArtboard',
@@ -101,8 +101,9 @@ export default {
   methods: {
     getPoints(values) {
       const {x0, y0, width, height} = this.canvas
-      const min = Math.floor(Math.min(...values, this.min))
-      const max = Math.ceil(Math.max(...values, this.max))
+      const valids = values.filter(n => !isNil(n))
+      const min = Math.floor(Math.min(...valids, this.min))
+      const max = Math.ceil(Math.max(...valids, this.max))
       const yRatio = height / (max - min)
       const xRatio = width / (values.length - 1)
 
@@ -110,8 +111,9 @@ export default {
       this.max = Math.max(max, this.max)
 
       return values.map((value, i) => {
-        const y = y0 + height - (value - min) * yRatio
+        const y = isNil(value) ? null : y0 + height - (value - min) * yRatio
         const x = x0 + xRatio * i
+
         return [x, y]
       })
     },

@@ -2,7 +2,7 @@ import Chart from '../mixins/chart'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
-import {isFn} from '../utils/core'
+import {isFn, noNilInArray} from '../utils/core'
 import Mask from '../motions/mask'
 
 export default {
@@ -27,7 +27,12 @@ export default {
     dashed: {
       type: String,
       default: 'none'
-    }
+    },
+
+    /**
+     * @summary Like connectNulls
+     */
+    continued: Boolean
   },
 
   render(h) {
@@ -39,16 +44,18 @@ export default {
       curPoints,
       curColor,
       hideLine,
-      dashed
+      dashed,
+      continued
     } = this
     const pointSlot = this.$scopedSlots.default
-    const draw = line()
+    const draw = line().defined(noNilInArray)
+    const vailds = continued ? curPoints.filter(noNilInArray) : curPoints
 
     if (curve) {
       draw.curve(isFn(curve) ? curve : cardinal)
     }
 
-    const path = draw(curPoints)
+    const path = draw(vailds)
     const graphs = [
       !hideLine &&
         h('path', {

@@ -18,3 +18,7 @@ export function extend(to, _from) {
 
   return to
 }
+
+export function noNilInArray(arr) {
+  return !arr.some(isNil)
+}
