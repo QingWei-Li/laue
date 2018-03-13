@@ -14,8 +14,10 @@ export default {
     const draw = area()
       .y0(canvas.height + canvas.y0)
       .defined(noNilInArray)
+    /**
+     * @todo 优化代码
+     */
     const vailds = continued ? curPoints.filter(noNilInArray) : curPoints
-
     const areaId = `la-area-${id}`
 
     if (curve) {
