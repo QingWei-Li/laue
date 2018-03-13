@@ -113,6 +113,7 @@ export default {
     } = this
     const first = points[0]
     const end = points[points.length - 1]
+    const tspanSlot = this.$scopedSlots.default
 
     const lineSize = (inverse ? -1 : 1) * tickSize
     const yLineOffset = (isX ? 1 : 0) * lineSize
@@ -124,7 +125,7 @@ export default {
     const textYOffset = (isX ? lineSize : 0) * 1.5
     const textXOffset = (isX ? 0 : lineSize) * 1.5
 
-    const ticks = labels.map((val, i) => {
+    const ticks = labels.map((value, i) => {
       const point = points[i]
 
       return h('g', [
@@ -151,7 +152,7 @@ export default {
               'font-size': fontSize
             }
           },
-          isFn(format) ? format(val) : val
+          tspanSlot ? tspanSlot({value}) : isFn(format) ? format(value) : value
         )
       ])
     })
