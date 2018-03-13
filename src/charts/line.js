@@ -20,11 +20,27 @@ export default {
       default: 1
     },
 
-    transition: String
+    transition: String,
+
+    hideLine: Boolean,
+
+    dashed: {
+      type: String,
+      default: 'none'
+    }
   },
 
   render(h) {
-    const {curve, animated, values, width, curPoints, curColor} = this
+    const {
+      curve,
+      animated,
+      values,
+      width,
+      curPoints,
+      curColor,
+      hideLine,
+      dashed
+    } = this
     const pointSlot = this.$scopedSlots.default
     const draw = line()
 
@@ -34,17 +50,19 @@ export default {
 
     const path = draw(curPoints)
     const graphs = [
-      h('path', {
-        attrs: {
-          stroke: curColor,
-          fill: 'none',
-          'stroke-width': width,
-          d: path
-        },
-        style: {
-          transition: this.trans
-        }
-      }),
+      !hideLine &&
+        h('path', {
+          attrs: {
+            stroke: curColor,
+            fill: 'none',
+            'stroke-width': width,
+            d: path
+          },
+          style: {
+            'stroke-dasharray': dashed || 3,
+            transition: this.trans
+          }
+        }),
       this.$slots.default,
       this.dot &&
         h(
