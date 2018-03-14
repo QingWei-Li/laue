@@ -36,12 +36,15 @@
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
     "glob": "^7.1.2",
+    "modern-normalize": "^0.4.0",
     "npm-run-all": "^4.1.2",
     "nuxt": "^1.4.0",
     "rollup": "^0.56.5",
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-node-resolve": "^3.2.0",
     "rollup-plugin-uglify": "^3.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-markdown-loader": "^2.4.0"
   },
   "dependencies": {

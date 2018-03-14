@@ -12,6 +12,7 @@ module.exports = {
       {hid: 'description', name: 'description', content: pkg.description}
     ]
   },
+  css: ['modern-normalize', '~/styles/basic.css'],
   srcDir: 'website',
   plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
   build: {
