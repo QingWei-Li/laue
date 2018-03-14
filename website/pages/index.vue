@@ -18,6 +18,8 @@
 
 <script>
 export default {
+  layout: 'home',
+
   head() {
     return {
       title: 'Home'
