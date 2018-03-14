@@ -84,7 +84,6 @@ export default {
 
   data() {
     return {
-      curSpace: this.space.slice(),
       store: {},
       props: []
     }
@@ -135,10 +134,16 @@ export default {
     }
   },
 
+  created() {
+    // Init data
+    this.curSpace = this.space.slice()
+  },
+
   render(h) {
-    const {width, height, space, curSpace, props} = this
+    const {width, height, space, curSpace} = this
     const slots = this.$slots.default || []
 
+    const props = []
     const charts = []
     const objects = []
     const widgets = []
@@ -175,6 +180,8 @@ export default {
         curSpace[i] = o(curSpace[i])
       }
     })
+
+    this.props = props
 
     return h('div', [
       h(

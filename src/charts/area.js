@@ -8,24 +8,39 @@ export default {
 
   mixins: [Line],
 
-  render(h) {
-    const {canvas} = this.Artboard
-    const {curve, trans, id, curPoints, curColor, continued} = this
-    const draw = area()
-      .y0(canvas.height + canvas.y0)
-      .defined(noNilInArray)
+  computed: {
+    draw() {
+      const {curve} = this
+      const {canvas} = this.Artboard
 
-    /**
-     * @todo 优化代码
-     */
-    const vailds = continued ? curPoints.filter(noNilInArray) : curPoints
-    const areaId = `la-area-${id}`
+      const draw = area()
+        .y0(canvas.height + canvas.y0)
+        .defined(noNilInArray)
 
-    if (curve) {
-      draw.curve(isFn(curve) ? curve : cardinal)
+      if (curve) {
+        draw.curve(isFn(curve) ? curve : cardinal)
+      }
+
+      return draw
+    },
+
+    areaId() {
+      return `la-area-${this.id}`
+    },
+
+    areaVailds() {
+      const {curPoints, continued} = this
+
+      return continued ? curPoints.filter(noNilInArray) : curPoints
+    },
+
+    areaPath() {
+      return this.draw(this.areaVailds)
     }
+  },
 
-    const path = draw(vailds)
+  render(h) {
+    const {trans, areaVailds, areaPath, curColor, areaId} = this
 
     return h('g', [
       h('defs', [
@@ -52,7 +67,7 @@ export default {
         {
           props: extend(extend({}, this.$props), {
             color: curColor,
-            points: vailds,
+            points: areaVailds,
             transition: trans
           }),
           scopedSlots: this.$scopedSlots
@@ -60,7 +75,7 @@ export default {
         [
           h('path', {
             attrs: {
-              d: path,
+              d: areaPath,
               fill: `url(#${areaId})`
             },
             style: {
