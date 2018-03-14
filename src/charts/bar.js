@@ -1,9 +1,9 @@
-import chart from '../mixins/chart'
+import linear from '../mixins/linear'
 
 export default {
   name: 'LaBar',
 
-  mixins: [chart],
+  mixins: [linear],
 
   render(h) {
     return h('g')

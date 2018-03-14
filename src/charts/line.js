@@ -1,4 +1,4 @@
-import Chart from '../mixins/chart'
+import linear from '../mixins/linear'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
@@ -8,7 +8,7 @@ import Mask from '../motions/mask'
 export default {
   name: 'LaLine',
 
-  mixins: [Chart],
+  mixins: [linear],
 
   props: {
     curve: [Boolean, Function],
@@ -35,21 +35,17 @@ export default {
 
   computed: {
     draw() {
-      const {curve} = this
+      const {curve, continued} = this
       const draw = line().defined(noNilInArray)
 
       if (curve) {
         draw.curve(isFn(curve) ? curve : cardinal)
       }
 
-      return draw
-    },
-
-    path() {
-      const {curPoints, continued} = this
-      const vailds = continued ? curPoints.filter(noNilInArray) : curPoints
-
-      return this.draw(vailds)
+      return p => {
+        p = continued ? p.filter(noNilInArray) : p
+        return draw(p)
+      }
     }
   },
 
@@ -62,8 +58,7 @@ export default {
       curColor,
       hideLine,
       dashed,
-      trans,
-      path
+      trans
     } = this
     const pointSlot = this.$scopedSlots.default
 
@@ -74,7 +69,7 @@ export default {
             stroke: curColor,
             fill: 'none',
             'stroke-width': width,
-            d: path
+            d: this.draw(curPoints)
           },
           style: {
             'stroke-dasharray': dashed || 3,

@@ -1,7 +1,7 @@
 import Line from './line'
 import area from 'd3-shape/src/area'
 import cardinal from 'd3-shape/src/curve/cardinal'
-import {extend, isFn, noNilInArray, isNil} from '../utils/core'
+import {extend, isFn, noNilInArray} from '../utils/core'
 
 export default {
   name: 'LaArea',
@@ -10,55 +10,29 @@ export default {
 
   computed: {
     draw() {
-      const {curve} = this
+      const {curve, continued} = this
       const {canvas} = this.Artboard
       const draw = area()
-        .y0(d => canvas.height + canvas.y0 - d[2])
+        .y0(d => canvas.height + canvas.y0 - (d[2] || 0))
         .defined(noNilInArray)
 
       if (curve) {
         draw.curve(isFn(curve) ? curve : cardinal)
       }
 
-      return draw
+      return p => {
+        p = continued ? p.filter(noNilInArray) : p
+        return draw(p)
+      }
     },
 
     areaId() {
       return `la-area-${this.id}`
-    },
-
-    areaVailds() {
-      const {curPoints, continued, id} = this
-      const {canvas, stacked, store} = this.Artboard
-
-      if (stacked) {
-        if (id === 0) {
-          store.lastAreaStack = []
-        }
-
-        const height = canvas.height + canvas.y0
-        const stack = store.lastAreaStack || []
-
-        curPoints.forEach((point, i) => {
-          if (!isNil(point[1])) {
-            const p1 = point[1]
-            const cur = stack[i] || 0
-
-            point[2] = cur
-            point[1] -= cur
-            stack[i] = cur + height - p1
-          }
-        })
-
-        this.Artboard.store.lastAreaStack = stack
-      }
-
-      return continued ? curPoints.filter(noNilInArray) : curPoints
     }
   },
 
   render(h) {
-    const {trans, areaVailds, curColor, areaId} = this
+    const {trans, curPoints, curColor, areaId} = this
 
     return h('g', [
       h('defs', [
@@ -85,7 +59,7 @@ export default {
         {
           props: extend(extend({}, this.$props), {
             color: curColor,
-            points: areaVailds,
+            points: curPoints,
             transition: trans
           }),
           scopedSlots: this.$scopedSlots
@@ -93,7 +67,7 @@ export default {
         [
           h('path', {
             attrs: {
-              d: this.draw(areaVailds),
+              d: this.draw(curPoints),
               fill: `url(#${areaId})`
             },
             style: {

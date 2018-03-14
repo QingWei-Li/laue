@@ -1,4 +1,5 @@
 import {tickStep} from 'd3-array/src/ticks'
+import {isNil} from './core'
 
 export function int(str) {
   return parseInt(str, 10)
@@ -33,5 +34,5 @@ export function sum(arr) {
 }
 
 export function toArr(o, props) {
-  return props.map(prop => o[prop])
+  return props.map(prop => (isNil(o[prop]) ? null : o[prop]))
 }
