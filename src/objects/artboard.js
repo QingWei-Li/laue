@@ -1,5 +1,5 @@
 import {isArr, isFn, isNil} from '../utils/core'
-import {maxOrMin} from '../utils/math'
+import {sum, toArr} from '../utils/math'
 
 export default {
   name: 'LaArtboard',
@@ -43,6 +43,8 @@ export default {
      */
     horizontal: Boolean,
 
+    stacked: Boolean,
+
     /**
      * The default colors is "walden" from ECharts
      * @see http://echarts.baidu.com/theme-builder/
@@ -84,8 +86,7 @@ export default {
 
   data() {
     return {
-      store: {},
-      props: []
+      store: {}
     }
   },
 
@@ -126,10 +127,23 @@ export default {
       if (typeof domain === 'number') {
         return domain
       }
-      const val = maxOrMin(this.data, type, this.props)
+
+      const {props, data} = this
+      let val
+
+      if (this.stacked && type === 'max') {
+        val = Math.max.apply(null, data.map(o => sum(toArr(o, props))))
+      } else {
+        val = Math[type].apply(
+          null,
+          data.map(o => Math[type].apply(null, toArr(o, props)))
+        )
+      }
+
       if (isFn(domain)) {
         return domain(val)
       }
+
       return val
     }
   },
@@ -139,6 +153,10 @@ export default {
     this.curSpace = this.space.slice()
   },
 
+  /**
+   * @todo Need to optimize. The Props changes will call update even if it does not need.
+   * https://github.com/vuejs/vue/issues/5727
+   */
   render(h) {
     const {width, height, space, curSpace} = this
     const slots = this.$slots.default || []

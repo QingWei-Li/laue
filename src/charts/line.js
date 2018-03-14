@@ -2,7 +2,7 @@ import Chart from '../mixins/chart'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
-import {isFn, noNilInArray, isNil} from '../utils/core'
+import {isFn, noNilInArray} from '../utils/core'
 import Mask from '../motions/mask'
 
 export default {
@@ -47,18 +47,7 @@ export default {
 
     path() {
       const {curPoints, continued} = this
-
-      // Const last = this.Artboard.store.lastArea || []
-      // curPoints.forEach((point, i) => {
-      //   if (!isNil(point[1])) {
-      //     point[1] += (last[i] || [])[1] || 0
-      //   }
-      // })
-
-      // Console.log(curPoints)
-
       const vailds = continued ? curPoints.filter(noNilInArray) : curPoints
-      // This.Artboard.store.lastArea = curPoints
 
       return this.draw(vailds)
     }

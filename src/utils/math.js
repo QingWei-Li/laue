@@ -28,15 +28,10 @@ export function genTicks(min, max, count) {
   return ticks
 }
 
-/**
- * Returns max or min value from object array
- * @param {Array} data
- * @param {String} type max or min
- * @param {Array} props data props
- */
-export function maxOrMin(data, type, props) {
-  return Math[type].apply(
-    null,
-    data.map(o => Math[type].apply(null, props.map(prop => o[prop])))
-  )
+export function sum(arr) {
+  return arr.reduce((a, b) => a + b, 0)
+}
+
+export function toArr(o, props) {
+  return props.map(prop => o[prop])
 }

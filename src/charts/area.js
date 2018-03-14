@@ -1,7 +1,7 @@
 import Line from './line'
 import area from 'd3-shape/src/area'
 import cardinal from 'd3-shape/src/curve/cardinal'
-import {extend, isFn, noNilInArray} from '../utils/core'
+import {extend, isFn, noNilInArray, isNil} from '../utils/core'
 
 export default {
   name: 'LaArea',
@@ -12,9 +12,8 @@ export default {
     draw() {
       const {curve} = this
       const {canvas} = this.Artboard
-
       const draw = area()
-        .y0(canvas.height + canvas.y0)
+        .y0(d => canvas.height + canvas.y0 - d[2])
         .defined(noNilInArray)
 
       if (curve) {
@@ -29,18 +28,37 @@ export default {
     },
 
     areaVailds() {
-      const {curPoints, continued} = this
+      const {curPoints, continued, id} = this
+      const {canvas, stacked, store} = this.Artboard
+
+      if (stacked) {
+        if (id === 0) {
+          store.lastAreaStack = []
+        }
+
+        const height = canvas.height + canvas.y0
+        const stack = store.lastAreaStack || []
+
+        curPoints.forEach((point, i) => {
+          if (!isNil(point[1])) {
+            const p1 = point[1]
+            const cur = stack[i] || 0
+
+            point[2] = cur
+            point[1] -= cur
+            stack[i] = cur + height - p1
+          }
+        })
+
+        this.Artboard.store.lastAreaStack = stack
+      }
 
       return continued ? curPoints.filter(noNilInArray) : curPoints
-    },
-
-    areaPath() {
-      return this.draw(this.areaVailds)
     }
   },
 
   render(h) {
-    const {trans, areaVailds, areaPath, curColor, areaId} = this
+    const {trans, areaVailds, curColor, areaId} = this
 
     return h('g', [
       h('defs', [
@@ -75,7 +93,7 @@ export default {
         [
           h('path', {
             attrs: {
-              d: areaPath,
+              d: this.draw(areaVailds),
               fill: `url(#${areaId})`
             },
             style: {
