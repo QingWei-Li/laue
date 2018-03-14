@@ -1,26 +1,12 @@
 import values from './values'
 import {genTicks} from '../utils/math'
-import {isFn, isNil} from '../utils/core'
-
-function getDomainValue(domain, val) {
-  return isFn(domain) ? domain(val) : isNil(domain) ? val : domain
-}
+import {isFn} from '../utils/core'
 
 const CAP_HEIGHT = 0.71
 
 export default {
   props: {
     name: String,
-
-    /**
-     * @example [0, 2000]
-     * @example [n => n - 1000, n => n + 1000]
-     * @example [null, 20]
-     */
-    domain: {
-      type: Array,
-      default: () => []
-    },
 
     color: {
       type: String,
@@ -57,12 +43,7 @@ export default {
       if (this.isX) {
         values = values || Array.apply(null, {length}).map((n, i) => i)
       } else {
-        const min = getDomainValue(this.domain[0], board.min)
-        const max = getDomainValue(this.domain[1], board.max)
-
-        values = genTicks(min, max, length)
-        board.min = values[0]
-        board.max = values[values.length - 1]
+        values = genTicks(board.min, board.max, length)
       }
 
       return values
@@ -145,11 +126,8 @@ export default {
             attrs: {
               x: point[0] - textXOffset,
               y: point[1] + textYOffset,
-              fill: color,
               dy: spanYOffset + 'em',
-              stroke: 'none',
-              'text-anchor': textAlign,
-              'font-size': fontSize
+              stroke: 'none'
             }
           },
           tspanSlot ? tspanSlot({value}) : isFn(format) ? format(value) : value
@@ -167,7 +145,17 @@ export default {
           stroke: color
         }
       }),
-      h('g', ticks)
+      h(
+        'g',
+        {
+          attrs: {
+            'text-anchor': textAlign,
+            'font-size': fontSize,
+            fill: color
+          }
+        },
+        ticks
+      )
     ])
   }
 }

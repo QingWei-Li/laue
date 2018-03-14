@@ -1,4 +1,5 @@
 import {isArr, isFn, isNil} from '../utils/core'
+import {maxOrMin} from '../utils/math'
 
 export default {
   name: 'LaArtboard',
@@ -24,20 +25,9 @@ export default {
       type: Number
     },
 
-    /**
-     * Manual optimization
-     */
-    maxValue: {
-      type: Number,
-      default: -Infinity
-    },
-
-    /**
-     * Manual optimization
-     */
-    minValue: {
-      type: Number,
-      default: Infinity
+    domain: {
+      type: Array,
+      default: () => []
     },
 
     /**
@@ -45,7 +35,7 @@ export default {
      */
     space: {
       type: Array,
-      default: () => [null, null, null, null]
+      default: () => []
     },
 
     /**
@@ -81,14 +71,22 @@ export default {
       height = height - y0 - padding - curSpace[2]
 
       return {x0, y0, width, height}
+    },
+
+    max() {
+      return this.getDomainValue(this.domain[1], 'max')
+    },
+
+    min() {
+      return this.getDomainValue(this.domain[0], 'min')
     }
   },
 
   data() {
     return {
-      max: this.maxValue,
-      min: this.minValue,
-      curSpace: this.space.slice()
+      curSpace: this.space.slice(),
+      store: {},
+      props: []
     }
   },
 
@@ -107,9 +105,6 @@ export default {
       const yRatio = height / (max - min)
       const xRatio = width / (values.length - 1)
 
-      this.min = Math.min(min, this.min)
-      this.max = Math.max(max, this.max)
-
       return values.map((value, i) => {
         const y = isNil(value) ? null : y0 + height - (value - min) * yRatio
         const x = x0 + xRatio * i
@@ -126,11 +121,22 @@ export default {
       }
 
       return colors(index)
+    },
+
+    getDomainValue(domain, type) {
+      if (typeof domain === 'number') {
+        return domain
+      }
+      const val = maxOrMin(this.data, type, this.props)
+      if (isFn(domain)) {
+        return domain(val)
+      }
+      return val
     }
   },
 
   render(h) {
-    const {width, height, space, curSpace} = this
+    const {width, height, space, curSpace, props} = this
     const slots = this.$slots.default || []
 
     const charts = []
@@ -138,10 +144,14 @@ export default {
     const widgets = []
 
     slots.forEach(slot => {
-      const sealed = slot.componentOptions.Ctor.sealedOptions
+      const options = slot.componentOptions
+      const sealed = options.Ctor.sealedOptions
 
       switch (sealed.type) {
         case 'chart':
+          if (props.indexOf(options.propsData.prop) < 0) {
+            props.push(options.propsData.prop)
+          }
           slot.index = charts.length
           charts.push(slot)
           break

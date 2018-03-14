@@ -14,6 +14,7 @@ export default {
     const draw = area()
       .y0(canvas.height + canvas.y0)
       .defined(noNilInArray)
+
     /**
      * @todo 优化代码
      */

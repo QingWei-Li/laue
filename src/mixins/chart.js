@@ -33,8 +33,9 @@ export default {
     trans() {
       return (
         this.transition ||
-        (this.animated &&
-          `all ${this.animationDuration}s ${this.animationEffect}`)
+        (this.animated ?
+          `all ${this.animationDuration}s ${this.animationEffect}` :
+          '')
       )
     },
 

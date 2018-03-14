@@ -4,6 +4,9 @@ export function int(str) {
   return parseInt(str, 10)
 }
 
+/**
+ * Returns nick ticks
+ */
 export function genTicks(min, max, count) {
   if (max < min) {
     [min, max] = [max, min]
@@ -19,5 +22,21 @@ export function genTicks(min, max, count) {
     ticks.push(cur)
   }
 
+  ticks[0] = min
+  ticks[ticks.length - 1] = max
+
   return ticks
+}
+
+/**
+ * Returns max or min value from object array
+ * @param {Array} data
+ * @param {String} type max or min
+ * @param {Array} props data props
+ */
+export function maxOrMin(data, type, props) {
+  return Math[type].apply(
+    null,
+    data.map(o => Math[type].apply(null, props.map(prop => o[prop])))
+  )
 }

@@ -20,8 +20,6 @@ export default {
       default: 1
     },
 
-    transition: String,
-
     hideLine: Boolean,
 
     dashed: {
@@ -45,7 +43,8 @@ export default {
       curColor,
       hideLine,
       dashed,
-      continued
+      continued,
+      trans
     } = this
     const pointSlot = this.$scopedSlots.default
     const draw = line().defined(noNilInArray)
@@ -67,7 +66,7 @@ export default {
           },
           style: {
             'stroke-dasharray': dashed || 3,
-            transition: this.trans
+            transition: trans
           }
         }),
       this.$slots.default,
@@ -84,7 +83,7 @@ export default {
                 fill: curColor
               },
               style: {
-                transition: this.trans
+                transition: trans
               }
             })
           )
@@ -99,7 +98,7 @@ export default {
               value: values[i],
               index: i,
               style: {
-                transition: this.trans
+                transition: trans
               }
             })
           )
@@ -112,7 +111,7 @@ export default {
         {
           props: {
             axis: 'x',
-            transition: this.trans
+            transition: trans
           }
         },
         graphs
