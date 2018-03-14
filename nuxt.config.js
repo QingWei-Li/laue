@@ -1,17 +1,19 @@
 const {join} = require('path')
 const glob = require('glob')
+const pkg = require('./package.json')
 
 module.exports = {
   head: {
+    title: 'Laue',
     titleTemplate: '%s - Laue',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: 'Meta description'}
+      {hid: 'description', name: 'description', content: pkg.description}
     ]
   },
   srcDir: 'website',
-  plugins: ['~/plugins/laue.js'],
+  plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
   build: {
     extend(config) {
       config.module.rules.push({

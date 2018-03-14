@@ -20,12 +20,6 @@
 export default {
   layout: 'home',
 
-  head() {
-    return {
-      title: 'Home'
-    };
-  },
-
   data: () => {
     return {
       prop: 'pv',
