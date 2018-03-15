@@ -85,16 +85,30 @@ export default {
       return this.getDomainValue(this.domain[0], 'min')
     },
 
-    xRatio() {
+    tempXRatio() {
       return this.canvas.width / (this.data.length - 1)
+    },
+
+    curGap() {
+      const {gap, tempXRatio} = this
+      if (isFn(gap)) {
+        return gap(tempXRatio)
+      }
+      if (gap === true) {
+        return tempXRatio / 2
+      }
+      return Number(gap)
+    },
+
+    xRatio() {
+      const {curGap, tempXRatio} = this
+      return tempXRatio - 2 * curGap / (this.data.length - 1)
     }
   },
 
-  data() {
-    return {
-      store: {}
-    }
-  },
+  data: () => ({
+    store: {}
+  }),
 
   provide() {
     return {
@@ -109,11 +123,11 @@ export default {
       const min = Math.floor(Math.min(...valids, this.min))
       const max = Math.ceil(Math.max(...valids, this.max))
       const yRatio = height / (max - min)
-      const xRatio = this.xRatio
+      const {curGap, xRatio} = this
 
       return values.map((value, i) => {
         const y = isNil(value) ? null : y0 + height - (value - min) * yRatio
-        const x = x0 + xRatio * i
+        const x = x0 + xRatio * i + curGap
 
         return [x, y]
       })

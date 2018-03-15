@@ -49,17 +49,21 @@ export default {
       return values
     },
 
+    gap() {
+      return this.isX ? this.Artboard.curGap : 0
+    },
+
     points() {
-      const {Artboard: board, isX, labels, inverse} = this
+      const {Artboard: board, isX, labels, inverse, gap} = this
       const {x0, y0, width, height} = board.canvas
       let points
 
       if (isX) {
-        const xRatio = board.xRatio
+        const {xRatio} = board
         const offset = inverse ? 0 : height
 
         points = labels.map((value, i) => {
-          const x = x0 + xRatio * i
+          const x = x0 + xRatio * i + gap
           const y = y0 + offset
 
           return [x, y]
@@ -90,7 +94,8 @@ export default {
       color,
       isX,
       format,
-      inverse
+      inverse,
+      gap
     } = this
     const first = points[0]
     const end = points[points.length - 1]
@@ -138,9 +143,9 @@ export default {
     return h('g', [
       h('line', {
         attrs: {
-          x2: end[0],
+          x2: end[0] + gap,
           y2: end[1],
-          x1: first[0],
+          x1: first[0] - gap,
           y1: first[1],
           stroke: color
         }
