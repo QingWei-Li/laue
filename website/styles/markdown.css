@@ -309,16 +309,12 @@ article pre .highlighted-line {
 }
 
 article a.anchor {
-  position: relative;
-  top: 1px;
   display: inline-block;
-  width: 11px;
-  height: 11px;
-  background: url(/img/documentation/icon-anchor.svg);
-  background-size: 100% 100%;
+  font-size: 1em;
   margin-left: 4px;
   opacity: 0;
   transition: opacity 0.25s ease-in-out;
+  text-decoration: none;
 }
 
 article h2 a.anchor {
@@ -342,12 +338,12 @@ article h6:hover a.anchor {
 
 article a,
 article a code {
-  color: #0099e5;
+  color: #3778ff;
   font-weight: 500;
   text-decoration: underline;
 }
 
 article a:active,
 article a:active code {
-  color: #0076b1;
+  opacity: 0.8;
 }

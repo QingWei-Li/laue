@@ -1,4 +1,4 @@
-const {join} = require('path')
+const {join, basename} = require('path')
 const glob = require('glob')
 const pkg = require('./package.json')
 
@@ -12,6 +12,9 @@ module.exports = {
       {hid: 'description', name: 'description', content: pkg.description}
     ]
   },
+  loading: {
+    color: '#3778ff'
+  },
   css: ['modern-normalize', '~/styles/basic.css'],
   srcDir: 'website',
   plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
@@ -19,7 +22,19 @@ module.exports = {
     extend(config) {
       config.module.rules.push({
         test: /\.md$/,
-        use: ['vue-markdown-loader']
+        loader: 'vue-markdown-loader',
+        options: {
+          use: [
+            [
+              require('markdown-it-anchor'),
+              {
+                permalink: true,
+                permalinkSymbol: '#',
+                permalinkClass: 'anchor'
+              }
+            ]
+          ]
+        }
       })
     },
     watch: [join(__dirname, 'docs/*/*.md')]
@@ -39,7 +54,7 @@ module.exports = {
             .replace(/^en\//, '')
 
           routes.push({
-            name: path.replace(/\//g, '-'),
+            name: basename(path),
             path: '/' + path,
             component: resolve(__dirname, file)
           })
