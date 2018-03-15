@@ -17,7 +17,7 @@ module.exports = {
   },
   css: ['modern-normalize', '~/styles/basic.css'],
   srcDir: 'website',
-  plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
+  plugins: ['~/plugins/laue.js', '~/plugins/head.js', '~/plugins/editor.js'],
   build: {
     extend(config) {
       config.module.rules.push({
@@ -33,7 +33,8 @@ module.exports = {
                 permalinkClass: 'anchor'
               }
             ]
-          ]
+          ],
+          preventExtract: true
         }
       })
     },

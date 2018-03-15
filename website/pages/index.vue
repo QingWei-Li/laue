@@ -2,16 +2,9 @@
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
     <la-artboard :max-value="10000" :min-value="0" :width="750" :height="300" :data="data">
-      <!-- <la-line animated dot color="#5CC0C0" :prop="prop">
-        <circle slot-scope="props" :cx="props.x" :cy="props.y" r="4"></circle>
-      </la-line> -->
-
-      <la-area curve animated dot prop="pv"></la-area>
-
+      <la-line prop="pv"></la-line>
       <la-x-axis prop="name"></la-x-axis>
-
       <la-y-axis></la-y-axis>
-
     </la-artboard>
   </div>
 </template>
@@ -38,10 +31,3 @@ export default {
 };
 </script>
 
-<style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
-}
-</style>

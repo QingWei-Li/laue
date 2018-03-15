@@ -66,11 +66,11 @@ export default {
     canvas() {
       let {width, height, padding, curSpace} = this
 
-      const x0 = padding + curSpace[3]
-      const y0 = padding + curSpace[0]
+      const x0 = padding + (curSpace[3] || 0)
+      const y0 = padding + (curSpace[0] || 0)
 
-      width = width - x0 - padding - curSpace[1]
-      height = height - y0 - padding - curSpace[2]
+      width = width - x0 - padding - (curSpace[1] || 0)
+      height = height - y0 - padding - (curSpace[2] || 0)
 
       return {x0, y0, width, height}
     },
@@ -168,7 +168,13 @@ export default {
 
     slots.forEach(slot => {
       const options = slot.componentOptions
+      if (!options) {
+        return
+      }
       const sealed = options.Ctor.sealedOptions
+      if (!sealed) {
+        return
+      }
 
       switch (sealed.type) {
         case 'chart':
@@ -187,8 +193,10 @@ export default {
           }
           objects.push(slot)
           break
-        default:
+        case 'widgets':
           widgets.push(slot)
+          break
+        default:
           break
       }
     })
