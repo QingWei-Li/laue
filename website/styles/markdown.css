@@ -44,7 +44,7 @@ article table tbody,
 article ul {
   font-size: 15px;
   color: #373e42;
-  line-height: 26px;
+  line-height: 1.5em;
 }
 
 article p:not(:first-child) {
@@ -227,7 +227,7 @@ article table thead tr th:first-child {
 
 article table tbody {
   font-size: 14px;
-  line-height: 26px;
+  line-height: 1.5em;
 }
 
 article table tbody tr td {
@@ -346,4 +346,9 @@ article a code {
 article a:active,
 article a:active code {
   opacity: 0.8;
+}
+
+/* @todo */
+svg {
+  margin: 20px 0;
 }
