@@ -1,5 +1,4 @@
 import {tickStep} from 'd3-array/src/ticks'
-import {isNil} from './core'
 
 export function int(str) {
   return parseInt(str, 10)
@@ -31,8 +30,4 @@ export function genTicks(min, max, count) {
 
 export function sum(arr) {
   return arr.reduce((a, b) => a + b, 0)
-}
-
-export function toArr(o, props) {
-  return props.map(prop => (isNil(o[prop]) ? null : o[prop]))
 }

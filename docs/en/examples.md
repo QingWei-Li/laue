@@ -36,6 +36,8 @@ An example of a simple line chart with three series.
   <la-y-axis></la-y-axis>
 </la-artboard>
 
+## Line gradient
+
 ## Line chart With area
 
 This chart uses [Area](api#area) component to draw an area shape. Use the [domain](api#domain) to specify the lower bound.

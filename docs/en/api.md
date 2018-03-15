@@ -19,6 +19,8 @@ xxxx
 | animationEffect   | xxx         | `String`                | ease    |
 | color             | xxx         | `String`                | -       |
 
+### Slots
+
 ### Events
 
 ## Area

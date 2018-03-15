@@ -1,8 +1,8 @@
 <template>
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
-    <la-artboard :max-value="10000" :min-value="0" :width="750" :height="300" :data="data">
-      <la-line prop="pv"></la-line>
+    <la-artboard :width="750" :height="300" :data="data">
+      <la-bar prop="pv"></la-bar>
       <la-x-axis prop="name"></la-x-axis>
       <la-y-axis></la-y-axis>
     </la-artboard>

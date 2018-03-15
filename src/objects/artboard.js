@@ -1,5 +1,5 @@
-import {isArr, isFn, isNil} from '../utils/core'
-import {sum, toArr} from '../utils/math'
+import {isArr, isFn, isNil, toArr} from '../utils/core'
+import {sum} from '../utils/math'
 
 export default {
   name: 'LaArtboard',
@@ -37,6 +37,8 @@ export default {
       type: Array,
       default: () => []
     },
+
+    gap: [Boolean, Number, Function],
 
     /**
      * @todo
@@ -81,6 +83,10 @@ export default {
 
     min() {
       return this.getDomainValue(this.domain[0], 'min')
+    },
+
+    xRatio() {
+      return this.canvas.width / (this.data.length - 1)
     }
   },
 
@@ -98,12 +104,12 @@ export default {
 
   methods: {
     getPoints(values) {
-      const {x0, y0, width, height} = this.canvas
+      const {x0, y0, height} = this.canvas
       const valids = values.filter(n => !isNil(n))
       const min = Math.floor(Math.min(...valids, this.min))
       const max = Math.ceil(Math.max(...valids, this.max))
       const yRatio = height / (max - min)
-      const xRatio = width / (values.length - 1)
+      const xRatio = this.xRatio
 
       return values.map((value, i) => {
         const y = isNil(value) ? null : y0 + height - (value - min) * yRatio

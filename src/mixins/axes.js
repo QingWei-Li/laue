@@ -55,7 +55,7 @@ export default {
       let points
 
       if (isX) {
-        const xRatio = width / (labels.length - 1)
+        const xRatio = board.xRatio
         const offset = inverse ? 0 : height
 
         points = labels.map((value, i) => {

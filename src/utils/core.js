@@ -22,3 +22,7 @@ export function extend(to, _from) {
 export function noNilInArray(arr) {
   return !arr.some(isNil)
 }
+
+export function toArr(o, props) {
+  return props.map(prop => (isNil(o[prop]) ? null : o[prop]))
+}
