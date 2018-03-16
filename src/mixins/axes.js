@@ -50,7 +50,7 @@ export default {
     },
 
     gap() {
-      return this.isX ? this.Artboard.curGap : 0
+      return this.isX ? this.Artboard.gap : 0
     },
 
     points() {

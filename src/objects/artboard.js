@@ -30,12 +30,12 @@ export default {
       default: () => []
     },
 
-    gap: [Boolean, Number, Function],
+    narrow: [Boolean, Number, Function],
 
-    /**
-     * @todo
-     */
-    horizontal: Boolean,
+    distance: {
+      default: 0,
+      type: Number
+    },
 
     stacked: Boolean,
 
@@ -57,7 +57,7 @@ export default {
   },
 
   computed: {
-    curPadding() {
+    offset() {
       const {padding, space} = this
       const isNum = typeof padding === 'number'
       const pad = []
@@ -72,12 +72,12 @@ export default {
     },
 
     canvas() {
-      let {width, height, curPadding} = this
+      let {width, height, offset} = this
 
-      const x0 = curPadding[3]
-      const y0 = curPadding[0]
-      const y1 = height - curPadding[2]
-      const x1 = width - curPadding[1]
+      const x0 = offset[3]
+      const y0 = offset[0]
+      const y1 = height - offset[2]
+      const x1 = width - offset[1]
 
       width = x1 - x0
       height = y1 - y0
@@ -97,26 +97,22 @@ export default {
       return this.canvas.width / (this.data.length - 1)
     },
 
-    curGap() {
-      const {gap, tempXRatio} = this
-      if (isFn(gap)) {
-        return gap(tempXRatio)
+    gap() {
+      const {narrow, tempXRatio} = this
+      if (isFn(narrow)) {
+        return narrow(tempXRatio)
       }
-      if (gap === true) {
+      if (narrow === true) {
         return tempXRatio / 2
       }
-      return Number(gap)
+      return Number(narrow)
     },
 
     xRatio() {
-      const {curGap, tempXRatio} = this
-      return tempXRatio - 2 * curGap / (this.data.length - 1)
+      const {gap, tempXRatio} = this
+      return tempXRatio - 2 * gap / (this.data.length - 1)
     }
   },
-
-  data: () => ({
-    store: {}
-  }),
 
   provide() {
     return {
@@ -131,11 +127,11 @@ export default {
       const min = Math.floor(Math.min(...valids, this.low))
       const max = Math.ceil(Math.max(...valids, this.high))
       const yRatio = height / (max - min)
-      const {curGap, xRatio} = this
+      const {gap, xRatio} = this
 
       return values.map((value, i) => {
         const y = isNil(value) ? null : y1 - (value - min) * yRatio
-        const x = x0 + xRatio * i + curGap
+        const x = x0 + xRatio * i + gap
 
         return [x, y]
       })
@@ -176,9 +172,9 @@ export default {
     }
   },
 
-  created() {
-    this.space = []
-  },
+  data: () => ({
+    space: [0, 0, 0, 0]
+  }),
 
   /**
    * @todo Need to optimize. The Props changes will call update even if it does not need.
@@ -187,6 +183,11 @@ export default {
   render(h) {
     const {width, height} = this
     const slots = this.$slots.default || []
+
+    /**
+     * Reset snap
+     */
+    this.snap = {}
 
     const props = []
     const charts = []
@@ -202,13 +203,17 @@ export default {
       if (!sealed) {
         return
       }
+      const {propsData} = options
 
       switch (sealed.type) {
         case 'chart':
-          if (props.indexOf(options.propsData.prop) < 0) {
-            props.push(options.propsData.prop)
+          if (props.indexOf(propsData.prop) < 0) {
+            props.push(propsData.prop)
           }
           slot.index = charts.length
+          if (sealed.preload) {
+            sealed.preload({data: propsData, parent: this, index: slot.index})
+          }
           charts.push(slot)
           break
         case 'object':

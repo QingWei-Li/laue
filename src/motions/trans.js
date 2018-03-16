@@ -15,8 +15,11 @@ export default {
           appear: true
         },
         on: {
-          beforeEnter(el) {
-            extend(el.style, props.to)
+          enter(el, done) {
+            setTimeout(() => {
+              extend(el.style, props.to)
+              done()
+            })
           }
         }
       },

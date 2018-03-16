@@ -1,8 +1,12 @@
 <template>
   <div>
     <button @click="prop = prop === 'pv' ? 'amt' : 'pv'">change</button>
-    <la-artboard gap :width="750" :height="300" :data="data">
-      <la-bar prop="pv"></la-bar>
+
+    <la-artboard :width="750" :height="300" :data="data">
+      <la-line animated prop="pv"></la-line>
+      <la-bar animated prop="pv"></la-bar>
+      <la-bar animated prop="amt"></la-bar>
+      <la-bar animated prop="uv"></la-bar>
       <la-x-axis prop="name"></la-x-axis>
       <la-y-axis></la-y-axis>
     </la-artboard>
@@ -17,6 +21,7 @@ export default {
     return {
       prop: 'pv',
       space: 80,
+      showAxes: false,
       data: [
         { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
         { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },

@@ -1,4 +1,7 @@
 import linear from '../mixins/linear'
+import Trans from '../motions/trans'
+
+const DEFAULT_WIDTH = 20
 
 export default {
   name: 'LaBar',
@@ -6,26 +9,75 @@ export default {
   mixins: [linear],
 
   props: {
-    width: [Number, Function]
+    width: {
+      default: DEFAULT_WIDTH,
+      type: Number
+    }
+  },
+
+  preload({data, parent, index}) {
+    const {snap, distance} = parent
+    const width = data.width || DEFAULT_WIDTH
+
+    snap.barMap = [].concat(snap.barMap, index)
+    snap.barAllWidth = snap.barAllWidth || 0
+    snap.barOffset = [].concat(snap.barOffset, snap.barAllWidth)
+
+    snap.barAllWidth += width + distance
   },
 
   computed: {
-    rects() {}
+    margin() {
+      const {id} = this
+      const {snap, distance} = this.Artboard
+      const index = snap.barMap.indexOf(id)
+
+      return snap.barOffset[index] - (snap.barAllWidth - distance) / 2
+    }
   },
 
   render(h) {
-    const {height, y0} = this.Artboard.canvas
+    const {canvas} = this.Artboard
+    const {width, curPoints, curColor, margin, animated, trans} = this
 
-    const rects = this.curPoints.map(point => {
+    let rects = curPoints.map(point => {
       return h('rect', {
         attrs: {
-          x: point[0],
+          x: point[0] + margin,
           y: point[1],
-          width: 20,
-          height: height + y0 - point[1]
+          width: width,
+          height: canvas.y1 - point[1],
+          fill: curColor
         }
       })
     })
+
+    if (animated) {
+      rects = curPoints.map(point => {
+        return h(
+          Trans,
+          {
+            props: {
+              to: {}
+            }
+          },
+          [
+            h('rect', {
+              attrs: {
+                x: point[0] + margin,
+                y: point[1],
+                width: width,
+                height: canvas.y1 - point[1],
+                fill: curColor
+              },
+              style: {
+                transition: trans
+              }
+            })
+          ]
+        )
+      })
+    }
 
     return h('g', rects)
   }
