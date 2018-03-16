@@ -58,16 +58,19 @@ export default {
           Trans,
           {
             props: {
-              to: {}
+              to: {
+                height: canvas.y1 - point[1],
+                y: point[1]
+              }
             }
           },
           [
             h('rect', {
               attrs: {
                 x: point[0] + margin,
-                y: point[1],
+                y: canvas.y1,
                 width: width,
-                height: canvas.y1 - point[1],
+                height: 0,
                 fill: curColor
               },
               style: {
