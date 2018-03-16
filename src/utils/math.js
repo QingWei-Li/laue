@@ -23,7 +23,6 @@ export function genTicks(min, max, count) {
   }
 
   ticks[0] = min
-  ticks[ticks.length - 1] = max
 
   return ticks
 }
