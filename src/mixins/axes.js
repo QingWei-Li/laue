@@ -43,7 +43,7 @@ export default {
       if (this.isX) {
         values = values || Array.apply(null, {length}).map((n, i) => i)
       } else {
-        values = genTicks(board.min, board.max, length)
+        values = genTicks(board.low, board.high, length)
       }
 
       return values
@@ -55,27 +55,27 @@ export default {
 
     points() {
       const {Artboard: board, isX, labels, inverse, gap} = this
-      const {x0, y0, width, height} = board.canvas
+      const {x0, y0, y1, width, height} = board.canvas
       let points
 
       if (isX) {
         const {xRatio} = board
         const offset = inverse ? 0 : height
+        const y = y0 + offset
 
         points = labels.map((value, i) => {
           const x = x0 + xRatio * i + gap
-          const y = y0 + offset
 
           return [x, y]
         })
       } else {
-        const {min, max} = board
-        const yRatio = height / (max - min)
+        const {low, high} = board
+        const yRatio = height / (high - low)
         const offset = inverse ? width : 0
+        const x = x0 + offset
 
         points = labels.map(value => {
-          const x = x0 + offset
-          const y = y0 + height - (value - min) * yRatio
+          const y = y1 - (value - low) * yRatio
 
           return [x, y]
         })

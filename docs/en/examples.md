@@ -40,9 +40,9 @@ An example of a simple line chart with three series.
 
 ## Line chart With area
 
-This chart uses [Area](api#area) component to draw an area shape. Use the [domain](api#domain) to specify the lower bound.
+This chart uses [Area](api#area) component to draw an area shape. Use the [bound](api#bound) to specify the lower bound.
 
-<la-artboard :domain="[0, null]" :width="600" :height="200" :data="values">
+<la-artboard :bound="[0, null]" :width="600" :height="200" :data="values">
   <la-area dot curve prop="pv"></la-area>
   <la-x-axis></la-x-axis>
   <la-y-axis></la-y-axis>

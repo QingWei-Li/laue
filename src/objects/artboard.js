@@ -22,18 +22,10 @@ export default {
 
     padding: {
       default: 8,
-      type: Number
+      type: [Number, Array]
     },
 
-    domain: {
-      type: Array,
-      default: () => []
-    },
-
-    /**
-     * Top, right, bottom, left
-     */
-    space: {
+    bound: {
       type: Array,
       default: () => []
     },
@@ -65,24 +57,40 @@ export default {
   },
 
   computed: {
+    curPadding() {
+      const {padding, space} = this
+      const isNum = typeof padding === 'number'
+      const pad = []
+
+      for (let i = 0; i < 4; i++) {
+        const p = isNum ? padding : padding[i] || 0
+        const s = space[i]
+        pad[i] = isFn(p) ? p(s) : s + p
+      }
+
+      return pad
+    },
+
     canvas() {
-      let {width, height, padding, curSpace} = this
+      let {width, height, curPadding} = this
 
-      const x0 = padding + (curSpace[3] || 0)
-      const y0 = padding + (curSpace[0] || 0)
+      const x0 = curPadding[3]
+      const y0 = curPadding[0]
+      const y1 = height - curPadding[2]
+      const x1 = width - curPadding[1]
 
-      width = width - x0 - padding - (curSpace[1] || 0)
-      height = height - y0 - padding - (curSpace[2] || 0)
+      width = x1 - x0
+      height = y1 - y0
 
-      return {x0, y0, width, height}
+      return {x0, y0, width, height, x1, y1}
     },
 
-    max() {
-      return this.getDomainValue(this.domain[1], 'max')
+    high() {
+      return this.getBound(this.bound[1], 'max')
     },
 
-    min() {
-      return this.getDomainValue(this.domain[0], 'min')
+    low() {
+      return this.getBound(this.bound[0], 'min')
     },
 
     tempXRatio() {
@@ -118,15 +126,15 @@ export default {
 
   methods: {
     getPoints(values) {
-      const {x0, y0, height} = this.canvas
+      const {x0, height, y1} = this.canvas
       const valids = values.filter(n => !isNil(n))
-      const min = Math.floor(Math.min(...valids, this.min))
-      const max = Math.ceil(Math.max(...valids, this.max))
+      const min = Math.floor(Math.min(...valids, this.low))
+      const max = Math.ceil(Math.max(...valids, this.high))
       const yRatio = height / (max - min)
       const {curGap, xRatio} = this
 
       return values.map((value, i) => {
-        const y = isNil(value) ? null : y0 + height - (value - min) * yRatio
+        const y = isNil(value) ? null : y1 - (value - min) * yRatio
         const x = x0 + xRatio * i + curGap
 
         return [x, y]
@@ -143,9 +151,9 @@ export default {
       return colors(index)
     },
 
-    getDomainValue(domain, type) {
-      if (typeof domain === 'number') {
-        return domain
+    getBound(bound, type) {
+      if (typeof bound === 'number') {
+        return bound
       }
 
       const {props, data} = this
@@ -160,8 +168,8 @@ export default {
         )
       }
 
-      if (isFn(domain)) {
-        return domain(val)
+      if (isFn(bound)) {
+        return bound(val)
       }
 
       return val
@@ -169,8 +177,7 @@ export default {
   },
 
   created() {
-    // Init data
-    this.curSpace = this.space.slice()
+    this.space = []
   },
 
   /**
@@ -178,7 +185,7 @@ export default {
    * https://github.com/vuejs/vue/issues/5727
    */
   render(h) {
-    const {width, height, space, curSpace} = this
+    const {width, height} = this
     const slots = this.$slots.default || []
 
     const props = []
@@ -207,8 +214,7 @@ export default {
         case 'object':
           if (sealed.space) {
             sealed.space.forEach((val, i) => {
-              const cur = curSpace[i]
-              curSpace[i] = isNaN(cur) ? val : Math.max(val, cur)
+              this.space[i] = Math.max(val, this.space[i] || 0)
             })
           }
           objects.push(slot)
@@ -218,12 +224,6 @@ export default {
           break
         default:
           break
-      }
-    })
-
-    space.forEach((o, i) => {
-      if (isFn(o)) {
-        curSpace[i] = o(curSpace[i])
       }
     })
 
