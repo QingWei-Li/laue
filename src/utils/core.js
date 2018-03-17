@@ -32,3 +32,12 @@ export function toArr(o, props) {
 }
 
 export function noop() {}
+
+export function debounce(fn, delay) {
+  let id
+
+  return () => {
+    clearTimeout(id)
+    id = setTimeout(fn.bind(this), delay, arguments)
+  }
+}

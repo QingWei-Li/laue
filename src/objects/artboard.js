@@ -1,4 +1,4 @@
-import {isArr, isFn, noop} from '../utils/core'
+import {isArr, isFn, noop, debounce} from '../utils/core'
 import {stack, stackOffsetDiverging} from 'd3-shape'
 import {bound} from '../utils/math'
 
@@ -20,6 +20,8 @@ export default {
       type: Number,
       default: 300
     },
+
+    autoResize: Boolean,
 
     padding: {
       default: 8,
@@ -71,18 +73,26 @@ export default {
       return pad
     },
 
+    clientWidth() {
+      return Math.min(this.width, this.resizeWidth)
+    },
+
     canvas() {
-      let {width, height, offset} = this
+      let {clientWidth, height, offset} = this
 
       const x0 = offset[3]
       const y0 = offset[0]
       const y1 = height - offset[2]
-      const x1 = width - offset[1]
+      const x1 = clientWidth - offset[1]
 
-      width = x1 - x0
-      height = y1 - y0
-
-      return {x0, y0, width, height, x1, y1}
+      return {
+        x0,
+        y0,
+        width: x1 - x0,
+        height: y1 - y0,
+        x1,
+        y1
+      }
     },
 
     high() {
@@ -160,20 +170,33 @@ export default {
       }
 
       return result
+    },
+
+    resize() {
+      const {width} = this.$el.getBoundingClientRect()
+      this.resizeWidth = width
     }
   },
 
   data: () => ({
     space: [0, 0, 0, 0],
+    resizeWidth: Infinity,
     props: []
   }),
+
+  mounted() {
+    if (this.autoResize) {
+      this.resize()
+      window.addEventListener('resize', debounce(this.resize, 20))
+    }
+  },
 
   /**
    * @todo Need to optimize. The Props changes will call update even if it does not need.
    * https://github.com/vuejs/vue/issues/5727
    */
   render(h) {
-    const {width, height} = this
+    const {clientWidth, height} = this
     const slots = this.$slots.default || []
 
     /**
@@ -231,9 +254,9 @@ export default {
         'svg',
         {
           attrs: {
-            width,
+            width: clientWidth,
             height,
-            viewBox: `0 0 ${width} ${height}`
+            viewBox: `0 0 ${clientWidth} ${height}`
           }
         },
         [].concat(charts, objects)
