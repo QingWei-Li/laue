@@ -195,7 +195,8 @@ export default {
   },
 
   data: () => ({
-    space: [0, 0, 0, 0]
+    space: [0, 0, 0, 0],
+    props: []
   }),
 
   /**

@@ -28,39 +28,43 @@ export default {
 
   computed: {
     margin() {
-      const {id} = this
-      const {snap, distance} = this.Artboard
+      const {id, width} = this
+      const {snap, distance, stacked} = this.Artboard
       const index = snap.barMap.indexOf(id)
 
-      return snap.barOffset[index] - (snap.barAllWidth - distance) / 2
+      return stacked ?
+        -width / 2 :
+        snap.barOffset[index] - (snap.barAllWidth - distance) / 2
     }
   },
 
   render(h) {
-    const {canvas} = this.Artboard
     const {width, curPoints, curColor, margin, animated, trans} = this
 
     let rects = curPoints.map(point => {
+      const height = point[2] - point[1]
+
       return h('rect', {
         attrs: {
           x: point[0] + margin,
-          y: point[1],
+          y: height < 0 ? point[2] : point[1],
           width: width,
-          height: canvas.y1 - point[1],
-          fill: curColor
+          height: Math.abs(height)
         }
       })
     })
 
     if (animated) {
       rects = curPoints.map(point => {
+        const height = point[2] - point[1]
+
         return h(
           Trans,
           {
             props: {
               to: {
-                height: canvas.y1 - point[1],
-                y: point[1]
+                height: Math.abs(height),
+                y: height < 0 ? point[2] : point[1]
               }
             }
           },
@@ -68,10 +72,9 @@ export default {
             h('rect', {
               attrs: {
                 x: point[0] + margin,
-                y: canvas.y1,
+                y: point[2],
                 width: width,
-                height: 0,
-                fill: curColor
+                height: 0
               },
               style: {
                 transition: trans
@@ -82,6 +85,14 @@ export default {
       })
     }
 
-    return h('g', rects)
+    return h(
+      'g',
+      {
+        attrs: {
+          fill: curColor
+        }
+      },
+      rects
+    )
   }
 }
