@@ -1,14 +1,14 @@
 import Trans from './trans'
 
 export default {
-  name: 'LaMask',
+  name: 'LaMotionSpread',
 
   functional: true,
 
   props: ['axis', 'transition'],
 
   render(h, {children, props, parent}) {
-    const maskId = `la-mask-${parent._uid}`
+    const id = `la-spread-${parent._uid}`
     const {axis, transition} = props
 
     return h('g', [
@@ -17,7 +17,7 @@ export default {
           'clipPath',
           {
             attrs: {
-              id: maskId
+              id
             }
           },
           [

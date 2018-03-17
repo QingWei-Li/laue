@@ -44,7 +44,7 @@ This chart uses [Area](api#area) component to draw an area shape. Use the [bound
 
 <la-artboard :bound="[0, null]" :width="600" :height="200" :data="values">
   <la-area dot curve prop="pv"></la-area>
-  <la-x-axis></la-x-axis>
+  <la-x-axis prop="name"></la-x-axis>
   <la-y-axis></la-y-axis>
 </la-artboard>
 

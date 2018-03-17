@@ -3,7 +3,7 @@ import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
 import {isFn, noNilInArray} from '../utils/core'
-import Mask from '../motions/mask'
+import Spread from '../motions/spread'
 
 export default {
   name: 'LaLine',
@@ -104,7 +104,7 @@ export default {
 
     if (animated) {
       return h(
-        Mask,
+        Spread,
         {
           props: {
             axis: 'x',

@@ -49,9 +49,11 @@ export default {
     },
 
     valueSlot() {
+      const h = this.$createElement
+
       return (
         this.showValue &&
-        this.$createElement(
+        h(
           'g',
           {
             attrs: {
@@ -59,7 +61,7 @@ export default {
             }
           },
           this.curPoints.map((point, i) => {
-            return this.$createElement(
+            return h(
               'text',
               {
                 attrs: {
