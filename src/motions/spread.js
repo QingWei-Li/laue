@@ -50,7 +50,7 @@ export default {
         'g',
         {
           attrs: {
-            'clip-path': `url(#${maskId})`
+            'clip-path': `url(#${id})`
           }
         },
         children
