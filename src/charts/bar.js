@@ -71,22 +71,24 @@ export default {
           Trans,
           {
             props: {
+              from: {
+                height: 0,
+                y: point[2]
+              },
               to: {
                 height: Math.abs(height),
                 y: height < 0 ? point[2] : point[1]
-              }
+              },
+              trans
             }
           },
           [
             h('rect', {
               attrs: {
                 x: point[0] + margin,
-                y: point[2],
+                y: height < 0 ? point[2] : point[1],
                 width: width,
-                height: 0
-              },
-              style: {
-                transition: trans
+                height: Math.abs(height)
               }
             })
           ]

@@ -25,10 +25,11 @@ export default {
               Trans,
               {
                 props: {
-                  to: {
-                    width: '100%',
-                    height: '100%'
-                  }
+                  from: {
+                    width: axis === 'x' ? 0 : '100%',
+                    height: axis === 'y' ? 0 : '100%'
+                  },
+                  trans: transition
                 }
               },
               [
@@ -36,11 +37,8 @@ export default {
                   attrs: {
                     x: 0,
                     y: 0,
-                    width: axis === 'x' ? 0 : '100%',
-                    height: axis === 'y' ? 0 : '100%'
-                  },
-                  style: {
-                    transition
+                    width: '100%',
+                    height: '100%'
                   }
                 })
               ]
