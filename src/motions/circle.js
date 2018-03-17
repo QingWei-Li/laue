@@ -26,8 +26,7 @@ export default {
               {
                 props: {
                   from: {
-                    width: axis === 'x' ? 0 : '100%',
-                    height: axis === 'y' ? 0 : '100%'
+                    r: 0
                   },
                   trans: transition
                 }
@@ -35,9 +34,7 @@ export default {
               [
                 h('circle', {
                   attrs: {
-                    cx: props.r,
-                    cy: props.r,
-                    r: props.r
+                    r: props.r * 1.5
                   }
                 })
               ]
