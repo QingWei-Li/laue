@@ -69,8 +69,7 @@ export default {
           return [x, y]
         })
       } else {
-        const {low, high} = board
-        const yRatio = height / (high - low)
+        const {yRatio, low} = board
         const offset = inverse ? width : 0
         const x = x0 + offset
 

@@ -10,6 +10,10 @@ export function isNil(o) {
   return o === null || o === undefined
 }
 
+export function isNum(n) {
+  return !isNaN(n)
+}
+
 export function extend(to, _from) {
   // eslint-disable-next-line
   for (var key in _from) {
@@ -26,3 +30,5 @@ export function noNilInArray(arr) {
 export function toArr(o, props) {
   return props.map(prop => (isNil(o[prop]) ? null : o[prop]))
 }
+
+export function noop() {}

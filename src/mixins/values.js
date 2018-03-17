@@ -9,7 +9,10 @@ export default {
     values() {
       const {prop, Artboard} = this
 
-      return prop && Artboard.data.map(o => o[prop])
+      return (
+        Artboard.curData.filter(arr => arr.key === prop)[0] ||
+        Artboard.data.map(o => o[prop])
+      )
     }
   }
 }

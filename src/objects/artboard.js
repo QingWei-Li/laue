@@ -1,5 +1,6 @@
-import {isArr, isFn, isNil, toArr} from '../utils/core'
-import {sum} from '../utils/math'
+import {isArr, isFn, noop} from '../utils/core'
+import {stack, stackOffsetDiverging} from 'd3-shape'
+import {bound} from '../utils/math'
 
 export default {
   name: 'LaArtboard',
@@ -59,11 +60,10 @@ export default {
   computed: {
     offset() {
       const {padding, space} = this
-      const isNum = typeof padding === 'number'
       const pad = []
 
       for (let i = 0; i < 4; i++) {
-        const p = isNum ? padding : padding[i] || 0
+        const p = isArr(padding) ? padding[i] || 0 : padding
         const s = space[i]
         pad[i] = isFn(p) ? p(s) : s + p
       }
@@ -94,7 +94,8 @@ export default {
     },
 
     tempXRatio() {
-      return this.canvas.width / (this.data.length - 1)
+      const len = this.data.length
+      return len <= 1 ? 0 : this.canvas.width / (len - 1)
     },
 
     gap() {
@@ -109,8 +110,32 @@ export default {
     },
 
     xRatio() {
-      const {gap, tempXRatio} = this
-      return tempXRatio - 2 * gap / (this.data.length - 1)
+      return this.tempXRatio ?
+        this.tempXRatio - 2 * this.gap / (this.data.length - 1) :
+        0
+    },
+
+    yRatio() {
+      return this.canvas.height / (this.high - this.low)
+    },
+
+    curData() {
+      const series = stack()
+        .keys(this.props)
+        .offset(this.stacked ? stackOffsetDiverging : noop)(this.data)
+
+      if (this.props.length === 1 || !this.stacked) {
+        series.forEach(s => {
+          s.forEach(data => {
+            if (data[1] < 0) {
+              data[0] = data[1]
+              data[1] = 0
+            }
+          })
+        })
+      }
+
+      return series
     }
   },
 
@@ -122,18 +147,21 @@ export default {
 
   methods: {
     getPoints(values) {
-      const {x0, height, y1} = this.canvas
-      const valids = values.filter(n => !isNil(n))
-      const min = Math.floor(Math.min(...valids, this.low))
-      const max = Math.ceil(Math.max(...valids, this.high))
-      const yRatio = height / (max - min)
-      const {gap, xRatio} = this
+      const {x0, y1} = this.canvas
+      const {gap, xRatio, yRatio, low} = this
 
       return values.map((value, i) => {
-        const y = isNil(value) ? null : y1 - (value - min) * yRatio
+        let [start, end] = value
+
+        if (start < 0) {
+          [end, start] = value
+        }
+
+        const y = isNaN(end) ? null : y1 - (end - low) * yRatio
+        const y0 = isNaN(start) ? null : y1 - (start - low) * yRatio
         const x = x0 + xRatio * i + gap
 
-        return [x, y]
+        return [x, y, y0]
       })
     },
 
@@ -147,28 +175,23 @@ export default {
       return colors(index)
     },
 
-    getBound(bound, type) {
-      if (typeof bound === 'number') {
-        return bound
+    getBound(val, type) {
+      if (typeof val === 'number') {
+        return val
       }
 
-      const {props, data} = this
-      let val
+      const isMin = type === 'min'
+      let result = bound(this.curData, type, isMin ? 0 : 1)
 
-      if (this.stacked && type === 'max') {
-        val = Math.max.apply(null, data.map(o => sum(toArr(o, props))))
-      } else {
-        val = Math[type].apply(
-          null,
-          data.map(o => Math[type].apply(null, toArr(o, props)))
-        )
+      if (isMin && result === 0) {
+        result = bound(this.curData, type, 1)
       }
 
-      if (isFn(bound)) {
-        return bound(val)
+      if (isFn(val)) {
+        return val(result)
       }
 
-      return val
+      return result
     }
   },
 

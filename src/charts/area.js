@@ -11,9 +11,8 @@ export default {
   computed: {
     draw() {
       const {curve, continued} = this
-      const {canvas} = this.Artboard
       const draw = area()
-        .y0(d => canvas.height + canvas.y0 - (d[2] || 0))
+        .y0(d => d[2])
         .defined(noNilInArray)
 
       if (curve) {

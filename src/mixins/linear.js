@@ -45,25 +45,8 @@ export default {
         return this.points
       }
 
-      const {canvas, stacked, snap, getPoints} = this.Artboard
+      const {getPoints} = this.Artboard
       const points = getPoints(this.values)
-
-      if (stacked) {
-        const stack = snap.lastStack || []
-
-        points.forEach((point, i) => {
-          if (!isNil(point[1])) {
-            const p1 = point[1]
-            const cur = stack[i] || 0
-
-            point[2] = cur
-            point[1] -= cur
-            stack[i] = cur + canvas.y1 - p1
-          }
-        })
-
-        snap.lastStack = stack
-      }
 
       return points
     },
