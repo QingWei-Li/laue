@@ -1,5 +1,4 @@
 import values from './values'
-import {isNil} from '../utils/core'
 
 export default {
   mixins: [values],

@@ -124,16 +124,13 @@ export default {
         .keys(this.props)
         .offset(this.stacked ? stackOffsetDiverging : noop)(this.data)
 
-      if (this.props.length === 1 || !this.stacked) {
-        series.forEach(s => {
-          s.forEach(data => {
-            if (data[1] < 0) {
-              data[0] = data[1]
-              data[1] = 0
-            }
-          })
-        })
-      }
+      // If (this.props.length === 1 || !this.stacked) {
+      //   series.forEach(s => {
+      //     s.forEach(data => {
+      //       data[0] = data[1]
+      //     })
+      //   })
+      // }
 
       return series
     }
@@ -156,6 +153,8 @@ export default {
         if (start < 0) {
           [end, start] = value
         }
+
+        start = Math.max(this.low, start)
 
         const y = isNaN(end) ? null : y1 - (end - low) * yRatio
         const y0 = isNaN(start) ? null : y1 - (start - low) * yRatio
@@ -184,7 +183,7 @@ export default {
       let result = bound(this.curData, type, isMin ? 0 : 1)
 
       if (isMin && result === 0) {
-        result = bound(this.curData, type, 1)
+        result = bound(this.curData, 'min', 1)
       }
 
       if (isFn(val)) {
