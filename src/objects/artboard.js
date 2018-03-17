@@ -120,19 +120,9 @@ export default {
     },
 
     curData() {
-      const series = stack()
+      return stack()
         .keys(this.props)
         .offset(this.stacked ? stackOffsetDiverging : noop)(this.data)
-
-      // If (this.props.length === 1 || !this.stacked) {
-      //   series.forEach(s => {
-      //     s.forEach(data => {
-      //       data[0] = data[1]
-      //     })
-      //   })
-      // }
-
-      return series
     }
   },
 
@@ -143,27 +133,6 @@ export default {
   },
 
   methods: {
-    getPoints(values) {
-      const {x0, y1} = this.canvas
-      const {gap, xRatio, yRatio, low} = this
-
-      return values.map((value, i) => {
-        let [start, end] = value
-
-        if (start < 0) {
-          [end, start] = value
-        }
-
-        start = Math.max(this.low, start)
-
-        const y = isNaN(end) ? null : y1 - (end - low) * yRatio
-        const y0 = isNaN(start) ? null : y1 - (start - low) * yRatio
-        const x = x0 + xRatio * i + gap
-
-        return [x, y, y0]
-      })
-    },
-
     genColor(index) {
       const {colors} = this
 

@@ -36,17 +36,17 @@ export default {
     },
 
     labels() {
-      let values = this.values
+      let raws = this.raws
       const board = this.Artboard
       const length = board.data.length
 
       if (this.isX) {
-        values = values || Array.apply(null, {length}).map((n, i) => i)
+        raws = raws || Array.apply(null, {length}).map((n, i) => i)
       } else {
-        values = genTicks(board.low, board.high, length)
+        raws = genTicks(board.low, board.high, length)
       }
 
-      return values
+      return raws
     },
 
     gap() {

@@ -52,16 +52,15 @@ export default {
   render(h) {
     const {
       animated,
-      values,
       width,
       curPoints,
       curColor,
       hideLine,
       dashed,
-      trans
+      trans,
+      valueSlot,
+      pointSlot
     } = this
-    const pointSlot = this.$scopedSlots.default
-
     const graphs = [
       !hideLine &&
         h('path', {
@@ -80,14 +79,18 @@ export default {
       this.dot &&
         h(
           'g',
+          {
+            attrs: {
+              stroke: '#fff',
+              fill: curColor
+            }
+          },
           curPoints.map(p =>
             h('circle', {
               attrs: {
                 cx: p[0],
                 cy: p[1],
-                r: int(width) + 1,
-                stroke: '#fff',
-                fill: curColor
+                r: int(width) + 1
               },
               style: {
                 transition: trans
@@ -95,21 +98,8 @@ export default {
             })
           )
         ),
-      pointSlot &&
-        h(
-          'g',
-          curPoints.map((p, i) =>
-            pointSlot({
-              x: p[0],
-              y: p[1],
-              value: values[i],
-              index: i,
-              style: {
-                transition: trans
-              }
-            })
-          )
-        )
+      valueSlot,
+      pointSlot
     ]
 
     if (animated) {

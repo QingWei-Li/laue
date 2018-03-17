@@ -39,7 +39,16 @@ export default {
   },
 
   render(h) {
-    const {width, curPoints, curColor, margin, animated, trans} = this
+    const {
+      width,
+      curPoints,
+      curColor,
+      margin,
+      animated,
+      trans,
+      pointSlot,
+      valueSlot
+    } = this
 
     let rects = curPoints.map(point => {
       const height = point[2] - point[1]
@@ -92,7 +101,7 @@ export default {
           fill: curColor
         }
       },
-      rects
+      [].concat(rects, valueSlot, pointSlot)
     )
   }
 }
