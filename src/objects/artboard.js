@@ -187,7 +187,7 @@ export default {
   mounted() {
     if (this.autoResize) {
       this.resize()
-      window.addEventListener('resize', debounce(this.resize, 20))
+      window.addEventListener('resize', debounce(this.resize))
     }
   },
 
@@ -239,7 +239,7 @@ export default {
           }
           objects.push(slot)
           break
-        case 'widgets':
+        case 'widget':
           widgets.push(slot)
           break
         default:
@@ -249,19 +249,31 @@ export default {
 
     this.props = props
 
-    return h('div', [
-      h(
-        'svg',
-        {
-          attrs: {
-            width: clientWidth,
-            height,
-            viewBox: `0 0 ${clientWidth} ${height}`
-          }
-        },
-        [].concat(charts, objects)
-      ),
-      widgets
-    ])
+    return h(
+      'div',
+      {
+        style: {
+          position: 'relative'
+        }
+      },
+      [
+        h(
+          'svg',
+          {
+            on: {
+              mousemove: debounce(e => this.$emit('hover', e)),
+              click: e => this.$emit('click', e)
+            },
+            attrs: {
+              width: clientWidth,
+              height,
+              viewBox: `0 0 ${clientWidth} ${height}`
+            }
+          },
+          [].concat(charts, objects)
+        ),
+        widgets
+      ]
+    )
   }
 }

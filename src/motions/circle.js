@@ -9,7 +9,7 @@ export default {
 
   render(h, {children, props, parent}) {
     const id = `la-circle-${parent._uid}`
-    const {axis, transition} = props
+    const {transition} = props
 
     return h('g', [
       h('defs', [

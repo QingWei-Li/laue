@@ -1,9 +1,11 @@
+import basic from './basic'
+
 export default {
   props: {
     prop: String
   },
 
-  inject: ['Artboard'],
+  mixins: [basic],
 
   computed: {
     raws() {

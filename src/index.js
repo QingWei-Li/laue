@@ -7,6 +7,7 @@ import XAxis from './objects/x-axis'
 import YAxis from './objects/y-axis'
 import XAxisInverse from './objects/x-axis-inverse'
 import YAxisInverse from './objects/y-axis-inverse'
+import Tooltip from './widgets/tooltip'
 
 export function Laue(Vue) {
   [
@@ -18,7 +19,8 @@ export function Laue(Vue) {
     XAxis,
     YAxis,
     XAxisInverse,
-    YAxisInverse
+    YAxisInverse,
+    Tooltip
   ].forEach(c => {
     Vue.component(c.name, c)
   })
@@ -33,5 +35,6 @@ export {
   XAxis,
   YAxis,
   XAxisInverse,
-  YAxisInverse
+  YAxisInverse,
+  Tooltip
 }

@@ -17,8 +17,9 @@ export default {
             // eslint-disable-next-line
             for (const key in props.from) {
               const val = props.from[key]
-              const last = el.getAttribute(key)
-              el.setAttribute(`data-${key}`, last)
+              const to = el.getAttribute(key)
+
+              el.setAttribute(`data-${key}`, to)
               el.setAttribute(key, val)
             }
           },
@@ -32,8 +33,9 @@ export default {
 
               // eslint-disable-next-line
               for (const key in props.from) {
-                const last = el.getAttribute(`data-${key}`)
-                el.setAttribute(key, last)
+                const to = el.getAttribute(`data-${key}`)
+
+                el.setAttribute(key, to)
                 el.removeAttribute(`data-${key}`)
               }
             })

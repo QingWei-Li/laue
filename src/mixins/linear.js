@@ -46,36 +46,6 @@ export default {
           })
         )
       )
-    },
-
-    valueSlot() {
-      const h = this.$createElement
-
-      return (
-        this.showValue &&
-        h(
-          'g',
-          {
-            attrs: {
-              fill: this.curColor
-            }
-          },
-          this.curPoints.map((point, i) => {
-            return h(
-              'text',
-              {
-                attrs: {
-                  x: point[0],
-                  y: point[1],
-                  dy: '-0.31em',
-                  'text-anchor': 'middle'
-                }
-              },
-              this.raws[i]
-            )
-          })
-        )
-      )
     }
   }
 }

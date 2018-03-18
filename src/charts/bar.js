@@ -10,8 +10,8 @@ export default {
 
   props: {
     width: {
-      default: DEFAULT_WIDTH,
-      type: Number
+      type: Number,
+      default: DEFAULT_WIDTH
     }
   },
 
@@ -22,7 +22,6 @@ export default {
     snap.barMap = [].concat(snap.barMap, index)
     snap.barAllWidth = snap.barAllWidth || 0
     snap.barOffset = [].concat(snap.barOffset, snap.barAllWidth)
-
     snap.barAllWidth += width + distance
   },
 
@@ -35,65 +34,77 @@ export default {
       return stacked ?
         -width / 2 :
         snap.barOffset[index] - (snap.barAllWidth - distance) / 2
+    },
+
+    valueSlot() {
+      const h = this.$createElement
+
+      return (
+        this.showValue &&
+        h(
+          'g',
+          {
+            attrs: {
+              fill: '#fff'
+            }
+          },
+          this.curPoints.map((point, i) => {
+            return h(
+              'text',
+              {
+                attrs: {
+                  x: point[0] + this.margin + this.width / 2,
+                  y: point[2] + (point[1] - point[2]) / 2,
+                  dy: '0.31em',
+                  'text-anchor': 'middle'
+                }
+              },
+              this.raws[i]
+            )
+          })
+        )
+      )
+    }
+  },
+
+  methods: {
+    getRect(point) {
+      const height = point[2] - point[1]
+
+      return this.$createElement('rect', {
+        attrs: {
+          x: point[0] + this.margin,
+          y: height < 0 ? point[2] : point[1],
+          width: this.width,
+          height: Math.abs(height)
+        }
+      })
     }
   },
 
   render(h) {
-    const {
-      width,
-      curPoints,
-      curColor,
-      margin,
-      animated,
-      trans,
-      pointSlot,
-      valueSlot
-    } = this
+    const {curPoints, curColor, animated, trans, pointSlot, valueSlot} = this
 
-    let rects = curPoints.map(point => {
-      const height = point[2] - point[1]
-
-      return h('rect', {
-        attrs: {
-          x: point[0] + margin,
-          y: height < 0 ? point[2] : point[1],
-          width: width,
-          height: Math.abs(height)
-        }
-      })
-    })
+    let rects = []
 
     if (animated) {
       rects = curPoints.map(point => {
-        const height = point[2] - point[1]
-
         return h(
           Trans,
           {
             props: {
               from: {
                 height: 0,
-                y: point[2]
-              },
-              to: {
-                height: Math.abs(height),
-                y: height < 0 ? point[2] : point[1]
+                y: this.Artboard.canvas.y1
               },
               trans
             }
           },
-          [
-            h('rect', {
-              attrs: {
-                x: point[0] + margin,
-                y: height < 0 ? point[2] : point[1],
-                width: width,
-                height: Math.abs(height)
-              }
-            })
-          ]
+          [this.getRect(point)]
         )
       })
+    } else {
+      rects = curPoints.map(this.getRect)
     }
 
     return h(
