@@ -1,6 +1,7 @@
 import buble from 'rollup-plugin-buble'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import uglify from 'rollup-plugin-uglify'
+import filesize from 'rollup-plugin-filesize'
 
 const configs = []
 
@@ -25,7 +26,7 @@ if (process.env.BUILD === 'production') {
       file: 'dist/laue.umd.js',
       sourcemap: true
     },
-    plugins: [buble(), nodeResolve(), uglify()]
+    plugins: [buble(), nodeResolve(), uglify(), filesize()]
   })
 }
 

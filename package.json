@@ -7,11 +7,13 @@
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib": "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
+    "build:lib":
+      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
-    "build": "run-p build:*"
+    "build": "run-p build:*",
+    "pub": "sh build/release.sh"
   },
   "keywords": [],
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
@@ -20,10 +22,7 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [
-        2,
-        "never"
-      ],
+      "semi": [2, "never"],
       "no-mixed-operators": "off"
     }
   },
@@ -42,6 +41,7 @@
     "nuxt": "^1.4.0",
     "rollup": "^0.56.5",
     "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-node-resolve": "^3.2.0",
     "rollup-plugin-uglify": "^3.0.0",
     "stylus": "^0.54.5",
