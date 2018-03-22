@@ -104,7 +104,8 @@ export default {
       isX,
       format,
       inverse,
-      gap
+      gap,
+      Artboard
     } = this
     const first = points[0]
     const end = points[points.length - 1]
@@ -180,16 +181,16 @@ export default {
           )
         ].concat(
           this.gridline &&
-            points.map(p =>
+            points.map((p, i) =>
               h('line', {
                 attrs: {
                   x1: p[0],
                   y1: p[1],
-                  x2: this.isX ? p[0] : this.Artboard.canvas.x1,
-                  y2: this.isX ? this.Artboard.canvas.y0 : p[1]
+                  x2: isX ? p[0] : Artboard.canvas.x1,
+                  y2: isX ? Artboard.canvas.y0 : p[1]
                 },
                 style: {
-                  opacity: 0.5
+                  opacity: isX && Artboard.store.activedIndex === i ? 1 : 0.3
                 }
               })
             )
