@@ -38,12 +38,12 @@ export default {
             maxLeft
           )
           this.$set(board.store, 'activedIndex', index)
+          this.top = Math.min(relY + offset, maxTop)
+          this.show = true
         }
-        this.top = Math.min(relY + offset, maxTop)
-        this.show = true
-      } else {
-        this.handleLeave()
+        return
       }
+      this.handleLeave()
     },
 
     handleLeave() {
