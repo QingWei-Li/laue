@@ -38,7 +38,7 @@ export default {
     labels() {
       let raws = this.raws
       const board = this.Artboard
-      const length = board.data.length
+      const length = board.len
 
       if (this.isX) {
         raws = raws || Array.apply(null, {length}).map((n, i) => i)

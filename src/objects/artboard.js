@@ -103,8 +103,12 @@ export default {
       return this.getBound(this.bound[0], 'min')
     },
 
+    len() {
+      return this.data.length
+    },
+
     tempXRatio() {
-      const len = this.data.length
+      const {len} = this
       return len <= 1 ? 0 : this.canvas.width / (len - 1)
     },
 
@@ -121,7 +125,7 @@ export default {
 
     xRatio() {
       return this.tempXRatio ?
-        this.tempXRatio - 2 * this.gap / (this.data.length - 1) :
+        this.tempXRatio - 2 * this.gap / (this.len - 1) :
         0
     },
 
@@ -181,7 +185,8 @@ export default {
   data: () => ({
     space: [0, 0, 0, 0],
     resizeWidth: Infinity,
-    props: []
+    props: [],
+    activedIndex: null
   }),
 
   mounted() {
@@ -253,24 +258,21 @@ export default {
       'div',
       {
         style: {
-          position: 'relative'
+          position: 'relative',
+          width: clientWidth + 'px'
         }
       },
       [
         h(
           'svg',
           {
-            on: {
-              mousemove: debounce(e => this.$emit('hover', e)),
-              click: e => this.$emit('click', e)
-            },
             attrs: {
               width: clientWidth,
               height,
               viewBox: `0 0 ${clientWidth} ${height}`
             }
           },
-          [].concat(charts, objects)
+          [].concat(objects, charts)
         ),
         widgets
       ]

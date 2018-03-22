@@ -89,8 +89,10 @@ export default {
       dashed,
       trans,
       valueSlot,
-      pointSlot
+      pointSlot,
+      Artboard
     } = this
+
     const graphs = [
       !hideLine &&
         h('path', {
@@ -115,12 +117,12 @@ export default {
               fill: curColor
             }
           },
-          curPoints.map(p =>
+          curPoints.map((p, index) =>
             h('circle', {
               attrs: {
                 cx: p[0],
                 cy: p[1],
-                r: int(width) + 1
+                r: (index === Artboard.activedIndex ? 2 : 0) + int(width) + 1
               },
               style: {
                 transition: trans

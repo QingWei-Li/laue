@@ -10,13 +10,16 @@
       <la-y-axis></la-y-axis>
     </la-artboard> -->
 
-    <la-artboard narrow :width="750" :height="300" :data="data">
-      <la-pie animated prop="pv"></la-pie>
+    <la-artboard style="margin: auto;" :width="750" :height="300" :data="data">
+      <!-- <la-pie animated prop="pv"></la-pie> -->
       <!-- <la-line animated show-value prop="uv"></la-line> -->
-      <!-- <la-bar animated prop="amt"></la-bar> -->
+      <la-line dot :width="2" prop="amt"></la-line>
+      <la-line dot :width="2" prop="pv"></la-line>
+
       <!-- <la-bar prop="uv"></la-bar> -->
       <la-x-axis prop="name"></la-x-axis>
       <la-y-axis></la-y-axis>
+      <la-tooltip></la-tooltip>
     </la-artboard>
   </div>
 </template>

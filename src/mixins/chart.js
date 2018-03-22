@@ -1,25 +1,12 @@
 import values from './values'
+import animate from './animate'
 
 export default {
-  mixins: [values],
+  mixins: [values, animate],
 
   type: 'chart',
 
   props: {
-    animated: Boolean,
-
-    animationDuration: {
-      default: 1,
-      type: Number
-    },
-
-    animationEffect: {
-      default: 'ease',
-      type: String
-    },
-
-    transition: String,
-
     points: Array,
 
     color: String,
@@ -32,15 +19,6 @@ export default {
   computed: {
     id() {
       return this.$vnode.index
-    },
-
-    trans() {
-      return (
-        this.transition ||
-        (this.animated ?
-          `all ${this.animationDuration}s ${this.animationEffect}` :
-          '')
-      )
     },
 
     curColor() {
