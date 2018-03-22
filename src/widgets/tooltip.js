@@ -37,7 +37,7 @@ export default {
             index * board.xRatio + this.offsetX + offset,
             maxLeft
           )
-          this.$set(board.store, 'activedIndex', index)
+          this.$set(this.store, 'activedIndex', index)
           this.top = Math.min(relY + offset, maxTop)
           this.show = true
         }
@@ -48,11 +48,7 @@ export default {
 
     handleLeave() {
       this.show = false
-      this.$set(this.Artboard.store, 'activedIndex', null)
-    },
-
-    handleClick() {
-      console.log('click')
+      this.$set(this.store, 'activedIndex', null)
     }
   },
 
@@ -65,18 +61,15 @@ export default {
   mounted() {
     const board = this.Artboard
     const el = board.$el
-    this.boardRect = el.getBoundingClientRect()
 
+    this.boardRect = el.getBoundingClientRect()
     el.addEventListener('mousemove', debounce(this.handleMove, 10))
     el.addEventListener('mouseleave', this.handleLeave)
-    el.addEventListener('click', this.handleClick)
   },
 
   render(h) {
     const {activedLabel, actived = [], activedIndex} = this.Artboard.store
-
     const slot = this.$scopedSlots.default
-
     const tooltip = slot ?
       slot({
         label: activedLabel,

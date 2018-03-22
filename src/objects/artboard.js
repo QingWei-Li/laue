@@ -56,6 +56,11 @@ export default {
         '#96dee8'
       ],
       type: [Array, Function]
+    },
+
+    textColor: {
+      type: String,
+      default: '#999'
     }
   },
 

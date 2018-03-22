@@ -8,10 +8,7 @@ export default {
   props: {
     name: String,
 
-    color: {
-      type: String,
-      default: '#999'
-    },
+    color: String,
 
     tickSize: {
       type: Number,
@@ -27,10 +24,7 @@ export default {
 
     gridline: Boolean,
 
-    gridlineDashed: {
-      type: String,
-      default: 'none'
-    }
+    gridlineDashed: [Boolean, String]
   },
 
   type: 'object',
@@ -88,13 +82,17 @@ export default {
       }
 
       return points
+    },
+
+    curColor() {
+      return this.color || this.Artboard.textColor
     }
   },
 
   watch: {
-    'Artboard.store.activedIndex'(index) {
+    'store.activedIndex'(index) {
       if (this.isX) {
-        this.$set(this.Artboard.store, 'activedLabel', this.labels[index])
+        this.$set(this.store, 'activedLabel', this.labels[index])
       }
     }
   },
@@ -105,12 +103,14 @@ export default {
       labels,
       tickSize,
       fontSize,
-      color,
+      curColor,
       isX,
       format,
       inverse,
       gap,
-      Artboard: board
+      Artboard: board,
+      store,
+      gridlineDashed: dashed
     } = this
     const first = points[0]
     const end = points[points.length - 1]
@@ -137,7 +137,7 @@ export default {
               x2: point[0],
               y1: point[1] + yLineOffset,
               y2: point[1],
-              stroke: color
+              stroke: curColor
             }
           }),
         h(
@@ -159,7 +159,7 @@ export default {
       'g',
       {
         attrs: {
-          stroke: color
+          stroke: curColor
         }
       },
       [
@@ -178,7 +178,7 @@ export default {
               attrs: {
                 'text-anchor': textAlign,
                 'font-size': fontSize,
-                fill: color,
+                fill: curColor,
                 stroke: 'none'
               }
             },
@@ -195,8 +195,11 @@ export default {
                   y2: isX ? board.canvas.y0 : p[1]
                 },
                 style: {
-                  opacity: isX && board.store.activedIndex === i ? 1 : 0.3,
-                  'stroke-dasharray': this.gridlineDashed || 3
+                  opacity: isX && store.activedIndex === i ? 1 : 0.3,
+                  'stroke-dasharray':
+                    dashed === true || dashed === '' ?
+                      3 :
+                      dashed === false ? 'none' : dashed
                 }
               })
             )

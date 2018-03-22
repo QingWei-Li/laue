@@ -31,7 +31,7 @@ export default {
 
     pointSlot() {
       const scoped = this.$scopedSlots.default
-      const actived = this.Artboard.store.activedIndex
+      const actived = this.store.activedIndex
 
       return (
         scoped &&

@@ -27,17 +27,36 @@ export default {
   },
 
   watch: {
-    'Artboard.store.activedIndex'(index) {
-      const store = this.Artboard.store
-      const id = this.id
+    'store.activedIndex'(index) {
+      const store = this.store
 
       store.actived = [].concat(store.actived)
 
-      this.$set(store.actived, id, {
+      this.$set(store.actived, this.id, {
         color: this.curColor,
         value: this.raws[index],
         label: this.label
       })
+    },
+
+    curColor: {
+      immediate: true,
+      handler(val) {
+        const store = this.store
+
+        store.colors = store.colors || {}
+        this.$set(store.colors, this.prop, val)
+      }
+    },
+
+    label: {
+      immediate: true,
+      handler(val) {
+        const store = this.store
+
+        store.labels = store.labels || {}
+        this.$set(store.labels, this.prop, val)
+      }
     }
   }
 }

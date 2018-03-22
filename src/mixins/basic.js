@@ -1,3 +1,9 @@
 export default {
-  inject: ['Artboard']
+  inject: ['Artboard'],
+
+  computed: {
+    store() {
+      return this.Artboard.store
+    }
+  }
 }

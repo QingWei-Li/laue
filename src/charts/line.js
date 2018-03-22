@@ -22,10 +22,7 @@ export default {
 
     hideLine: Boolean,
 
-    dashed: {
-      type: String,
-      default: 'none'
-    },
+    dashed: [Boolean, String],
 
     /**
      * @summary Like connectNulls
@@ -90,7 +87,7 @@ export default {
       trans,
       valueSlot,
       pointSlot,
-      Artboard
+      store
     } = this
 
     const graphs = [
@@ -103,7 +100,10 @@ export default {
             d: this.draw(curPoints)
           },
           style: {
-            'stroke-dasharray': dashed || 3,
+            'stroke-dasharray':
+              dashed === true || dashed === '' ?
+                3 :
+                dashed === false ? 'none' : dashed,
             transition: trans
           }
         }),
@@ -122,10 +122,7 @@ export default {
               attrs: {
                 cx: p[0],
                 cy: p[1],
-                r:
-                  (index === Artboard.store.activedIndex ? 2 : 0) +
-                  int(width) +
-                  1
+                r: (index === store.activedIndex ? 2 : 0) + int(width) + 1
               },
               style: {
                 transition: trans

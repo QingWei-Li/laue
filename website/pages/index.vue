@@ -13,13 +13,14 @@
     <la-artboard style="margin: auto;" :width="750" :height="300" :data="data">
       <!-- <la-pie animated prop="pv"></la-pie> -->
       <!-- <la-line animated show-value prop="uv"></la-line> -->
-      <la-line dot :width="2" prop="amt"></la-line>
-      <la-line dot :width="2" prop="pv"></la-line>
+      <la-line label="fuck" dot :width="2" prop="amt"></la-line>
+      <la-line label="haha" dot :width="2" prop="pv"></la-line>
 
       <!-- <la-bar prop="uv"></la-bar> -->
       <la-x-axis prop="name"></la-x-axis>
       <la-y-axis></la-y-axis>
       <la-tooltip></la-tooltip>
+      <la-legend></la-legend>
     </la-artboard>
   </div>
 </template>
