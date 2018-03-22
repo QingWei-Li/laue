@@ -28,6 +28,11 @@ export function genTicks(min, max, count) {
     ticks[0] = min
   }
 
+  if (Math.abs(max - ticks[ticks.length - 2]) < step) {
+    ticks.pop()
+    ticks[ticks.length - 1] = max
+  }
+
   return ticks
 }
 

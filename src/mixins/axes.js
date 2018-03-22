@@ -25,7 +25,12 @@ export default {
 
     format: Function,
 
-    gridline: Boolean
+    gridline: Boolean,
+
+    gridlineDashed: {
+      type: String,
+      default: 'none'
+    }
   },
 
   type: 'object',
@@ -105,7 +110,7 @@ export default {
       format,
       inverse,
       gap,
-      Artboard
+      Artboard: board
     } = this
     const first = points[0]
     const end = points[points.length - 1]
@@ -186,11 +191,12 @@ export default {
                 attrs: {
                   x1: p[0],
                   y1: p[1],
-                  x2: isX ? p[0] : Artboard.canvas.x1,
-                  y2: isX ? Artboard.canvas.y0 : p[1]
+                  x2: isX ? p[0] : board.canvas.x1,
+                  y2: isX ? board.canvas.y0 : p[1]
                 },
                 style: {
-                  opacity: isX && Artboard.store.activedIndex === i ? 1 : 0.3
+                  opacity: isX && board.store.activedIndex === i ? 1 : 0.3,
+                  'stroke-dasharray': this.gridlineDashed || 3
                 }
               })
             )
