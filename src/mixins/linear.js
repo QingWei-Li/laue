@@ -31,7 +31,7 @@ export default {
 
     pointSlot() {
       const scoped = this.$scopedSlots.default
-      const activedIndex = this.Artboard.activedIndex
+      const actived = this.Artboard.store.activedIndex
 
       return (
         scoped &&
@@ -41,7 +41,7 @@ export default {
             y: p[1],
             value: this.raws[i],
             index: i,
-            actived: activedIndex === i,
+            actived: actived === i,
             style: {
               transition: this.trans
             }

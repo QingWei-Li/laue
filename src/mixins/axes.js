@@ -84,6 +84,14 @@ export default {
     }
   },
 
+  watch: {
+    'Artboard.store.activedIndex'(index) {
+      if (this.isX) {
+        this.$set(this.Artboard.store, 'activedLabel', this.labels[index])
+      }
+    }
+  },
+
   render(h) {
     const {
       points,

@@ -29,22 +29,26 @@ export default {
       const index = Math.round(relX / board.xRatio)
       const maxLeft = board.canvas.x1 - rect.width
       const maxTop = board.canvas.y1 - rect.height
+      const offset = 10
 
       if (relY >= board.canvas.y0 && relY <= board.canvas.y1) {
         if (index > -1 && index < board.len) {
-          this.left = Math.min(index * board.xRatio + this.offsetX, maxLeft)
-          board.activedIndex = index
+          this.left = Math.min(
+            index * board.xRatio + this.offsetX + offset,
+            maxLeft
+          )
+          this.$set(board.store, 'activedIndex', index)
         }
-        this.top = Math.min(relY, maxTop)
+        this.top = Math.min(relY + offset, maxTop)
         this.show = true
       } else {
-        board.activedIndex = null
-        this.show = false
+        this.handleLeave()
       }
     },
 
     handleLeave() {
       this.show = false
+      this.$set(this.Artboard.store, 'activedIndex', null)
     },
 
     handleClick() {
@@ -58,7 +62,6 @@ export default {
       return board.canvas.x0 + board.gap
     }
   },
-
   mounted() {
     const board = this.Artboard
     const el = board.$el
@@ -70,6 +73,64 @@ export default {
   },
 
   render(h) {
+    const {activedLabel, actived = [], activedIndex} = this.Artboard.store
+
+    const slot = this.$scopedSlots.default
+
+    const tooltip = slot ?
+      slot({
+        label: activedLabel,
+        actived,
+        index: activedIndex
+      }) :
+      h(
+        'div',
+        {
+          style: {
+            background: '#00000095',
+            padding: '8px',
+            color: '#fff',
+            borderRadius: '4px'
+          }
+        },
+        [
+          h(
+            'div',
+            {
+              style: {
+                marginBottom: '.5em'
+              }
+            },
+            activedLabel
+          ),
+          actived.map(active =>
+            h('div', [
+              h('span', {
+                style: {
+                  backgroundColor: active.color,
+                  height: '10px',
+                  width: '10px',
+                  borderRadius: '50%',
+                  display: 'inline-block',
+                  marginRight: '5px'
+                }
+              }),
+              active.label &&
+                  h(
+                    'span',
+                    {
+                      style: {
+                        marginRight: '5px'
+                      }
+                    },
+                    active.label + ':'
+                  ),
+              h('span', active.value)
+            ])
+          )
+        ]
+      )
+
     return h(
       'div',
       {
@@ -79,20 +140,10 @@ export default {
           top: 0,
           transform: `translate(${this.left}px, ${this.top}px)`,
           transition: this.trans,
-          visibility: this.show ? 'visible' : 'hidden'
+          opacity: Number(this.show)
         }
       },
-      [
-        h(
-          'div',
-          {
-            class: ''
-          },
-          '类目名'
-        ),
-        h('div', {}, 'label'),
-        h('div', {}, 'value')
-      ]
+      [tooltip]
     )
   }
 }

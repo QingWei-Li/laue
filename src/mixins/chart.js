@@ -24,5 +24,20 @@ export default {
     curColor() {
       return this.color || this.Artboard.genColor(this.id)
     }
+  },
+
+  watch: {
+    'Artboard.store.activedIndex'(index) {
+      const store = this.Artboard.store
+      const id = this.id
+
+      store.actived = [].concat(store.actived)
+
+      this.$set(store.actived, id, {
+        color: this.curColor,
+        value: this.raws[index],
+        label: this.label
+      })
+    }
   }
 }

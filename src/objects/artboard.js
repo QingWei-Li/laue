@@ -186,7 +186,7 @@ export default {
     space: [0, 0, 0, 0],
     resizeWidth: Infinity,
     props: [],
-    activedIndex: null
+    store: {}
   }),
 
   mounted() {

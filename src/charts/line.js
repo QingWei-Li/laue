@@ -122,7 +122,10 @@ export default {
               attrs: {
                 cx: p[0],
                 cy: p[1],
-                r: (index === Artboard.activedIndex ? 2 : 0) + int(width) + 1
+                r:
+                  (index === Artboard.store.activedIndex ? 2 : 0) +
+                  int(width) +
+                  1
               },
               style: {
                 transition: trans
