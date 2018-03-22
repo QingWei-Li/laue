@@ -23,7 +23,9 @@ export default {
       default: 15
     },
 
-    format: Function
+    format: Function,
+
+    gridline: Boolean
   },
 
   type: 'object',
@@ -147,27 +149,52 @@ export default {
       ])
     })
 
-    return h('g', [
-      h('line', {
+    return h(
+      'g',
+      {
         attrs: {
-          x2: end[0] + gap,
-          y2: end[1],
-          x1: first[0] - gap,
-          y1: first[1],
           stroke: color
         }
-      }),
-      h(
-        'g',
-        {
+      },
+      [
+        h('line', {
           attrs: {
-            'text-anchor': textAlign,
-            'font-size': fontSize,
-            fill: color
+            x2: end[0] + gap,
+            y2: end[1],
+            x1: first[0] - gap,
+            y1: first[1]
           }
-        },
-        ticks
-      )
-    ])
+        }),
+        [
+          h(
+            'g',
+            {
+              attrs: {
+                'text-anchor': textAlign,
+                'font-size': fontSize,
+                fill: color,
+                stroke: 'none'
+              }
+            },
+            ticks
+          )
+        ].concat(
+          this.gridline &&
+            points.map(p =>
+              h('line', {
+                attrs: {
+                  x1: p[0],
+                  y1: p[1],
+                  x2: this.isX ? p[0] : this.Artboard.canvas.x1,
+                  y2: this.isX ? this.Artboard.canvas.y0 : p[1]
+                },
+                style: {
+                  opacity: 0.5
+                }
+              })
+            )
+        )
+      ]
+    )
   }
 }

@@ -15,7 +15,7 @@ export default {
     transition: String
   },
 
-  methods: {
+  computed: {
     trans() {
       return (
         this.transition ||
