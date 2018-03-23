@@ -7,12 +7,15 @@
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib": "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
+    "build:lib":
+      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
     "build": "run-p build:*",
-    "pub": "sh build/release.sh"
+    "pub": "sh build/release.sh",
+    "watch:test": "jest --watch -u",
+    "test": "jest"
   },
   "keywords": [],
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
@@ -21,10 +24,7 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [
-        2,
-        "never"
-      ],
+      "semi": [2, "never"],
       "no-mixed-operators": "off"
     }
   },
@@ -32,11 +32,18 @@
     "entry": "docs/app.js",
     "dist": "docs/dist"
   },
+  "jest": {
+    "snapshotSerializers": ["<rootDir>/node_modules/jest-serializer-vue"]
+  },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.12",
     "banner-cli": "^0.11.1",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
+    "eslint-plugin-jest": "^21.15.0",
     "glob": "^7.1.2",
+    "jest": "^22.4.3",
+    "jest-serializer-vue": "^1.0.0",
     "markdown-it-anchor": "^4.0.0",
     "modern-normalize": "^0.4.0",
     "npm-run-all": "^4.1.2",

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Object:Artboard matches snapshot 1`] = `
+<div style="position: relative; width: 300px;">
+  <svg width="300" height="75" viewBox="0 0 300 75"></svg>
+</div>
+`;
