@@ -104,8 +104,9 @@ export default {
   },
 
   render(h) {
-    const {props, store} = this.Artboard
+    const {store} = this.Artboard
     const {curColor, pos, position} = this
+    const slot = this.$scopedSlots.default
 
     return h(
       'div',
@@ -118,7 +119,7 @@ export default {
           pos
         )
       },
-      props.map(prop =>
+      Object.keys(store.props).map(id =>
         h(
           'div',
           {
@@ -130,21 +131,32 @@ export default {
               marginRight: '10px',
               marginLeft: '5px',
               color: curColor
+            },
+            on: {
+              click() {
+                console.log('click')
+              }
             }
           },
-          [
-            h('span', {
-              style: {
-                backgroundColor: store.colors[prop],
-                height: '10px',
-                width: '10px',
-                borderRadius: '50%',
-                display: 'inline-block',
-                marginRight: '5px'
-              }
-            }),
-            h('span', store.labels[prop])
-          ]
+          slot ?
+            slot({
+              color: store.colors[id],
+              label: store.labels[id],
+              prop: store.props[id]
+            }) :
+            [
+              h('span', {
+                style: {
+                  backgroundColor: store.colors[id],
+                  height: '10px',
+                  width: '10px',
+                  borderRadius: '50%',
+                  display: 'inline-block',
+                  marginRight: '5px'
+                }
+              }),
+              h('span', store.labels[id])
+            ]
         )
       )
     )

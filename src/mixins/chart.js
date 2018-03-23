@@ -45,7 +45,7 @@ export default {
         const store = this.store
 
         store.colors = store.colors || {}
-        this.$set(store.colors, this.prop, val)
+        this.$set(store.colors, this.id, val)
       }
     },
 
@@ -55,7 +55,17 @@ export default {
         const store = this.store
 
         store.labels = store.labels || {}
-        this.$set(store.labels, this.prop, val)
+        this.$set(store.labels, this.id, val)
+      }
+    },
+
+    props: {
+      immediate: true,
+      handler(val) {
+        const store = this.store
+
+        store.props = store.props || {}
+        this.$set(store.props, this.id, val)
       }
     }
   }
