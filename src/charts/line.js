@@ -87,8 +87,13 @@ export default {
       trans,
       valueSlot,
       pointSlot,
-      store
+      store,
+      actived
     } = this
+
+    if (!actived) {
+      return null
+    }
 
     const graphs = [
       !hideLine &&

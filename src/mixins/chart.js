@@ -1,5 +1,6 @@
 import values from './values'
 import animate from './animate'
+import {isArr} from '../utils/core'
 
 export default {
   mixins: [values, animate],
@@ -23,16 +24,26 @@ export default {
 
     curColor() {
       return this.color || this.Artboard.genColor(this.id)
+    },
+
+    actived() {
+      const {hidden} = this.store
+
+      if (!isArr(hidden)) {
+        return true
+      }
+
+      return hidden.indexOf(this.id) < 0
     }
   },
 
   watch: {
     'store.activedIndex'(index) {
-      const store = this.store
+      const {store} = this
 
-      store.actived = [].concat(store.actived)
+      store.activedPoint = [].concat(store.activedPoint)
 
-      this.$set(store.actived, this.id, {
+      this.$set(store.activedPoint, this.id, {
         color: this.curColor,
         value: this.raws[index],
         label: this.label
@@ -42,7 +53,7 @@ export default {
     curColor: {
       immediate: true,
       handler(val) {
-        const store = this.store
+        const {store} = this
 
         store.colors = store.colors || {}
         this.$set(store.colors, this.id, val)
@@ -52,7 +63,7 @@ export default {
     label: {
       immediate: true,
       handler(val) {
-        const store = this.store
+        const {store} = this
 
         store.labels = store.labels || {}
         this.$set(store.labels, this.id, val)
@@ -62,7 +73,7 @@ export default {
     props: {
       immediate: true,
       handler(val) {
-        const store = this.store
+        const {store} = this
 
         store.props = store.props || {}
         this.$set(store.props, this.id, val)

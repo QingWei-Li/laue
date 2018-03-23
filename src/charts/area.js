@@ -31,7 +31,11 @@ export default {
   },
 
   render(h) {
-    const {trans, curPoints, curColor, areaId} = this
+    const {trans, curPoints, curColor, areaId, actived} = this
+
+    if (!actived) {
+      return null
+    }
 
     return h('g', [
       h('defs', [

@@ -103,9 +103,13 @@ export default {
     }
   },
 
+  created() {
+    this.$set(this.store, 'hidden', [])
+  },
+
   render(h) {
-    const {store} = this.Artboard
-    const {curColor, pos, position} = this
+    const {curColor, pos, position, selectable, store} = this
+    const {hidden} = store
     const slot = this.$scopedSlots.default
 
     return h(
@@ -130,11 +134,22 @@ export default {
                   'inline-block',
               marginRight: '10px',
               marginLeft: '5px',
-              color: curColor
+              color: curColor,
+              cursor: selectable ? 'pointer' : 'nromal'
             },
             on: {
-              click() {
-                console.log('click')
+              click: () => {
+                if (!selectable) {
+                  return
+                }
+                id = Number(id)
+                const index = hidden.indexOf(id)
+
+                if (index < 0) {
+                  hidden.push(id)
+                } else {
+                  hidden.splice(index, 1)
+                }
               }
             }
           },
@@ -155,7 +170,18 @@ export default {
                   marginRight: '5px'
                 }
               }),
-              h('span', store.labels[id])
+              h(
+                'span',
+                {
+                  style:
+                      hidden.indexOf(Number(id)) > -1 ?
+                        {
+                          textDecoration: 'line-through'
+                        } :
+                        {}
+                },
+                store.labels[id]
+              )
             ]
         )
       )

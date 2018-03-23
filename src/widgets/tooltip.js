@@ -68,12 +68,12 @@ export default {
   },
 
   render(h) {
-    const {activedLabel, actived = [], activedIndex} = this.Artboard.store
+    const {activedLabel, activedPoint = [], activedIndex} = this.store
     const slot = this.$scopedSlots.default
     const tooltip = slot ?
       slot({
         label: activedLabel,
-        actived,
+        actived: activedPoint,
         index: activedIndex
       }) :
       h(
@@ -96,7 +96,7 @@ export default {
             },
             activedLabel
           ),
-          actived.map(active =>
+          activedPoint.map(active =>
             h('div', [
               h('span', {
                 style: {

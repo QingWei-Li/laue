@@ -83,7 +83,19 @@ export default {
   },
 
   render(h) {
-    const {curPoints, curColor, animated, trans, pointSlot, valueSlot} = this
+    const {
+      curPoints,
+      curColor,
+      animated,
+      trans,
+      pointSlot,
+      valueSlot,
+      actived
+    } = this
+
+    if (!actived) {
+      return null
+    }
 
     let rects = []
 
