@@ -119,6 +119,7 @@ export default {
 
     gap() {
       const {narrow, tempXRatio} = this
+
       if (isFn(narrow)) {
         return narrow(tempXRatio)
       }
@@ -184,6 +185,12 @@ export default {
     resize() {
       const {width} = this.$el.getBoundingClientRect()
       this.resizeWidth = width
+    },
+
+    addSpace(space = []) {
+      space.forEach((val, i) => {
+        this.space[i] = Math.max(val, this.space[i] || 0)
+      })
     }
   },
 
@@ -236,17 +243,10 @@ export default {
             props.push(propsData.prop)
           }
           slot.index = charts.length
-          if (sealed.preload) {
-            sealed.preload({data: propsData, parent: this, index: slot.index})
-          }
           charts.push(slot)
           break
         case 'object':
-          if (sealed.space) {
-            sealed.space.forEach((val, i) => {
-              this.space[i] = Math.max(val, this.space[i] || 0)
-            })
-          }
+          this.addSpace(sealed.space)
           objects.push(slot)
           break
         case 'widget':
@@ -254,6 +254,9 @@ export default {
           break
         default:
           break
+      }
+      if (sealed.preload) {
+        sealed.preload({data: propsData, parent: this, index: slot.index})
       }
     })
 
