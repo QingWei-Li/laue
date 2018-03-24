@@ -15,7 +15,7 @@
     "build": "run-p build:*",
     "pub": "sh build/release.sh",
     "dev:test": "jest --watch -u",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
