@@ -14,7 +14,7 @@
     "dev": "run-p watch:*",
     "build": "run-p build:*",
     "pub": "sh build/release.sh",
-    "watch:test": "jest --watch -u",
+    "dev:test": "jest --watch -u",
     "test": "jest"
   },
   "keywords": [],
@@ -33,11 +33,19 @@
     "dist": "docs/dist"
   },
   "jest": {
-    "snapshotSerializers": ["<rootDir>/node_modules/jest-serializer-vue"]
+    "transform": {
+      "^.+\\.js$": "./build/buble-transformer.js"
+    },
+    "transformIgnorePatterns": ["/node_modules/(?!d3-)"],
+    "snapshotSerializers": ["jest-serializer-vue"],
+    "collectCoverageFrom": ["<rootDir>/src/**/*.js"]
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.42",
     "@vue/test-utils": "^1.0.0-beta.12",
     "banner-cli": "^0.11.1",
+    "buble": "^0.19.3",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
     "eslint-plugin-jest": "^21.15.0",

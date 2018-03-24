@@ -13,15 +13,15 @@ export default {
 
     height: {
       type: Number,
-      default: 75
+      default: 300
     },
 
     width: {
       type: Number,
-      default: 300
+      default: 600
     },
 
-    autoResize: Boolean,
+    autoresize: Boolean,
 
     padding: {
       default: 8,
@@ -183,7 +183,7 @@ export default {
     },
 
     resize() {
-      const {width} = this.$el.getBoundingClientRect()
+      const {width} = this.$el.parentNode.getBoundingClientRect()
       this.resizeWidth = width
     },
 
@@ -202,7 +202,7 @@ export default {
   }),
 
   mounted() {
-    if (this.autoResize) {
+    if (this.autoresize) {
       this.resize()
       window.addEventListener('resize', debounce(this.resize))
     }

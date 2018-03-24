@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <button @click="show = !show">change</button>
+  <div :style="{width: width}">
+    <button @click="width = '300px'">change</button>
 
     <!-- <la-artboard narrow :width="750" :height="300" :data="data">
       <la-bar prop="pv"></la-bar>
@@ -10,7 +10,7 @@
       <la-y-axis></la-y-axis>
     </la-artboard> -->
 
-    <la-artboard style="margin: auto;" :width="750" :height="300" :data="data">
+    <la-artboard autoresize :data="data">
       <!-- <la-pie animated prop="pv"></la-pie> -->
       <!-- <la-line animated show-value prop="uv"></la-line> -->
       <la-line label="fuck" dot :width="2" prop="amt"></la-line>
@@ -43,7 +43,8 @@ export default {
         { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
         { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
         { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 }
-      ]
+      ],
+      width: null
     };
   },
 
