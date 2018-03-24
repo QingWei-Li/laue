@@ -78,17 +78,16 @@ export default {
       return pad
     },
 
-    clientWidth() {
-      return Math.min(this.width, this.resizeWidth)
+    viewWidth() {
+      return this.parentWidth || this.width
     },
 
     canvas() {
-      let {clientWidth, height, offset} = this
-
+      const {viewWidth, height, offset} = this
       const x0 = offset[3]
       const y0 = offset[0]
       const y1 = height - offset[2]
-      const x1 = clientWidth - offset[1]
+      const x1 = viewWidth - offset[1]
 
       return {
         x0,
@@ -183,8 +182,8 @@ export default {
     },
 
     resize() {
-      const {width} = this.$el.parentNode.getBoundingClientRect()
-      this.resizeWidth = width
+      const {width} = this.$el.getBoundingClientRect()
+      this.parentWidth = width
     },
 
     addSpace(space = []) {
@@ -196,7 +195,7 @@ export default {
 
   data: () => ({
     space: [0, 0, 0, 0],
-    resizeWidth: Infinity,
+    parentWidth: null,
     props: [],
     store: {}
   }),
@@ -213,7 +212,7 @@ export default {
    * https://github.com/vuejs/vue/issues/5727
    */
   render(h) {
-    const {clientWidth, height} = this
+    const {viewWidth, height, autoresize} = this
     const slots = this.$slots.default || []
 
     /**
@@ -268,7 +267,7 @@ export default {
       {
         style: {
           position: 'relative',
-          width: clientWidth + 'px'
+          width: autoresize ? '100%' : viewWidth + 'px'
         }
       },
       [
@@ -276,9 +275,9 @@ export default {
           'svg',
           {
             attrs: {
-              width: clientWidth,
+              width: viewWidth,
               height,
-              viewBox: `0 0 ${clientWidth} ${height}`
+              viewBox: `0 0 ${viewWidth} ${height}`
             }
           },
           [].concat(objects, charts)

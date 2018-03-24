@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Props :prop - render correctly 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <defs>
+        <linearGradient id="la-area-0">
+          <stop stop-color="#3fb1e3" stop-opacity="0.5"></stop>
+        </linearGradient>
+      </defs>
+      <g>
+        <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
+        <path d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5L592,292L494.66666666666663,292L397.3333333333333,292L300,292L202.66666666666666,292L105.33333333333333,292L8,292Z"
+          fill="url(#la-area-0)"></path>
+      </g>
+    </g>
+  </svg>
+</div>
+`;

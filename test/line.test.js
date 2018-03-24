@@ -81,7 +81,7 @@ describe('Props', () => {
     expect(wrapper.find('path').element.style['stroke-dasharray']).toBe('3')
   })
 
-  it(':dashed - string', () => {
+  it(':dashed - string type', () => {
     const wrapper = artboardMount(h => [
       h(Line, {
         props: {
