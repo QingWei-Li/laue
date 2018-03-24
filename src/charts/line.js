@@ -122,17 +122,19 @@ export default {
               fill: curColor
             }
           },
-          curPoints.map((p, index) =>
-            h('circle', {
-              attrs: {
-                cx: p[0],
-                cy: p[1],
-                r: (index === store.activedIndex ? 2 : 0) + int(width) + 1
-              },
-              style: {
-                transition: trans
-              }
-            })
+          curPoints.map(
+            (p, index) =>
+              p[1] &&
+              h('circle', {
+                attrs: {
+                  cx: p[0],
+                  cy: p[1],
+                  r: (index === store.activedIndex ? 2 : 0) + int(width) + 1
+                },
+                style: {
+                  transition: trans
+                }
+              })
           )
         ),
       valueSlot,

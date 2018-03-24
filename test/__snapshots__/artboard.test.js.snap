@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slots matches snapshot 1`] = `
+exports[`Props matches snapshot 1`] = `
 <div style="position: relative; width: 600px;">
   <svg width="600" height="300" viewBox="0 0 600 300"></svg>
 </div>

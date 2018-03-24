@@ -11,13 +11,13 @@ export default {
     raws() {
       const {prop, Artboard} = this
 
-      return Artboard.data.map(o => o[prop])
+      return Artboard.data.map(o => o[prop]) || []
     },
 
     values() {
       const {prop, Artboard} = this
 
-      return Artboard.curData.filter(arr => arr.key === prop)[0]
+      return Artboard.curData.filter(arr => arr.key === prop)[0] || []
     }
   }
 }

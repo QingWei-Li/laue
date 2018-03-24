@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mixing Multiple lines 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
+    </g>
+    <g>
+      <path stroke="#6be6c1" fill="none" stroke-width="1" d="M8,195.1818181818182L105.33333333333333,227.45454545454544L202.66666666666666,259.72727272727275L300,234.55454545454546L397.3333333333333,263.2772727272727L494.66666666666663,247.14090909090908L592,211.64090909090908"
+        style="stroke-dasharray: none;"></path>
+    </g>
+    <g>
+      <path stroke="#626c91" fill="none" stroke-width="1" style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :continued - false 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L154,197.33333333333331M446,102.66666666666666L592,8" style="stroke-dasharray: none;"></path>
+      <g stroke="#fff" fill="#3fb1e3">
+        <circle cx="8" cy="292" r="2"></circle>
+        <circle cx="154" cy="197.33333333333331" r="2"></circle>
+        <circle cx="446" cy="102.66666666666666" r="2"></circle>
+        <circle cx="592" cy="8" r="2"></circle>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :continued - true 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L154,197.33333333333331M446,102.66666666666666L592,8" style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :curve - custom function 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L24.222222222222218,290.02060606060604C40.44444444444444,288.04121212121214,72.88888888888889,284.0824242424242,105.33333333333333,236.7490909090909C137.77777777777777,189.41575757575757,170.2222222222222,98.70787878787878,202.66666666666666,85.04575757575758C235.1111111111111,71.38363636363637,267.55555555555554,134.76727272727274,300,161.66121212121212C332.4444444444444,188.55515151515155,364.88888888888886,178.95939393939395,397.3333333333333,179.54030303030302C429.77777777777777,180.12121212121212,462.2222222222222,190.87878787878788,494.6666666666667,193.56818181818184C527.1111111111111,196.25757575757575,559.5555555555555,190.87878787878788,575.7777777777777,188.1893939393939L592,185.5"
+        style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :curve - smoosh line 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292C8,292,72.88888888888889,327.4569696969697,105.33333333333333,280.12363636363636C137.77777777777777,232.79030303030305,170.22222222222223,21.66212121212121,202.66666666666666,8C235.1111111111111,-5.66212121212121,267.55555555555554,171.2569696969697,300,198.1509090909091C332.44444444444446,225.0448484848485,364.88888888888886,168.7827272727273,397.3333333333333,169.36363636363637C429.77777777777777,169.94454545454545,462.2222222222222,198.9469696969697,494.66666666666663,201.63636363636363C527.1111111111111,204.32575757575756,592,185.5,592,185.5"
+        style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :dot 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
+      <g stroke="#fff" fill="#3fb1e3">
+        <circle cx="8" cy="292" r="2"></circle>
+        <circle cx="105.33333333333333" cy="280.12363636363636" r="2"></circle>
+        <circle cx="202.66666666666666" cy="8" r="2"></circle>
+        <circle cx="300" cy="198.1509090909091" r="2"></circle>
+        <circle cx="397.3333333333333" cy="169.36363636363637" r="2"></circle>
+        <circle cx="494.66666666666663" cy="201.63636363636363" r="2"></circle>
+        <circle cx="592" cy="185.5" r="2"></circle>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :prop - empty data 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :prop - render correctly 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :showValue 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
+      <g fill="#3fb1e3">
+        <text x="8" y="292" dy="-0.31em" text-anchor="middle">1000</text>
+        <text x="105.33333333333333" y="280.12363636363636" dy="-0.31em" text-anchor="middle">1368</text>
+        <text x="202.66666666666666" y="8" dy="-0.31em" text-anchor="middle">9800</text>
+        <text x="300" y="198.1509090909091" dy="-0.31em" text-anchor="middle">3908</text>
+        <text x="397.3333333333333" y="169.36363636363637" dy="-0.31em" text-anchor="middle">4800</text>
+        <text x="494.66666666666663" y="201.63636363636363" dy="-0.31em" text-anchor="middle">3800</text>
+        <text x="592" y="185.5" dy="-0.31em" text-anchor="middle">4300</text>
+      </g>
+    </g>
+  </svg>
+</div>
+`;

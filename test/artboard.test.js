@@ -1,4 +1,4 @@
-import Artboard from '../src/objects/artboard'
+import {Artboard} from '../src'
 import {mount} from '@vue/test-utils'
 import {sleep} from './util'
 
@@ -11,7 +11,7 @@ describe('Props', () => {
     })
     const attrs = wrapper.find('svg').attributes()
 
-    expect(Number(attrs.height)).toBe(400)
+    expect(attrs.height).toBe('400')
   })
 
   it(':width - should render correctly', () => {
@@ -22,7 +22,7 @@ describe('Props', () => {
     })
     const attrs = wrapper.find('svg').attributes()
 
-    expect(Number(attrs.width)).toBe(500)
+    expect(attrs.width).toBe('500')
   })
 
   it(':autoresize', async function () {
@@ -44,7 +44,7 @@ describe('Props', () => {
     expect(wrapper.find('svg').attributes().width).not.toBe(beforeWidth)
   })
 
-  it(':padding - number', () => {
+  it(':padding - number type', () => {
     const wrapper = mount(Artboard, {
       propsData: {
         padding: 20,
@@ -63,7 +63,7 @@ describe('Props', () => {
     })
   })
 
-  it(':padding - array', () => {
+  it(':padding - array type', () => {
     const wrapper = mount(Artboard, {
       propsData: {
         padding: [10, 20, 30, 40],
@@ -82,10 +82,6 @@ describe('Props', () => {
     })
   })
 
-  it(':data', () => {})
-})
-
-describe('Slots', () => {
   it('matches snapshot', () => {
     const wrapper = mount(Artboard)
     expect(wrapper.html()).toMatchSnapshot()

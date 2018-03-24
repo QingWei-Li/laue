@@ -236,11 +236,12 @@ export default {
         return
       }
       const {propsData} = options
+      const {prop} = propsData
 
       switch (sealed.type) {
         case 'chart':
-          if (props.indexOf(propsData.prop) < 0) {
-            props.push(propsData.prop)
+          if (prop && props.indexOf(prop) < 0) {
+            props.push(prop)
           }
           slot.index = charts.length
           charts.push(slot)
