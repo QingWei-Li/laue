@@ -17,7 +17,19 @@
     "dev:test": "jest --watch -u",
     "test": "jest --coverage"
   },
-  "keywords": [],
+  "keywords": [
+    "chart",
+    "svg",
+    "vue",
+    "component",
+    "charts",
+    "pie",
+    "line",
+    "bar",
+    "trend",
+    "area",
+    "graph"
+  ],
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "homepage": "https://laue.js.org",
   "license": "MIT",
