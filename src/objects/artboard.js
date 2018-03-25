@@ -1,4 +1,4 @@
-import {isArr, isFn, noop, debounce} from '../utils/core'
+import {isArr, isFn, noop, debounce, isNil} from '../utils/core'
 import {stack, stackOffsetDiverging} from 'd3-shape'
 import {bound} from '../utils/math'
 
@@ -79,7 +79,7 @@ export default {
     },
 
     viewWidth() {
-      return this.parentWidth || this.width
+      return isNil(this.parentWidth) ? this.width : this.parentWidth
     },
 
     canvas() {

@@ -117,9 +117,7 @@ describe('Props', () => {
       })
     ])
 
-    expect(
-      !wrapper.contains('path') && wrapper.findAll('circle').length
-    ).toBeTruthy()
+    expect(wrapper.findAll('circle').length).toBe(DATA.length)
   })
 
   it(':curve - smoosh line', () => {
