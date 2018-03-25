@@ -49,12 +49,12 @@ export default {
 <style lang="stylus" scoped>
 .main
   min-height 100vh
-  background-color #3778ff
+  background-color #f9f9f9
 
 .sidebar
-  color #fff
+  color #0d2b3e
   position fixed
-  width 40vw
+  width 33vw
 
   .nav
     width 220px
@@ -64,13 +64,13 @@ export default {
       .logo
         font-size 30px
         text-decoration none
-        color #fff
+        color #0d2b3e
 
     .toc
       padding 60px 10px
 
 .article
-  margin-left 40vw
+  margin-left 33vw
   background-color #fff
   box-shadow -10px -8px 12px 0 rgba(0, 23, 40, 0.08)
   min-height 100vh

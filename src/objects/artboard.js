@@ -79,7 +79,8 @@ export default {
     },
 
     viewWidth() {
-      return isNil(this.parentWidth) ? this.width : this.parentWidth
+      const {parentWidth, width} = this
+      return isNil(parentWidth) ? width : parentWidth
     },
 
     canvas() {
