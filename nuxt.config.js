@@ -1,6 +1,7 @@
 const {join, basename} = require('path')
 const glob = require('glob')
 const pkg = require('./package.json')
+const demoMiddleware = require('./build/demo-middleware')
 
 module.exports = {
   head: {
@@ -34,7 +35,8 @@ module.exports = {
               }
             ]
           ],
-          preventExtract: true
+          preventExtract: true,
+          preprocess: demoMiddleware
         }
       })
     },

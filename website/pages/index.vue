@@ -21,6 +21,8 @@
       <la-y-axis></la-y-axis>
       <la-tooltip></la-tooltip>
       <la-legend></la-legend>
+      <la-y-marker dashed placement="end" :value="200" label="2333"></la-y-marker>
+      <la-y-region placement="middle" :low="150" :high="300" fill="rgba(0,0,0,0.1)" label="2333"></la-y-region>
     </la-artboard>
   </div>
 </template>
