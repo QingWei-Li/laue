@@ -1,6 +1,8 @@
 import values from './values'
 import {genTicks} from '../utils/math'
 import {isFn} from '../utils/core'
+import object from './object'
+import dashed from './dashed'
 
 const CAP_HEIGHT = 0.71
 
@@ -22,14 +24,10 @@ export default {
 
     format: Function,
 
-    gridline: Boolean,
-
-    gridlineDashed: [Boolean, String]
+    gridline: Boolean
   },
 
-  type: 'object',
-
-  mixins: [values],
+  mixins: [object, values, dashed],
 
   computed: {
     isX() {
@@ -109,8 +107,7 @@ export default {
       inverse,
       gap,
       Artboard: board,
-      store,
-      gridlineDashed: dashed
+      store
     } = this
     const first = points[0]
     const end = points[points.length - 1]
@@ -196,10 +193,7 @@ export default {
                 },
                 style: {
                   opacity: isX && store.activedIndex === i ? 1 : 0.3,
-                  'stroke-dasharray':
-                    dashed === true || dashed === '' ?
-                      3 :
-                      dashed === false ? 'none' : dashed
+                  'stroke-dasharray': this.curDashed
                 }
               })
             )

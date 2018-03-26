@@ -4,11 +4,12 @@ import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
 import {isFn, noNilInArray} from '../utils/core'
 import Spread from '../motions/spread'
+import dashed from '../mixins/dashed'
 
 export default {
   name: 'LaLine',
 
-  mixins: [linear],
+  mixins: [linear, dashed],
 
   props: {
     curve: [Boolean, Function],
@@ -21,8 +22,6 @@ export default {
     },
 
     hideLine: Boolean,
-
-    dashed: [Boolean, String],
 
     /**
      * @summary Like connectNulls
@@ -105,10 +104,7 @@ export default {
             d: this.draw(curPoints)
           },
           style: {
-            'stroke-dasharray':
-              dashed === true || dashed === '' ?
-                3 :
-                dashed === false ? 'none' : dashed,
+            'stroke-dasharray': this.curDashed,
             transition: trans
           }
         }),
