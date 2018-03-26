@@ -7,8 +7,7 @@
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib":
-      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
+    "build:lib": "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
@@ -36,7 +35,10 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [2, "never"],
+      "semi": [
+        2,
+        "never"
+      ],
       "no-mixed-operators": "off"
     }
   },
@@ -46,18 +48,23 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.js$": "./build/buble-transformer.js"
+      "^.+\\.js$": "buble-jest"
     },
-    "transformIgnorePatterns": ["/node_modules/(?!d3-)"],
-    "snapshotSerializers": ["jest-serializer-vue"],
-    "collectCoverageFrom": ["<rootDir>/src/**/*.js"]
+    "transformIgnorePatterns": [
+      "/node_modules/(?!d3-)"
+    ],
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ]
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.42",
     "@vue/test-utils": "^1.0.0-beta.12",
     "banner-cli": "^0.11.1",
     "buble": "^0.19.3",
+    "buble-jest": "^1.0.0",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
     "eslint-plugin-jest": "^21.15.0",
