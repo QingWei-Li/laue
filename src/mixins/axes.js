@@ -40,7 +40,7 @@ export default {
       const length = board.len
 
       if (this.isX) {
-        raws = raws || Array.apply(null, {length}).map((n, i) => i)
+        raws = raws || Array.apply(null, {length}).map((n, i) => i + 1)
       } else {
         raws = genTicks(board.low, board.high, length)
       }

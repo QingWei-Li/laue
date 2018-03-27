@@ -1,5 +1,6 @@
 import {isArr, isFn, noop, debounce, isNil} from '../utils/core'
-import {stack, stackOffsetDiverging} from 'd3-shape'
+import stack from 'd3-shape/src/stack'
+import stackOffsetDiverging from 'd3-shape/src/offset/diverging'
 import {bound} from '../utils/math'
 
 export default {

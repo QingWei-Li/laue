@@ -1,19 +1,29 @@
 # Line chart
 
-## Tiny line
+## Tiny chart
 
-Only one line, like trending for GitHub.
+An tiny example, you can use [Line](api#line), [Area](api#area) or [Bar](api#bar) chart.
 
 ```html (vue)
 <template>
-  <la-artboard :width="300" :height="75" :data="values">
-    <la-line prop="value"></la-line>
-  </la-artboard>
+  <div>
+    <la-artboard :width="300" :height="75" :data="values">
+      <la-line animated v-if="show === 'line'" prop="value"></la-line>
+      <la-area animated v-else-if="show === 'area'" prop="value"></la-area>
+      <la-bar animated v-else="show" prop="value"></la-bar>
+    </la-artboard>
+
+    <label>Choose type:</label>
+    <button @click="show = 'line'">line</button>
+    <button @click="show = 'area'">area</button>
+    <button @click="show = 'bar'">bar</button>
+  </div>
 </template>
 
 <script>
 export default {
   data: () => ({
+    show: 'line',
     values: [
       { value: 3200 },
       { value: 2600 },
@@ -135,30 +145,41 @@ export default {
 </script>
 ```
 
-# Bar chart
+## Holes in data
 
-## Tiny bar
+If the data does not exits, it will not be rendered. You can configure `continuted` so that the line are continuous.
 
 ```html (vue)
 <template>
-  <la-artboard :width="300" :height="75" :data="values">
-    <la-bar prop="value"></la-bar>
-  </la-artboard>
+  <div>
+    <button @click="continued = !continued">Toggle continued</button>
+
+    <la-artboard :data="values">
+      <la-area :continued="continued" dot curve prop="pv"></la-area>
+      <la-x-axis></la-x-axis>
+      <la-y-axis></la-y-axis>
+    </la-artboard>
+  </div>
 </template>
 
 <script>
 export default {
   data: () => ({
+    continued: false,
     values: [
-      { value: 3200 },
-      { value: 2600 },
-      { value: 4500 },
-      { value: 3040 },
-      { value: 6900 },
-      { value: 4910 },
-      { value: 2300 }
+      { pv: 2400 },
+      { pv: 1398 },
+      { pv: 9800 },
+      { pv: null },
+      { pv: 4800 },
+      { pv: 3800 },
+      { pv: null },
+      { pv: 3000 },
+      { pv: 2000 }
     ]
   })
 }
 </script>
 ```
+
+# Bar chart

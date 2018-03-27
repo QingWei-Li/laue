@@ -1,4 +1,5 @@
 import chart from './chart'
+import {isNil} from '../utils/core'
 
 export default {
   mixins: [chart],
@@ -13,6 +14,10 @@ export default {
       const {x0, y1} = canvas
 
       return this.values.map((value, i) => {
+        if (isNil(this.raws[i])) {
+          return [null]
+        }
+
         let [start, end] = value
 
         if (start < 0) {
