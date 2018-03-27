@@ -12,6 +12,13 @@ article h1 {
   font-size: 31px;
   color: #0d2b3e;
   font-weight: 400;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 20px 0;
+}
+
+article *:first-child {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 article h2 {
@@ -41,6 +48,7 @@ article dl,
 article ol,
 article p,
 article table tbody,
+article label,
 article ul {
   font-size: 15px;
   color: #373e42;
@@ -330,6 +338,7 @@ article h3 a.anchor {
 article .demo {
   overflow-x: auto;
   overflow-y: hidden;
+  margin: 20px 0;
 }
 
 article h1:hover a.anchor,
@@ -356,4 +365,23 @@ article a:active code {
 /* @todo */
 svg {
   margin: 20px 0;
+}
+
+article button {
+  background: #0e99e5;
+  border-radius: 3px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  padding: 4px 12px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  text-decoration: none;
+}
+
+article button:hover,
+article button:active {
+  background: #0076b1;
+  border-bottom-color: #066599;
 }
