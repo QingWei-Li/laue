@@ -82,7 +82,6 @@ export default {
       curPoints,
       curColor,
       hideLine,
-      dashed,
       trans,
       valueSlot,
       pointSlot,

@@ -21,11 +21,12 @@ export default {
   }),
 
   methods: {
-    handleMove(e) {
+    handleMove({x, y}) {
       const board = this.Artboard
+      const boardRect = board.$el.getBoundingClientRect()
       const rect = this.$el.getBoundingClientRect()
-      const relY = e.y - this.boardRect.y
-      const relX = e.x - this.boardRect.x - this.offsetX
+      const relY = y - boardRect.y
+      const relX = x - boardRect.x - this.offsetX
       const index = Math.round(relX / board.xRatio)
       const maxLeft = board.canvas.x1 - rect.width
       const maxTop = board.canvas.y1 - rect.height
@@ -62,9 +63,18 @@ export default {
     const board = this.Artboard
     const el = board.$el
 
-    this.boardRect = el.getBoundingClientRect()
     el.addEventListener('mousemove', debounce(this.handleMove, 10))
     el.addEventListener('mouseleave', this.handleLeave)
+    el.addEventListener(
+      'touchmove',
+      e => {
+        const touch = e.touches[0]
+        this.handleMove({x: touch.clientX, y: touch.clientY})
+      },
+      {
+        passive: true
+      }
+    )
   },
 
   render(h) {

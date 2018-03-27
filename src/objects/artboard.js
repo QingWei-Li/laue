@@ -225,10 +225,12 @@ export default {
     const charts = []
     const objects = []
     const widgets = []
+    const others = []
 
     slots.forEach(slot => {
       const options = slot.componentOptions
       if (!options) {
+        others.push(slot)
         return
       }
       const sealed = options.Ctor.sealedOptions
@@ -281,7 +283,7 @@ export default {
               viewBox: `0 0 ${viewWidth} ${height}`
             }
           },
-          [].concat(objects, charts)
+          [others, objects, charts]
         ),
         widgets
       ]

@@ -1,3 +1,6 @@
+/**
+ * @todo support hot reload
+ */
 const {resolve} = require('path')
 const RE = /`{3,}html\s\(vue\)([^`]+)`{3,}/g
 
@@ -8,7 +11,7 @@ module.exports = function (markdownIt, src) {
 
   while ((cap = RE.exec(src))) {
     result = result.replace(cap[0], () => {
-      const tag = `EDITOR-${matchs.length}`
+      const tag = `DEMO-${matchs.length}`
       const start = src.indexOf(cap[1], 1)
 
       matchs.push({
@@ -18,7 +21,7 @@ module.exports = function (markdownIt, src) {
       })
 
       // Add live editor?
-      return `<${tag}></${tag}> \n\n${cap[0]}`
+      return `<div class="demo"><${tag}></${tag}></div>\n\n${cap[0]}`
     })
   }
 

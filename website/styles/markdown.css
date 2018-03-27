@@ -327,6 +327,11 @@ article h3 a.anchor {
   height: 14px;
 }
 
+article .demo {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 article h1:hover a.anchor,
 article h2:hover a.anchor,
 article h3:hover a.anchor,

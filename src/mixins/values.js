@@ -11,7 +11,7 @@ export default {
     raws() {
       const {prop, Artboard} = this
 
-      return Artboard.data.map(o => o[prop]) || []
+      return prop ? Artboard.data.map(o => o[prop]) : null
     },
 
     values() {

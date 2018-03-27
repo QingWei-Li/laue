@@ -76,14 +76,15 @@ export default {
   min-height 100vh
 
   .body
-    width 600px
-    padding 70px 100px
+    max-width 600px
+    padding 70px 0
+    margin-left 100px
     box-sizing content-box
 
   .navbar
     display flex
     padding 10px 0
-    width 700px
+    max-width 700px
     border-bottom 1px solid #78869c14
 
     .search-wrap
@@ -92,8 +93,6 @@ export default {
     ul
       display flex
       list-style none
-      flex 1
-      justify-content flex-end
 
       li
         padding 0 20px
@@ -112,6 +111,15 @@ export default {
           &:hover
             opacity 0.8
             text-decoration underline
+
+@media screen and (max-width: 700px)
+  .sidebar
+    display none
+
+  .article
+    margin-left 0
+
+    .body
+      padding 0 20px
+      margin-left 0
 </style>
-
-

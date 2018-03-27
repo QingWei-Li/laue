@@ -21,7 +21,7 @@ export default {
         this.transition ||
         (this.animated ?
           `all ${this.animationDuration}s ${this.animationEffect}` :
-          '')
+          'none')
       )
     }
   }
