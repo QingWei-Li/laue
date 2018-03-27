@@ -4,7 +4,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/QingWei-Li/laue.svg?style=flat-square)](https://coveralls.io/github/QingWei-Li/laue?branch=master)
 [![npm](https://img.shields.io/npm/v/laue.svg?style=flat-square)](https://www.npmjs.com/package/laue)
 
-> 🖖📈 Modern charts based on Vue.js
+> 🖖📈 Modern charts for Vue.js
 
 ## Features
 
