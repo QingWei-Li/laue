@@ -248,4 +248,12 @@ export default {
 </script>
 ```
 
-## Pie chart examples
+# Pie chart examples
+
+# Advanced examples
+
+## Custom tooltip
+
+## Marker and region
+
+## Inverse axes

@@ -1,13 +1,14 @@
 {
   "name": "laue",
   "version": "0.0.0",
-  "description": "",
+  "description": "Modern charts based on Vue.js",
   "main": "dist/laue.umd.js",
   "module": "dist/laue.js",
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib": "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
+    "build:lib":
+      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
@@ -35,10 +36,7 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [
-        2,
-        "never"
-      ],
+      "semi": [2, "never"],
       "no-mixed-operators": "off"
     }
   },
@@ -50,15 +48,9 @@
     "transform": {
       "^.+\\.js$": "buble-jest"
     },
-    "transformIgnorePatterns": [
-      "/node_modules/(?!d3-)"
-    ],
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "collectCoverageFrom": [
-      "<rootDir>/src/**/*.js"
-    ]
+    "transformIgnorePatterns": ["/node_modules/(?!d3-)"],
+    "snapshotSerializers": ["jest-serializer-vue"],
+    "collectCoverageFrom": ["<rootDir>/src/**/*.js"]
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.12",

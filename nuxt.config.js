@@ -19,6 +19,9 @@ module.exports = {
   css: ['modern-normalize', '~/styles/basic.css'],
   srcDir: 'website',
   plugins: ['~/plugins/laue.js', '~/plugins/head.js', '~/plugins/editor.js'],
+  generate: {
+    dir: 'website/dist'
+  },
   build: {
     extend(config) {
       config.module.rules.push({
