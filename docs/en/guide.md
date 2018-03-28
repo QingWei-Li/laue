@@ -1,23 +1,79 @@
-# Guide
+# Why Laue?
 
-## hahah
+<!-- todo -->
 
-* 1
-* 2
-* 3
+# Installation
 
-Hahahah this [ssssdfjweir](dd)
+## npm or Yarn
 
-```js
-export default 1;
+Installing with npm(or Yarn) is recommended.
+
+```sh
+npm i laue
+# yarn add laue
 ```
 
-| a   | d   | e   |
-| --- | --- | --- |
-| d   | e   | c   |
-| d   | e   | c   |
-| d   | e   | c   |
-| d   | e   | c   |
-| d   | e   | c   |
-| d   | e   | c   |
-| d   | e   | c   |
+## CDN
+
+Get the latest version from unpkg.com/laue.
+
+```html
+<!-- First import Vue.js -->
+<script src=//unpkg.com/vue></script>
+
+<script src=//unpkg.com/laue></script>
+```
+
+# Register Laue
+
+## Fully register
+
+This is the easiest way to register Laue, then you can use all components of Laue anywhere.
+
+```js
+import Vue from 'vue';
+import Laue from 'laue';
+
+Vue.use(Laue);
+```
+
+## On demand
+
+This is recommended way to register the components you need. If you build tool supports [tree shaking](//medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80#.jnypozs9n)(such as [rollup](//rollupjs.org) and [webpack>=2](//webpack.js.org)), components that you did not use will be removed at build time.
+
+```html
+<template>
+  <la-artboard :data="values">
+    <la-line prop="value"></la-line>
+  </la-artboard>
+<template>
+
+<script>
+import {Artboard, Line} from 'laue'
+
+export default {
+  components: {
+    LaArtboard: Artboard,
+    LaLine: Line
+  },
+
+  data: () => ({
+    values: [
+      { value: 10 },
+      { value: 20 },
+      { value: 30 },
+      { value: 20 }
+    ]
+  })
+}
+</script>
+```
+
+# Development
+
+```sh
+git clone https://github.com/qingwei-li/laue.git
+cd laue
+npm i
+npm run dev
+```
