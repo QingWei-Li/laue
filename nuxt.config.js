@@ -1,7 +1,6 @@
 const {join, basename} = require('path')
 const glob = require('glob')
 const pkg = require('./package.json')
-const demoMiddleware = require('./build/demo-middleware')
 
 module.exports = {
   head: {
@@ -18,29 +17,56 @@ module.exports = {
   },
   css: ['modern-normalize', '~/styles/basic.css'],
   srcDir: 'website',
-  plugins: ['~/plugins/laue.js', '~/plugins/head.js', '~/plugins/editor.js'],
+  plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
   generate: {
     dir: 'website/dist'
   },
   build: {
     extend(config) {
+      let lastToc = ''
       config.module.rules.push({
         test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: {
-          use: [
-            [
-              require('markdown-it-anchor'),
-              {
-                permalink: true,
-                permalinkSymbol: '#',
-                permalinkClass: 'anchor'
+        use: [
+          {
+            loader: 'vue-loader'
+          },
+          {
+            loader: 'ware-loader',
+            options: {
+              raw: true,
+              middleware(src) {
+                return src.replace(/\[\[toc\]\]/g, lastToc)
               }
-            ]
-          ],
-          preventExtract: true,
-          preprocess: demoMiddleware
-        }
+            }
+          },
+          {
+            loader: 'vue-markdown-loader/lib/markdown-compiler.js',
+            options: {
+              raw: true,
+              use: [
+                [
+                  require('markdown-it-toc-and-anchor').default,
+                  {
+                    tocLastLevel: 2,
+                    tocCallback: (tocMarkdown, tocArray, tocHtml) => {
+                      lastToc = tocHtml
+                    },
+                    anchorClassName: 'anchor',
+                    anchorLinkBefore: false
+                  }
+                ]
+              ],
+              preventExtract: true
+            }
+          },
+          {
+            loader: 'ware-loader',
+            options: {
+              raw: true,
+              middleware: require('./build/demo-middleware')
+            }
+          }
+        ]
       })
     },
     watch: [join(__dirname, 'docs/*/*.md')]

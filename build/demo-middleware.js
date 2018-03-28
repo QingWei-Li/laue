@@ -4,7 +4,7 @@
 const {resolve} = require('path')
 const RE = /`{3,}html\s\(vue\)([^`]+)`{3,}/g
 
-module.exports = function (markdownIt, src) {
+module.exports = function (src) {
   const matchs = []
   let result = src
   let cap = null
@@ -28,9 +28,7 @@ module.exports = function (markdownIt, src) {
   let script = ''
 
   if (matchs.length) {
-    script = `\n<script>
-  export default {
-    components: {
+    script = `components: {
       ${matchs
     .map(
       m =>
@@ -40,10 +38,19 @@ module.exports = function (markdownIt, src) {
         )}?start=${m.start}&end=${m.end}!${this.resourcePath}').default`
     )
     .join(',\n')}
+    },`
+  }
+
+  script = `\n<script>
+  export default {
+    ${script}
+    inject: ['page'],
+
+    created() {
+      this.page.toc = \`[[toc]]\`
     }
   }
   </script>\n`
-  }
 
   return result + script
 }

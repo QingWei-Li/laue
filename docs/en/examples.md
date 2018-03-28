@@ -257,3 +257,5 @@ export default {
 ## Marker and region
 
 ## Inverse axes
+
+## Mixed

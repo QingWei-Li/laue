@@ -26,7 +26,7 @@ export default {
     },
 
     areaId() {
-      return `la-area-${this.id}`
+      return `la-area-${this._uid}-${this.id}`
     }
   },
 
@@ -42,7 +42,8 @@ export default {
         h(
           'linearGradient',
           {
-            attrs: {
+            // I don't kown why using `attrs` causes the client not to rerender if the server has already rendered.
+            domProps: {
               id: areaId
             }
           },

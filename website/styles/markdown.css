@@ -385,3 +385,7 @@ article button:active {
   background: #0076b1;
   border-bottom-color: #066599;
 }
+
+article .table-of-contents {
+  display: none;
+}

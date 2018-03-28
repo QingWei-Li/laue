@@ -5,7 +5,7 @@
         <div class="brand">
           <nuxt-link class="logo" :to="`/${lang}`">Laue</nuxt-link>
         </div>
-        <ul class="toc">1</ul>
+        <div v-html="toc" class="toc"></div>
       </nav>
     </aside>
     <section class="article">
@@ -25,7 +25,7 @@
           </li>
         </ul>
       </nav>
-      <article>
+      <article ref="article">
         <nuxt class="body"></nuxt>
       </article>
     </section>
@@ -40,6 +40,16 @@ export default {
 
       return paths.length === 1 ? '' : `${paths[0]}/`;
     }
+  },
+
+  data: () => ({
+    toc: ''
+  }),
+
+  provide() {
+    return {
+      page: this
+    };
   }
 };
 </script>
@@ -61,13 +71,15 @@ export default {
     float right
 
     .brand
+      padding 10px 0
+
       .logo
         font-size 30px
         text-decoration none
         color #0d2b3e
 
     .toc
-      padding 60px 10px
+      padding 76px 10px
 
 .article
   margin-left 33vw
@@ -83,7 +95,7 @@ export default {
 
   .navbar
     display flex
-    padding 10px 0
+    padding 20px 0
     max-width 700px
     border-bottom 1px solid #78869c14
 
