@@ -5,14 +5,14 @@
         <div class="brand">
           <nuxt-link class="logo" :to="`/${lang}`">Laue</nuxt-link>
         </div>
-        <div v-html="toc" class="toc"></div>
+        <div ref="toc" v-html="toc" class="toc"></div>
       </nav>
     </aside>
     <section class="article">
       <nav class="navbar">
-        <div class="search-wrap">
+        <!-- <div class="search-wrap">
           <input type="search" name="search" class="search">
-        </div>
+        </div> -->
         <ul>
           <li>
             <nuxt-link :to="`/${lang}guide`">Guide</nuxt-link>
@@ -25,7 +25,7 @@
           </li>
         </ul>
       </nav>
-      <article ref="article">
+      <article>
         <nuxt class="body"></nuxt>
       </article>
     </section>
@@ -50,12 +50,41 @@ export default {
     return {
       page: this
     };
+  },
+
+  mounted() {
+    let last;
+    this.$refs.toc.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        if (last) {
+          last.classList.remove('active');
+        }
+        last = e.target;
+        e.target.classList.add('active');
+      }
+    });
+
+    const id = decodeURIComponent(this.$route.hash);
+
+    if (id) {
+      this.$nextTick(() => {
+        const target = this.$el.querySelector(id);
+        const docEl = document.documentElement;
+        const docRect = docEl.getBoundingClientRect();
+        const elRect = target.getBoundingClientRect();
+        const a = this.$refs.toc.querySelector(`a[href='${id}']`);
+
+        a.classList.add('active');
+        last = a;
+        window.scrollTo(elRect.left - docRect.left, elRect.top - docRect.top);
+      });
+    }
   }
 };
 </script>
 
 
-<style src="~/styles/markdown.css"></style>
+<style src="~/styles/markdown.styl" lang="stylus"></style>
 <style lang="stylus" scoped>
 .main
   min-height 100vh
@@ -79,7 +108,7 @@ export default {
         color #0d2b3e
 
     .toc
-      padding 76px 10px
+      padding 36px 10px
 
 .article
   margin-left 33vw
@@ -89,15 +118,15 @@ export default {
 
   .body
     max-width 600px
-    padding 70px 0
+    padding 30px 0
     margin-left 100px
     box-sizing content-box
 
   .navbar
-    display flex
     padding 20px 0
     max-width 700px
     border-bottom 1px solid #78869c14
+    text-align right
 
     .search-wrap
       flex auto
@@ -105,8 +134,10 @@ export default {
     ul
       display flex
       list-style none
+      display inline-block
 
       li
+        display inherit
         padding 0 20px
 
         &:last-child
@@ -132,6 +163,9 @@ export default {
     margin-left 0
 
     .body
-      padding 0 20px
+      padding 20px
       margin-left 0
+
+    .navbar ul li:last-child
+      padding-right 20px
 </style>

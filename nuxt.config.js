@@ -15,7 +15,7 @@ module.exports = {
   loading: {
     color: '#3778ff'
   },
-  css: ['modern-normalize', '~/styles/basic.css'],
+  css: ['modern-normalize', '~/styles/basic.styl'],
   srcDir: 'website',
   plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
   generate: {
