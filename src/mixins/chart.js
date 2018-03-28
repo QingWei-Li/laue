@@ -1,6 +1,6 @@
 import values from './values'
 import animate from './animate'
-import {isArr} from '../utils/core'
+import {isArr, isNil} from '../utils/core'
 
 export default {
   mixins: [values, animate],
@@ -76,7 +76,10 @@ export default {
         const {store} = this
 
         store.props = store.props || {}
-        this.$set(store.props, this.id, val)
+
+        if (!isNil(this.id)) {
+          this.$set(store.props, this.id, val)
+        }
       }
     }
   }
