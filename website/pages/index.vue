@@ -1,53 +1,76 @@
 <template>
-  <div :style="{width: width}">
-    <button @click="width = '300px'">change</button>
-
-    <!-- <la-artboard narrow :width="750" :height="300" :data="data">
-      <la-bar prop="pv"></la-bar>
-      <la-bar prop="amt"></la-bar>
-      <la-bar prop="uv"></la-bar>
-      <la-x-axis prop="name"></la-x-axis>
-      <la-y-axis></la-y-axis>
-    </la-artboard> -->
-
-    <la-artboard :data="data">
-      <!-- <la-pie animated prop="pv"></la-pie> -->
-      <!-- <la-line animated show-value prop="uv"></la-line> -->
-      <!-- <la-line label="fuck" dot :width="2"></la-line> -->
-      <la-line dot label="haha" :width="2" prop="pv"></la-line>
-
-      <!-- <la-bar prop="uv"></la-bar> -->
-      <la-x-axis prop="name"></la-x-axis>
-      <la-y-axis></la-y-axis>
-      <la-tooltip></la-tooltip>
-      <la-legend></la-legend>
-      <la-y-marker dashed placement="end" :value="200" label="2333"></la-y-marker>
-      <la-y-region placement="middle" :low="150" :high="300" fill="rgba(0,0,0,0.1)" label="2333"></la-y-region>
-    </la-artboard>
+  <div class="home">
+    <div class="wrap">
+      <h1>Laue</h1>
+      <p>Modern charts for Vue.js</p>
+      <div class="group">
+        <nuxt-link class="button" to="/guide">Getting Started</nuxt-link>
+      </div>
+      <footer>
+        <a href="https://github.com/qingwei-li/laue">GitHub</a>
+        <a href="https://twitter.com/cinwell_li">@cinwell_li</a>
+        <div>Released under the MIT License</div>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'home',
-
-  data: () => {
-    return {
-      prop: 'pv',
-      space: 80,
-      show: false,
-      showAxes: false,
-      data: [{ pv: 100 }, { pv: 200 }, {}, { pv: 300 }, { pv: 400 }],
-      width: null
-    };
-  },
-
-  mounted() {
-    setInterval(() => {
-      // this.data.push(this.data.shift());
-      // this.data[0].pv += 1000
-    }, 1000);
-  }
+  layout: 'home'
 };
 </script>
+
+<style lang="stylus" scoped>
+.home
+  padding 0 20vw
+  display flex
+  align-items center
+  height 100vh
+
+.wrap
+  margin-top -100px
+
+h1
+  font-size 50px
+  color #0d2b3e
+  margin 0 0 30px 0
+
+p
+  font-size 22px
+  color #373e42
+  margin-bottom 26px
+  opacity 0.8
+
+.button
+  background #0e99e5
+  border-radius 3px
+  font-size 18px
+  color #fff
+  padding 14px 16px
+  cursor pointer
+  outline none
+  display inline-block
+  text-decoration none
+
+footer
+  margin-top 30px
+  opacity 0.5
+
+  a
+    color #373e42
+    text-decoration none
+
+    &:first-child::after
+      content ''
+      border-right 1px solid #373e42
+      height 10px
+      display inline-block
+      margin 0 10px
+
+  div
+    margin-top 10px
+    color #373e42
+</style>
+
 

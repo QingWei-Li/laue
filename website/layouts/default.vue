@@ -123,7 +123,7 @@ export default {
   box-shadow -10px -8px 12px 0 rgba(0, 23, 40, 0.08)
   min-height 100vh
 
-  .body
+  .body:not(.__nuxt-error-page)
     max-width 600px
     padding 30px 0
     margin-left 100px
@@ -169,7 +169,7 @@ export default {
   .article
     margin-left 0
 
-    .body
+    .body:not(.__nuxt-error-page)
       padding 20px
       margin-left 0
 
