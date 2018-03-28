@@ -254,7 +254,46 @@ export default {
 
 ## Custom tooltip
 
-## Marker and region
+## Dynamic data
+
+```html (vue)
+<template>
+  <la-artboard :bound="[n => n - 10, n => n + 10]" :data="values">
+    <la-line :width="2" dashed dot animated curve prop="value"></la-line>
+
+    <la-x-axis></la-x-axis>
+    <la-y-axis></la-y-axis>
+  </la-artboard>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    values: []
+  }),
+
+  methods: {
+    genNewData() {
+      return Math.floor(Math.random() * 100)
+    }
+  },
+
+  mounted() {
+    for (let i = 0; i < 10; i++) {
+      this.values.push({
+        value: this.genNewData()
+      })
+    }
+    setInterval(() => {
+      this.values.shift()
+      this.values.push({
+        value: this.genNewData()
+      })
+    }, 1000)
+  }
+}
+</script>
+```
 
 ## Inverse axes
 
@@ -267,10 +306,11 @@ export default {
     <la-line label="uv" prop="uv"></la-line>
     <la-area label="amt" prop="amt"></la-area>
 
-    <la-x-axis prop="name"></la-x-axis>
-    <la-y-axis></la-y-axis>
+    <la-x-axis gridline dashed prop="name"></la-x-axis>
+    <la-y-axis gridline dashed></la-y-axis>
     <la-tooltip></la-tooltip>
     <la-legend selectable></la-legend>
+    <la-y-marker dashed :value="4000" label="marker"></la-y-marker>
   </la-artboard>
 </template>
 

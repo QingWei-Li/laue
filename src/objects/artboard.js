@@ -217,6 +217,10 @@ export default {
     const {viewWidth, height, autoresize} = this
     const slots = this.$slots.default || []
 
+    if (!this.data.length) {
+      return
+    }
+
     /**
      * Reset snap
      */
@@ -284,7 +288,7 @@ export default {
               viewBox: `0 0 ${viewWidth} ${height}`
             }
           },
-          [others, objects, charts]
+          [others, charts, objects]
         ),
         widgets
       ]
