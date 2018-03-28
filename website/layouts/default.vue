@@ -1,5 +1,6 @@
 <template>
   <main class="main">
+    <github slug="qingwei-li/laue"></github>
     <aside class="sidebar">
       <nav class="nav">
         <div class="brand">
@@ -33,6 +34,8 @@
 </template>
 
 <script>
+import github from 'vue-github-badge';
+
 export default {
   computed: {
     lang() {
@@ -40,6 +43,10 @@ export default {
 
       return paths.length === 1 ? '' : `${paths[0]}/`;
     }
+  },
+
+  components: {
+    github
   },
 
   data: () => ({
@@ -165,6 +172,9 @@ export default {
     .body
       padding 20px
       margin-left 0
+
+    .navbar
+      text-align left
 
     .navbar ul li:last-child
       padding-right 20px

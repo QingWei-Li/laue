@@ -83,6 +83,7 @@
     "rollup-plugin-uglify": "^3.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-github-badge": "^1.0.1",
     "vue-markdown-loader": "^2.4.1",
     "ware-loader": "^0.2.4"
   },

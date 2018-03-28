@@ -1,5 +1,10 @@
 # Why Laue?
 
+Before I developed a simple line chart component for Vue.js([vue-trend](//cinwell.com/vue-trend)). Unexpectedly, it is very popular. It's lightweight, simple, but not powerful. I want to extend it and add more charts. It is different and other charts.
+
+* It depends on several small submodules in [D3](//d3js.org), so it's very **reliable** and **lightweight**.
+* The implementation for Vue.js, so it is **composable** and **supports SSR**.
+
 <!-- todo -->
 
 # Installation
@@ -15,12 +20,9 @@ npm i laue
 
 ## CDN
 
-Get the latest version from unpkg.com/laue.
+Get the latest version from [unpkg.com/laue](//unpkg.com/laue).
 
 ```html
-<!-- First import Vue.js -->
-<script src=//unpkg.com/vue></script>
-
 <script src=//unpkg.com/laue></script>
 ```
 
