@@ -6,23 +6,24 @@
 
 > 🖖📈 Modern charts for Vue.js
 
+Documentation: https://laue.js.org
+
 ## Features
 
-* Composable
-* Lightweight: 10KB min+gzip
-* SSR
+* It depends on several small submodules in [D3](//d3js.org), so it's very **reliable** and **lightweight**.
+* The implementation for Vue.js, so it is **composable** and **supports SSR**.
 
 ## Installation
 
 ```shell
-npm i laue -S
+npm i laue
 ```
 
 ## Usage
 
 ```javascript
-import { Laue } from 'laue';
 import Vue from 'vue';
+import { Laue } from 'laue';
 
 Vue.use(Laue);
 ```

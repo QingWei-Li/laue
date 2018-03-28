@@ -5,8 +5,6 @@ Before I developed a simple line chart component for Vue.js([vue-trend](//cinwel
 * It depends on several small submodules in [D3](//d3js.org), so it's very **reliable** and **lightweight**.
 * The implementation for Vue.js, so it is **composable** and **supports SSR**.
 
-<!-- todo -->
-
 # Installation
 
 ## npm or Yarn
@@ -34,7 +32,7 @@ This is the easiest way to register Laue, then you can use all components of Lau
 
 ```js
 import Vue from 'vue';
-import Laue from 'laue';
+import { Laue } from 'laue';
 
 Vue.use(Laue);
 ```
@@ -51,7 +49,7 @@ This is recommended way to register the components you need. If you build tool s
 <template>
 
 <script>
-import {Artboard, Line} from 'laue'
+import { Artboard, Line } from 'laue'
 
 export default {
   components: {
