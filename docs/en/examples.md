@@ -182,6 +182,42 @@ export default {
 </script>
 ```
 
+## Curves
+
+All shapes are drawn through [d3-shape](https://github.com/d3/d3-shape).
+If `curve` is true, the line will be drawn as a [cardinal spline](https://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline). Of course you can use other curve.
+
+You need to install `d3-shape` and import the curve functions.(refer: [d3-shape#curves](https://github.com/d3/d3-shape#curves))
+
+```html (vue)
+<template>
+  <la-artboard :bound="[0]" :data="values">
+    <la-line dot :curve="curveStep" prop="pv"></la-line>
+    <la-x-axis prop="name"></la-x-axis>
+    <la-y-axis></la-y-axis>
+  </la-artboard>
+</template>
+
+<script>
+import { curveStep } from 'd3-shape'
+
+export default {
+  data: () => ({
+    values: [
+      { name: 'Page A', pv: 2400 },
+      { name: 'Page B', pv: 1398 },
+      { name: 'Page C', pv: 9800 },
+      { name: 'Page D', pv: 3908 },
+      { name: 'Page E', pv: 4800 },
+      { name: 'Page F', pv: 3800 },
+      { name: 'Page G', pv: 4300 }
+    ],
+    curveStep: curveStep
+  })
+}
+</script>
+```
+
 # Bar chart examples
 
 ## Simple bar chart
@@ -429,6 +465,36 @@ export default {
       { name: 'Page E', uv: 1890, pv: 4800, amt: 1700 },
       { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
       { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 }
+    ]
+  })
+}
+</script>
+```
+
+## Responsive
+
+The width of the chart is automatically changed when the window triggers the resize event.
+
+```html (vue)
+<template>
+  <la-artboard autoresize :bound="[0]" :data="values">
+    <la-area curve prop="pv"></la-area>
+    <la-x-axis prop="name"></la-x-axis>
+    <la-y-axis></la-y-axis>
+  </la-artboard>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    values: [
+      { name: 'Page A', pv: 2400 },
+      { name: 'Page B', pv: 1398 },
+      { name: 'Page C', pv: 9800 },
+      { name: 'Page D', pv: 3908 },
+      { name: 'Page E', pv: 4800 },
+      { name: 'Page F', pv: 3800 },
+      { name: 'Page G', pv: 4300 }
     ]
   })
 }

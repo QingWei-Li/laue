@@ -69,6 +69,77 @@ export default {
 </script>
 ```
 
+# Quick started
+
+A simple example guides you to use Laue.
+
+## Step 1. Place the artboard and bind the data
+
+```html
+<template>
+  <la-artboard :width="600" :height="300" :data="values">
+  </la-artboard>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    values: [
+      { name: 'Page A', pv: 2000 },
+      { name: 'Page B', pv: 3000 },
+      { name: 'Page C', pv: 1200 }
+    ]
+  })
+}
+</script>
+```
+
+## Step 2. Add chart
+
+```html
+<la-artboard :width="300" :height="150" :data="values">
+  <la-line prop="pv"></la-line>
+</la-artboard>
+```
+
+## Step 3. Add other plugins
+
+```html
+<la-artboard :width="300" :height="150" :data="values">
+  <la-line prop="pv"></la-line>
+  <la-y-axis></la-y-axis>
+  <la-x-axis prop="name"></la-x-axis>
+  <la-tooltip></la-tooltip>
+</la-artboard>
+```
+
+## Done!
+
+You can check [/examples](/examples) for more examples.
+
+```html (vue)
+<template>
+  <la-artboard :width="300" :height="150" :data="values">
+    <la-line prop="pv"></la-line>
+    <la-y-axis></la-y-axis>
+    <la-x-axis prop="name"></la-x-axis>
+    <la-tooltip></la-tooltip>
+  </la-artboard>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    values: [
+      { name: 'Page A', pv: 2000 },
+      { name: 'Page B', pv: 3000 },
+      { name: 'Page C', pv: 1200 }
+    ]
+  })
+}
+</script>
+```
+
 # Development
 
 ```sh
