@@ -38,4 +38,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   else
     npm publish --tag $RELEASE_TAG
   fi
+
+  # deploy website
+  npm run deploy
 fi
