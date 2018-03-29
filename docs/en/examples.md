@@ -69,6 +69,14 @@ When you use the bar chart, it's best to configure the `narrow` so that there is
 
 [simple-pie-chart.vue](../_examples/simple-pie-chart.vue)
 
+## Pie chart with custom labels
+
+[pie-chart-with-custom-labels.vue](../_examples/pie-chart-with-custom-labels.vue)
+
+## Gauge chart
+
+[gauge-chart.vue](../_examples/gauge-chart.vue)
+
 # Advanced examples
 
 ## Custom tooltip
