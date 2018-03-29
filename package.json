@@ -20,6 +20,7 @@
       "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git",
     "deploy": "sh ./scripts/release.sh"
   },
+  "files": ["dist", "src"],
   "keywords": [
     "chart",
     "svg",
@@ -42,10 +43,6 @@
       "semi": [2, "never"],
       "no-mixed-operators": "off"
     }
-  },
-  "poi": {
-    "entry": "docs/app.js",
-    "dist": "docs/dist"
   },
   "jest": {
     "transform": {
