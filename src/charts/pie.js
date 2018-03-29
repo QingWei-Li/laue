@@ -18,18 +18,39 @@ export default {
     radius: {
       type: [Number, Array],
       default: () => [0, 100]
+    },
+
+    angles: {
+      type: [Number, Array],
+      default: () => [0, Math.PI * 2]
+    },
+
+    showLabel: Boolean,
+
+    labelProp: {
+      type: String,
+      default: 'label'
     }
   },
 
   computed: {
     arcs() {
-      return pie().sortValues(noop)(this.raws)
+      return pie()
+        .startAngle(this.curAngles[0])
+        .endAngle(this.curAngles[1])
+        .sortValues(noop)(this.raws)
     },
 
     curRadius() {
       const {radius} = this
 
       return isArr(radius) ? radius : [0, radius]
+    },
+
+    curAngles() {
+      const {angles} = this
+
+      return isArr(angles) ? angles : [0, angles]
     },
 
     draw() {
@@ -66,6 +87,37 @@ export default {
           this.raws[i]
         )
       })
+    },
+
+    labels() {
+      const {labelProp, Artboard} = this
+
+      return labelProp ? Artboard.data.map(o => o[labelProp]) : null
+    },
+
+    labelSlot() {
+      if (!this.showLabel) {
+        return
+      }
+
+      const h = this.$createElement
+
+      return this.arcs.map((arc, i) => {
+        const point = this.drawText.centroid(arc)
+
+        return h(
+          'text',
+          {
+            attrs: {
+              x: (point[0] * 0.95) << 1,
+              y: (point[1] * 0.95) << 1,
+              fill: '#000',
+              'text-anchor': 'middle'
+            }
+          },
+          this.labels[i]
+        )
+      })
     }
   },
 
@@ -96,7 +148,7 @@ export default {
           }
         })
       })
-    const nodes = [].concat(paths, this.valueSlot, pointSlot)
+    const nodes = [].concat(paths, this.valueSlot, this.labelSlot, pointSlot)
 
     const data = {
       style: {
