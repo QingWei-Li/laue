@@ -8,6 +8,10 @@ export default {
 
   mixins: [Line],
 
+  props: {
+    fillColor: String
+  },
+
   computed: {
     draw() {
       const {curve, continued} = this
@@ -27,37 +31,41 @@ export default {
 
     areaId() {
       return `la-area-${this._uid}-${this.id}`
+    },
+
+    curFillColor() {
+      return this.fillColor || `url(#${this.areaId})`
     }
   },
 
   render(h) {
-    const {trans, curPoints, curColor, areaId, actived} = this
+    const {trans, curPoints, curColor, curFillColor, actived} = this
 
     if (!actived) {
       return null
     }
 
     return h('g', [
-      h('defs', [
-        h(
-          'linearGradient',
-          {
-            // I don't kown why using `attrs` causes the client not to rerender if the server has already rendered.
-            domProps: {
-              id: areaId
-            }
-          },
-          [
-            this.$slots.area ||
+      !this.fillColor &&
+        h('defs', [
+          h(
+            'linearGradient',
+            {
+              // I don't kown why using `attrs` causes the client not to rerender if the server has already rendered.
+              domProps: {
+                id: this.areaId
+              }
+            },
+            [
               h('stop', {
                 attrs: {
                   'stop-color': curColor,
                   'stop-opacity': 0.5
                 }
               })
-          ]
-        )
-      ]),
+            ]
+          )
+        ]),
       h(
         Line,
         {
@@ -72,7 +80,7 @@ export default {
           h('path', {
             attrs: {
               d: this.draw(curPoints),
-              fill: `url(#${areaId})`
+              fill: curFillColor
             },
             style: {
               transition: trans

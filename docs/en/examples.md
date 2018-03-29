@@ -24,6 +24,12 @@ This chart uses [Area](api#area) component to draw an area shape. Use the `bound
 
 [line-chart-with-area.vue](../_examples/line-chart-with-area.vue)
 
+## Custom area fill
+
+The default fill color and line color are the same, this is a custom fill way.
+
+[custom-area-fill.vue](../_examples/custom-area-fill.vue)
+
 ## Holes in data
 
 If the data does not exits, it will not be rendered. You can configure `continuted` so that the line are continuous.
@@ -39,11 +45,11 @@ You need to install `d3-shape` and import the curve functions.(refer: [d3-shape#
 
 [curves.vue](../_examples/curves.vue)
 
-## Custom point
+## Custom dots
 
 With _scoped slot_ you can customize the shape of the points.
 
-[custom-point.vue](../_examples/custom-point.vue)
+[custom-dots.vue](../_examples/custom-dots.vue)
 
 # Bar chart examples
 

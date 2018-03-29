@@ -10,6 +10,7 @@
         <div class="title">{{ props.label }}</div>
         <ul class="list">
           <li
+            :key="item.label"
             v-for="item in props.actived"
             :style="{ borderTop: '3px solid ' + item.color }">
             <div class="label">{{ item.label }}</div>

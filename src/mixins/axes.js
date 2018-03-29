@@ -8,8 +8,6 @@ const CAP_HEIGHT = 0.71
 
 export default {
   props: {
-    name: String,
-
     color: String,
 
     tickSize: {
