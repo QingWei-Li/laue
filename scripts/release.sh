@@ -40,5 +40,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   fi
 
   # deploy website
-  npm run deploy
+  npm run deploy:docs
 fi

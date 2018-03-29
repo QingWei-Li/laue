@@ -71,7 +71,7 @@ module.exports = {
             loader: 'ware-loader',
             options: {
               raw: true,
-              middleware: require('./build/demo-middleware')
+              middleware: require('./scripts/demo-middleware')
             }
           }
         ]

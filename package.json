@@ -16,7 +16,9 @@
     "pub": "sh build/release.sh",
     "dev:test": "jest --watch -u",
     "test": "jest --coverage",
-    "deploy": "gh-pages -d website/dist -t"
+    "deploy:docs":
+      "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git",
+    "deploy": "sh ./scripts/release.sh"
   },
   "keywords": [
     "chart",
