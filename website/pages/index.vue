@@ -1,35 +1,73 @@
 <template>
   <div class="home">
-    <div class="wrap">
-      <h1>Laue</h1>
-      <p>Modern charts for Vue.js</p>
-      <div class="group">
-        <nuxt-link class="button" to="/guide">Getting Started</nuxt-link>
+    <div class="content">
+      <div class="wrap">
+        <h1>Laue</h1>
+        <p>Modern charts for Vue.js</p>
+        <div class="group">
+          <nuxt-link class="button" to="/guide">Getting Started</nuxt-link>
+        </div>
+        <footer>
+          <a href="https://github.com/qingwei-li/laue">GitHub</a>
+          <a href="https://twitter.com/cinwell_li">@cinwell_li</a>
+          <div>Released under the MIT License</div>
+        </footer>
       </div>
-      <footer>
-        <a href="https://github.com/qingwei-li/laue">GitHub</a>
-        <a href="https://twitter.com/cinwell_li">@cinwell_li</a>
-        <div>Released under the MIT License</div>
-      </footer>
+    </div>
+
+    <div class="chart">
+      <la-artboard :padding="0" v-show="!$isServer" :height="400" autoresize :bound="[0, 20]" :data="values">
+        <la-area :width="2" curve prop="value"></la-area>
+      </la-artboard>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'home'
+  layout: 'home',
+
+  methods: {
+    random() {
+      return Math.floor(Math.random() * 10) + 5;
+    }
+  },
+
+  data: () => ({
+    values: []
+  }),
+
+  created() {
+    for (let i = 0; i < 7; i++) {
+      this.values.push({
+        value: this.random()
+      });
+    }
+  }
 };
 </script>
 
 <style lang="stylus" scoped>
 .home
+  margin 0
+  padding 0
+  overflow hidden
+  position relative
+
+.wrap
+  margin-top -150px
+
+.content
   padding 0 20vw
   display flex
   align-items center
   height 100vh
 
-.wrap
-  margin-top -100px
+.chart
+  position absolute
+  bottom -10px
+  left 0
+  right 0
 
 h1
   font-size 50px

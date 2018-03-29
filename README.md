@@ -27,7 +27,18 @@ import Vue from 'vue';
 import { Laue } from 'laue';
 
 Vue.use(Laue);
+
+// On demand
+import { Artboard, Line } from 'laue';
+
+Vue.component(Artboard.name, Artboard);
+Vue.component(Line.name, Line);
 ```
+
+## Inspired
+
+* [Recharts](https://github.com/recharts/recharts)
+* [Frappe Charts](https://github.com/frappe/charts)
 
 ## License
 
