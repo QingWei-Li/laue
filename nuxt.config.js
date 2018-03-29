@@ -21,7 +21,11 @@ module.exports = {
     'highlight.js/styles/github.css'
   ],
   srcDir: 'website',
-  plugins: ['~/plugins/laue.js', '~/plugins/head.js'],
+  plugins: [
+    '~/plugins/laue.js',
+    '~/plugins/head.js',
+    {src: '~plugins/ga.js', ssr: false}
+  ],
   generate: {
     dir: 'website/dist'
   },
