@@ -10,7 +10,7 @@
 <script>
 export default {
   data: () => ({
-    values: []
+    values: [{ value: 100 }]
   }),
 
   methods: {
