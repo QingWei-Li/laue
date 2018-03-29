@@ -20,7 +20,7 @@ export default {
       required: true
     },
 
-    fill: String,
+    fillColor: String,
 
     placement: {
       type: String,
@@ -42,11 +42,11 @@ export default {
     },
 
     fillAttr() {
-      const {fill} = this
+      const {fillColor} = this
 
-      return fill ?
+      return fillColor ?
         {
-          fill: fill,
+          fill: fillColor,
           stroke: this.curColor
         } :
         {

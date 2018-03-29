@@ -17,17 +17,13 @@ export const DATA = [
   {name: 'Page G', uv: 3490, pv: 4300, amt: 2100}
 ]
 
-export function cartesianMount(
-  slots = noop,
-  props = {
-    props: {
-      data: DATA
-    }
-  }
-) {
+export function cartesianMount(slots = noop, data = {}) {
+  data.props = data.props || {}
+  data.props.data = data.props.data || DATA
+
   return mount({
     render(h) {
-      return h(Cartesian, props, slots(h))
+      return h(Cartesian, data, slots(h))
     }
   })
 }

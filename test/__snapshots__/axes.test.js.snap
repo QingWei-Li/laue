@@ -1,0 +1,372 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mixing Y and X 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M48,268L135.33333333333331,257.54545454545456L222.66666666666666,18L310,185.38636363636363L397.3333333333333,160.04545454545456L484.66666666666663,188.45454545454544L572,174.25" style="stroke-dasharray: none;"></path>
+    </g>
+    <g stroke="#999">
+      <line x2="48" y2="18" x1="48" y1="268"></line>
+      <g text-anchor="end" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="43" x2="48" y1="268" y2="268" stroke="#999"></line>
+          <text x="40.5" y="268" dy="0.355em" stroke="none">1000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="239.5909090909091" y2="239.5909090909091" stroke="#999"></line>
+          <text x="40.5" y="239.5909090909091" dy="0.355em" stroke="none">2000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="211.1818181818182" y2="211.1818181818182" stroke="#999"></line>
+          <text x="40.5" y="211.1818181818182" dy="0.355em" stroke="none">3000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="182.77272727272728" y2="182.77272727272728" stroke="#999"></line>
+          <text x="40.5" y="182.77272727272728" dy="0.355em" stroke="none">4000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="154.36363636363637" y2="154.36363636363637" stroke="#999"></line>
+          <text x="40.5" y="154.36363636363637" dy="0.355em" stroke="none">5000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="125.95454545454547" y2="125.95454545454547" stroke="#999"></line>
+          <text x="40.5" y="125.95454545454547" dy="0.355em" stroke="none">6000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="97.54545454545456" y2="97.54545454545456" stroke="#999"></line>
+          <text x="40.5" y="97.54545454545456" dy="0.355em" stroke="none">7000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="69.13636363636365" y2="69.13636363636365" stroke="#999"></line>
+          <text x="40.5" y="69.13636363636365" dy="0.355em" stroke="none">8000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="18" y2="18" stroke="#999"></line>
+          <text x="40.5" y="18" dy="0.355em" stroke="none">9800</text>
+        </g>
+      </g>
+    </g>
+    <g stroke="#999">
+      <line x2="572" y2="268" x1="48" y1="268"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="48" x2="48" y1="273" y2="268" stroke="#999"></line>
+          <text x="48" y="275.5" dy="0.71em" stroke="none">1</text>
+        </g>
+        <g>
+          <line x1="135.33333333333331" x2="135.33333333333331" y1="273" y2="268" stroke="#999"></line>
+          <text x="135.33333333333331" y="275.5" dy="0.71em" stroke="none">2</text>
+        </g>
+        <g>
+          <line x1="222.66666666666666" x2="222.66666666666666" y1="273" y2="268" stroke="#999"></line>
+          <text x="222.66666666666666" y="275.5" dy="0.71em" stroke="none">3</text>
+        </g>
+        <g>
+          <line x1="310" x2="310" y1="273" y2="268" stroke="#999"></line>
+          <text x="310" y="275.5" dy="0.71em" stroke="none">4</text>
+        </g>
+        <g>
+          <line x1="397.3333333333333" x2="397.3333333333333" y1="273" y2="268" stroke="#999"></line>
+          <text x="397.3333333333333" y="275.5" dy="0.71em" stroke="none">5</text>
+        </g>
+        <g>
+          <line x1="484.66666666666663" x2="484.66666666666663" y1="273" y2="268" stroke="#999"></line>
+          <text x="484.66666666666663" y="275.5" dy="0.71em" stroke="none">6</text>
+        </g>
+        <g>
+          <line x1="572" x2="572" y1="273" y2="268" stroke="#999"></line>
+          <text x="572" y="275.5" dy="0.71em" stroke="none">7</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Mixing inverse 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M48,268L132,258.1309090909091L216,32L300,190.01272727272726L384,166.0909090909091L468,192.9090909090909L552,179.5" style="stroke-dasharray: none;"></path>
+    </g>
+    <g stroke="#999">
+      <line x2="48" y2="32" x1="48" y1="268"></line>
+      <g text-anchor="end" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="43" x2="48" y1="268" y2="268" stroke="#999"></line>
+          <text x="40.5" y="268" dy="0.355em" stroke="none">1000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="241.1818181818182" y2="241.1818181818182" stroke="#999"></line>
+          <text x="40.5" y="241.1818181818182" dy="0.355em" stroke="none">2000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="214.36363636363637" y2="214.36363636363637" stroke="#999"></line>
+          <text x="40.5" y="214.36363636363637" dy="0.355em" stroke="none">3000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="187.54545454545456" y2="187.54545454545456" stroke="#999"></line>
+          <text x="40.5" y="187.54545454545456" dy="0.355em" stroke="none">4000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="160.72727272727275" y2="160.72727272727275" stroke="#999"></line>
+          <text x="40.5" y="160.72727272727275" dy="0.355em" stroke="none">5000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="133.9090909090909" y2="133.9090909090909" stroke="#999"></line>
+          <text x="40.5" y="133.9090909090909" dy="0.355em" stroke="none">6000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="107.0909090909091" y2="107.0909090909091" stroke="#999"></line>
+          <text x="40.5" y="107.0909090909091" dy="0.355em" stroke="none">7000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="80.27272727272728" y2="80.27272727272728" stroke="#999"></line>
+          <text x="40.5" y="80.27272727272728" dy="0.355em" stroke="none">8000</text>
+        </g>
+        <g>
+          <line x1="43" x2="48" y1="32" y2="32" stroke="#999"></line>
+          <text x="40.5" y="32" dy="0.355em" stroke="none">9800</text>
+        </g>
+      </g>
+    </g>
+    <g stroke="#999">
+      <line x2="552" y2="268" x1="48" y1="268"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="48" x2="48" y1="273" y2="268" stroke="#999"></line>
+          <text x="48" y="275.5" dy="0.71em" stroke="none">1</text>
+        </g>
+        <g>
+          <line x1="132" x2="132" y1="273" y2="268" stroke="#999"></line>
+          <text x="132" y="275.5" dy="0.71em" stroke="none">2</text>
+        </g>
+        <g>
+          <line x1="216" x2="216" y1="273" y2="268" stroke="#999"></line>
+          <text x="216" y="275.5" dy="0.71em" stroke="none">3</text>
+        </g>
+        <g>
+          <line x1="300" x2="300" y1="273" y2="268" stroke="#999"></line>
+          <text x="300" y="275.5" dy="0.71em" stroke="none">4</text>
+        </g>
+        <g>
+          <line x1="384" x2="384" y1="273" y2="268" stroke="#999"></line>
+          <text x="384" y="275.5" dy="0.71em" stroke="none">5</text>
+        </g>
+        <g>
+          <line x1="468" x2="468" y1="273" y2="268" stroke="#999"></line>
+          <text x="468" y="275.5" dy="0.71em" stroke="none">6</text>
+        </g>
+        <g>
+          <line x1="552" x2="552" y1="273" y2="268" stroke="#999"></line>
+          <text x="552" y="275.5" dy="0.71em" stroke="none">7</text>
+        </g>
+      </g>
+    </g>
+    <g stroke="#999">
+      <line x2="552" y2="32" x1="552" y1="268"></line>
+      <g text-anchor="start" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="557" x2="552" y1="268" y2="268" stroke="#999"></line>
+          <text x="559.5" y="268" dy="0.355em" stroke="none">1000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="241.1818181818182" y2="241.1818181818182" stroke="#999"></line>
+          <text x="559.5" y="241.1818181818182" dy="0.355em" stroke="none">2000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="214.36363636363637" y2="214.36363636363637" stroke="#999"></line>
+          <text x="559.5" y="214.36363636363637" dy="0.355em" stroke="none">3000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="187.54545454545456" y2="187.54545454545456" stroke="#999"></line>
+          <text x="559.5" y="187.54545454545456" dy="0.355em" stroke="none">4000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="160.72727272727275" y2="160.72727272727275" stroke="#999"></line>
+          <text x="559.5" y="160.72727272727275" dy="0.355em" stroke="none">5000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="133.9090909090909" y2="133.9090909090909" stroke="#999"></line>
+          <text x="559.5" y="133.9090909090909" dy="0.355em" stroke="none">6000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="107.0909090909091" y2="107.0909090909091" stroke="#999"></line>
+          <text x="559.5" y="107.0909090909091" dy="0.355em" stroke="none">7000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="80.27272727272728" y2="80.27272727272728" stroke="#999"></line>
+          <text x="559.5" y="80.27272727272728" dy="0.355em" stroke="none">8000</text>
+        </g>
+        <g>
+          <line x1="557" x2="552" y1="32" y2="32" stroke="#999"></line>
+          <text x="559.5" y="32" dy="0.355em" stroke="none">9800</text>
+        </g>
+      </g>
+    </g>
+    <g stroke="#999">
+      <line x2="552" y2="32" x1="48" y1="32"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="48" x2="48" y1="27" y2="32" stroke="#999"></line>
+          <text x="48" y="24.5" dy="-0.29000000000000004em" stroke="none">1</text>
+        </g>
+        <g>
+          <line x1="132" x2="132" y1="27" y2="32" stroke="#999"></line>
+          <text x="132" y="24.5" dy="-0.29000000000000004em" stroke="none">2</text>
+        </g>
+        <g>
+          <line x1="216" x2="216" y1="27" y2="32" stroke="#999"></line>
+          <text x="216" y="24.5" dy="-0.29000000000000004em" stroke="none">3</text>
+        </g>
+        <g>
+          <line x1="300" x2="300" y1="27" y2="32" stroke="#999"></line>
+          <text x="300" y="24.5" dy="-0.29000000000000004em" stroke="none">4</text>
+        </g>
+        <g>
+          <line x1="384" x2="384" y1="27" y2="32" stroke="#999"></line>
+          <text x="384" y="24.5" dy="-0.29000000000000004em" stroke="none">5</text>
+        </g>
+        <g>
+          <line x1="468" x2="468" y1="27" y2="32" stroke="#999"></line>
+          <text x="468" y="24.5" dy="-0.29000000000000004em" stroke="none">6</text>
+        </g>
+        <g>
+          <line x1="552" x2="552" y1="27" y2="32" stroke="#999"></line>
+          <text x="552" y="24.5" dy="-0.29000000000000004em" stroke="none">7</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :dashed 1`] = `
+<g stroke="#999">
+  <line x2="572" y2="268" x1="28" y1="268"></line>
+  <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+    <g>
+      <line x1="28" x2="28" y1="273" y2="268" stroke="#999"></line>
+      <text x="28" y="275.5" dy="0.71em" stroke="none">1</text>
+    </g>
+    <g>
+      <line x1="118.66666666666667" x2="118.66666666666667" y1="273" y2="268" stroke="#999"></line>
+      <text x="118.66666666666667" y="275.5" dy="0.71em" stroke="none">2</text>
+    </g>
+    <g>
+      <line x1="209.33333333333334" x2="209.33333333333334" y1="273" y2="268" stroke="#999"></line>
+      <text x="209.33333333333334" y="275.5" dy="0.71em" stroke="none">3</text>
+    </g>
+    <g>
+      <line x1="300" x2="300" y1="273" y2="268" stroke="#999"></line>
+      <text x="300" y="275.5" dy="0.71em" stroke="none">4</text>
+    </g>
+    <g>
+      <line x1="390.6666666666667" x2="390.6666666666667" y1="273" y2="268" stroke="#999"></line>
+      <text x="390.6666666666667" y="275.5" dy="0.71em" stroke="none">5</text>
+    </g>
+    <g>
+      <line x1="481.33333333333337" x2="481.33333333333337" y1="273" y2="268" stroke="#999"></line>
+      <text x="481.33333333333337" y="275.5" dy="0.71em" stroke="none">6</text>
+    </g>
+    <g>
+      <line x1="572" x2="572" y1="273" y2="268" stroke="#999"></line>
+      <text x="572" y="275.5" dy="0.71em" stroke="none">7</text>
+    </g>
+  </g>
+  <line x1="28" y1="268" x2="28" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="118.66666666666667" y1="268" x2="118.66666666666667" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="209.33333333333334" y1="268" x2="209.33333333333334" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="300" y1="268" x2="300" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="390.6666666666667" y1="268" x2="390.6666666666667" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="481.33333333333337" y1="268" x2="481.33333333333337" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+  <line x1="572" y1="268" x2="572" y2="8" style="opacity: 0.3; stroke-dasharray: 3;"></line>
+</g>
+`;
+
+exports[`Props :prop 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M28,268L118.66666666666667,257.1272727272727L209.33333333333334,8L300,182.08181818181816L390.6666666666667,155.72727272727275L481.33333333333337,185.27272727272728L572,170.5" style="stroke-dasharray: none;"></path>
+    </g>
+    <g stroke="#999">
+      <line x2="572" y2="268" x1="28" y1="268"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="28" x2="28" y1="273" y2="268" stroke="#999"></line>
+          <text x="28" y="275.5" dy="0.71em" stroke="none">Page A</text>
+        </g>
+        <g>
+          <line x1="118.66666666666667" x2="118.66666666666667" y1="273" y2="268" stroke="#999"></line>
+          <text x="118.66666666666667" y="275.5" dy="0.71em" stroke="none">Page B</text>
+        </g>
+        <g>
+          <line x1="209.33333333333334" x2="209.33333333333334" y1="273" y2="268" stroke="#999"></line>
+          <text x="209.33333333333334" y="275.5" dy="0.71em" stroke="none">Page C</text>
+        </g>
+        <g>
+          <line x1="300" x2="300" y1="273" y2="268" stroke="#999"></line>
+          <text x="300" y="275.5" dy="0.71em" stroke="none">Page D</text>
+        </g>
+        <g>
+          <line x1="390.6666666666667" x2="390.6666666666667" y1="273" y2="268" stroke="#999"></line>
+          <text x="390.6666666666667" y="275.5" dy="0.71em" stroke="none">Page E</text>
+        </g>
+        <g>
+          <line x1="481.33333333333337" x2="481.33333333333337" y1="273" y2="268" stroke="#999"></line>
+          <text x="481.33333333333337" y="275.5" dy="0.71em" stroke="none">Page F</text>
+        </g>
+        <g>
+          <line x1="572" x2="572" y1="273" y2="268" stroke="#999"></line>
+          <text x="572" y="275.5" dy="0.71em" stroke="none">Page G</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`Props :tickSize 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M28,268L118.66666666666667,257.1272727272727L209.33333333333334,8L300,182.08181818181816L390.6666666666667,155.72727272727275L481.33333333333337,185.27272727272728L572,170.5" style="stroke-dasharray: none;"></path>
+    </g>
+    <g stroke="#999">
+      <line x2="572" y2="268" x1="28" y1="268"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="28" x2="28" y1="269" y2="268" stroke="#999"></line>
+          <text x="28" y="269.5" dy="0.71em" stroke="none">1</text>
+        </g>
+        <g>
+          <line x1="118.66666666666667" x2="118.66666666666667" y1="269" y2="268" stroke="#999"></line>
+          <text x="118.66666666666667" y="269.5" dy="0.71em" stroke="none">2</text>
+        </g>
+        <g>
+          <line x1="209.33333333333334" x2="209.33333333333334" y1="269" y2="268" stroke="#999"></line>
+          <text x="209.33333333333334" y="269.5" dy="0.71em" stroke="none">3</text>
+        </g>
+        <g>
+          <line x1="300" x2="300" y1="269" y2="268" stroke="#999"></line>
+          <text x="300" y="269.5" dy="0.71em" stroke="none">4</text>
+        </g>
+        <g>
+          <line x1="390.6666666666667" x2="390.6666666666667" y1="269" y2="268" stroke="#999"></line>
+          <text x="390.6666666666667" y="269.5" dy="0.71em" stroke="none">5</text>
+        </g>
+        <g>
+          <line x1="481.33333333333337" x2="481.33333333333337" y1="269" y2="268" stroke="#999"></line>
+          <text x="481.33333333333337" y="269.5" dy="0.71em" stroke="none">6</text>
+        </g>
+        <g>
+          <line x1="572" x2="572" y1="269" y2="268" stroke="#999"></line>
+          <text x="572" y="269.5" dy="0.71em" stroke="none">7</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;

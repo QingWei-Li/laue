@@ -209,7 +209,7 @@ Draw a range.
 | label     | Label.                                                    | -        | `String`           | -                        |
 | low       | Y axis low value.                                         | -        | `Number`           | -                        |
 | high      | Y axis low value.                                         | -        | `Number`           | -                        |
-| fill      | Fill color.                                               | -        | `String`           | `textColor` of cartesian |
+| fillColor      | Fill color.                                               | -        | `String`           | `textColor` of cartesian |
 | placement | The position of the label, such as `end` `center` `start` | -        | `String`           | end                      |
 
 # Widgets

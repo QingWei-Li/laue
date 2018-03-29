@@ -1,18 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Mixing Stacked areas 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <defs>
+        <linearGradient id="la-area-10-0">
+          <stop stop-color="#3fb1e3" stop-opacity="0.5"></stop>
+        </linearGradient>
+      </defs>
+      <g>
+        <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,282.32296296296295L202.66666666666666,60.59259259259258L300,215.53037037037035L397.3333333333333,192.07407407407408L494.66666666666663,218.37037037037038L592,205.22222222222223"
+          style="stroke-dasharray: none;"></path>
+        <path d="M8,292L105.33333333333333,282.32296296296295L202.66666666666666,60.59259259259258L300,215.53037037037035L397.3333333333333,192.07407407407408L494.66666666666663,218.37037037037038L592,205.22222222222223L592,292L494.66666666666663,292L397.3333333333333,292L300,292L202.66666666666666,292L105.33333333333333,292L8,292Z"
+          fill="url(#la-area-10-0)"></path>
+      </g>
+    </g>
+    <g>
+      <defs>
+        <linearGradient id="la-area-12-1">
+          <stop stop-color="#6be6c1" stop-opacity="0.5"></stop>
+        </linearGradient>
+      </defs>
+      <g>
+        <path stroke="#6be6c1" fill="none" stroke-width="1" d="M8,186.8148148148148L105.33333333333333,203.4340740740741L202.66666666666666,8L300,142.42666666666668L397.3333333333333,142.37407407407406L494.66666666666663,155.5222222222222L592,113.44814814814814"
+          style="stroke-dasharray: none;"></path>
+        <path d="M8,186.8148148148148L105.33333333333333,203.4340740740741L202.66666666666666,8L300,142.42666666666668L397.3333333333333,142.37407407407406L494.66666666666663,155.5222222222222L592,113.44814814814814L592,205.22222222222223L494.66666666666663,218.37037037037038L397.3333333333333,192.07407407407408L300,215.53037037037035L202.66666666666666,60.59259259259258L105.33333333333333,282.32296296296295L8,292Z"
+          fill="url(#la-area-12-1)"></path>
+      </g>
+    </g>
+    <g>
+      <defs>
+        <linearGradient id="la-area-14-2">
+          <stop stop-color="#626c91" stop-opacity="0.5"></stop>
+        </linearGradient>
+      </defs>
+      <g>
+        <path stroke="#626c91" fill="none" stroke-width="1" style="stroke-dasharray: none;"></path>
+        <path fill="url(#la-area-14-2)"></path>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
 exports[`Props :prop - render correctly 1`] = `
 <div style="position: relative; width: 600px;">
   <svg width="600" height="300" viewBox="0 0 600 300">
     <g>
       <defs>
-        <linearGradient id="la-area-0">
+        <linearGradient id="la-area-2-0">
           <stop stop-color="#3fb1e3" stop-opacity="0.5"></stop>
         </linearGradient>
       </defs>
       <g>
         <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5" style="stroke-dasharray: none;"></path>
         <path d="M8,292L105.33333333333333,280.12363636363636L202.66666666666666,8L300,198.1509090909091L397.3333333333333,169.36363636363637L494.66666666666663,201.63636363636363L592,185.5L592,292L494.66666666666663,292L397.3333333333333,292L300,292L202.66666666666666,292L105.33333333333333,292L8,292Z"
-          fill="url(#la-area-0)"></path>
+          fill="url(#la-area-2-0)"></path>
       </g>
     </g>
   </svg>

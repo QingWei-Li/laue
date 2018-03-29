@@ -217,10 +217,6 @@ export default {
     const {viewWidth, height, autoresize} = this
     const slots = this.$slots.default || []
 
-    if (!this.data.length) {
-      return
-    }
-
     /**
      * Reset snap
      */
