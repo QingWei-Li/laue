@@ -1,5 +1,5 @@
 import {cartesianMount, sleep} from './util'
-import {Line, Cartesian, Tooltip} from '../src'
+import {Line, Tooltip} from '../src'
 
 it('render tooltip', () => {
   const wrapper = cartesianMount(h => [
