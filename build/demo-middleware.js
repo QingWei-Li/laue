@@ -1,8 +1,6 @@
-/**
- * @todo support hot reload
- */
 const {resolve} = require('path')
-const RE = /`{3,}html\s\(vue\)([^`]+)`{3,}/g
+const {readFileSync} = require('fs')
+const RE = /\[\S+\]\((\S+\.vue)\)/g
 
 module.exports = function (src) {
   const matchs = []
@@ -12,16 +10,16 @@ module.exports = function (src) {
   while ((cap = RE.exec(src))) {
     result = result.replace(cap[0], () => {
       const tag = `DEMO-${matchs.length}`
-      const start = src.indexOf(cap[1], 1)
+      const filename = resolve(this.resourcePath, '..', cap[1])
+      const content = readFileSync(filename).toString()
 
       matchs.push({
         tag,
-        start,
-        end: cap[1].length + start
+        filename
       })
 
       // Add live editor?
-      return `<div class="demo"><${tag}></${tag}></div>\n\n${cap[0]}`
+      return `<div class="demo"><${tag}></${tag}></div>\n\n\`\`\`html\n${content}\n\`\`\``
     })
   }
 
@@ -30,13 +28,7 @@ module.exports = function (src) {
   if (matchs.length) {
     script = `components: {
       ${matchs
-    .map(
-      m =>
-        `'${m.tag}': require('!!vue-loader!${resolve(
-          __dirname,
-          'part-loader.js'
-        )}?start=${m.start}&end=${m.end}!${this.resourcePath}').default`
-    )
+    .map(m => `'${m.tag}': require('${m.filename}').default`)
     .join(',\n')}
     },`
   }

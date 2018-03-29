@@ -117,28 +117,7 @@ export default {
 
 You can check [/examples](/examples) for more examples.
 
-```html (vue)
-<template>
-  <la-artboard :width="300" :height="150" :data="values">
-    <la-line prop="pv"></la-line>
-    <la-y-axis></la-y-axis>
-    <la-x-axis prop="name"></la-x-axis>
-    <la-tooltip></la-tooltip>
-  </la-artboard>
-</template>
-
-<script>
-export default {
-  data: () => ({
-    values: [
-      { name: 'Page A', pv: 2000 },
-      { name: 'Page B', pv: 3000 },
-      { name: 'Page C', pv: 1200 }
-    ]
-  })
-}
-</script>
-```
+[quick-started.vue](../_examples/quick-started.vue)
 
 # Development
 
