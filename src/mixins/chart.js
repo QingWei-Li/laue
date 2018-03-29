@@ -5,8 +5,6 @@ import {isArr, isNil} from '../utils/core'
 export default {
   mixins: [values, animate],
 
-  type: 'chart',
-
   props: {
     points: Array,
 
@@ -23,7 +21,7 @@ export default {
     },
 
     curColor() {
-      return this.color || this.Cartesian.genColor(this.id)
+      return this.color || this.Plane.genColor(this.id)
     },
 
     actived() {

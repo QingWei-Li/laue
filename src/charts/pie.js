@@ -1,4 +1,4 @@
-import chart from '../mixins/chart'
+import polar from '../mixins/polar'
 import pie from 'd3-shape/src/pie'
 import arc from 'd3-shape/src/arc'
 import {noop, isArr} from '../utils/core'
@@ -7,7 +7,7 @@ import Circle from '../motions/circle'
 export default {
   name: 'LaPie',
 
-  mixins: [chart],
+  mixins: [polar],
 
   props: {
     translate: {
@@ -90,9 +90,9 @@ export default {
     },
 
     labels() {
-      const {labelProp, Cartesian} = this
+      const {labelProp, Plane} = this
 
-      return labelProp ? Cartesian.data.map(o => o[labelProp]) : null
+      return labelProp ? Plane.data.map(o => o[labelProp]) : null
     },
 
     labelSlot() {
@@ -122,7 +122,7 @@ export default {
   },
 
   render(h) {
-    const {genColor} = this.Cartesian
+    const {genColor} = this.Plane
     const {animated, arcs, draw} = this
     const paths = arcs.map(draw).map((d, i) => {
       return h('path', {

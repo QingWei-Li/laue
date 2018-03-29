@@ -1,5 +1,5 @@
 import {cartesianMount, DATA} from './util'
-import {Line, Cartesian} from '../src'
+import {Line} from '../src'
 import {curveBasis} from 'd3-shape'
 
 describe('Props', () => {
@@ -26,9 +26,7 @@ describe('Props', () => {
   it(':color - default', () => {
     const wrapper = cartesianMount(h => [h(Line)])
 
-    expect(wrapper.find('path').attributes().stroke).toBe(
-      Cartesian.props.colors.default()[0]
-    )
+    expect(wrapper.find('path').attributes().stroke).toBe('#3fb1e3')
   })
 
   it(':color - custom color', () => {

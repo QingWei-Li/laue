@@ -30,7 +30,7 @@ export default {
 
   computed: {
     point() {
-      const {yRatio, low, canvas} = this.Cartesian
+      const {yRatio, low, canvas} = this.Plane
       const {x0, y1, width} = canvas
 
       return {

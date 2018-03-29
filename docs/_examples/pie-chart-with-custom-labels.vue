@@ -1,7 +1,7 @@
 <template>
-  <la-cartesian :data="values">
+  <la-polar :data="values">
     <la-pie show-label label-prop="name" prop="pv"></la-pie>
-  </la-cartesian>
+  </la-polar>
 </template>
 
 <script>

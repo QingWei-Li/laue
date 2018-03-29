@@ -84,6 +84,8 @@ When you use the bar chart, it's best to configure the `narrow` for cartesian so
 
 ## Pie
 
+* Parent: [Polar](#polar)
+
 # Objects
 
 ## Cartesian
@@ -107,6 +109,28 @@ A cartesian plane.
 | textColor  | Axis and text color.                                                                                                              | true     | `String`                            | #999                                                                              |
 
 ### Cartesian - Slots
+
+| Name    | Description             | Type           | Props |
+| ------- | ----------------------- | -------------- | ----- |
+| default | charts or SVG elements. | [slots][slots] | -     |
+
+## Polar
+
+A polar coordinates.
+
+### Polar - Props
+
+| Name       | Description                                             | Required | Type            | Default                                                                           |
+| ---------- | ------------------------------------------------------- | -------- | --------------- | --------------------------------------------------------------------------------- |
+| data       | An array of objects.                                    | true     | `Array<Object>` | -                                                                                 |
+| height     | The height of SVG.                                      | -        | `Number`        | 300                                                                               |
+| width      | The width of SVG.                                       | -        | `Number`        | 600                                                                               |
+| autoresize | Automatically changes the width when the window resize. | -        | `Boolean`       | false                                                                             |
+| stacked    | Stacking charts.                                        | -        | `Boolean`       | false                                                                             |
+| colors     | Chart color from colors.                                | true     | `Array<String>` | ['#3fb1e3',<br>'#6be6c1',<br>'#626c91',<br>'#a0a7e6',<br>'#c4ebad',<br>'#96dee8'] |
+| textColor  | Text color.                                             | true     | `String`        | #999                                                                              |
+
+### Polar - Slots
 
 | Name    | Description             | Type           | Props |
 | ------- | ----------------------- | -------------- | ----- |
@@ -209,7 +233,7 @@ Draw a range.
 | label     | Label.                                                    | -        | `String`           | -                        |
 | low       | Y axis low value.                                         | -        | `Number`           | -                        |
 | high      | Y axis low value.                                         | -        | `Number`           | -                        |
-| fillColor      | Fill color.                                               | -        | `String`           | `textColor` of cartesian |
+| fillColor | Fill color.                                               | -        | `String`           | `textColor` of cartesian |
 | placement | The position of the label, such as `end` `center` `start` | -        | `String`           | end                      |
 
 # Widgets

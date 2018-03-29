@@ -1,9 +1,9 @@
 export default {
-  inject: ['Cartesian'],
+  inject: ['Plane'],
 
   computed: {
     store() {
-      return this.Cartesian.store
+      return this.Plane.store
     }
   }
 }

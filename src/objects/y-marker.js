@@ -19,7 +19,7 @@ export default {
 
   computed: {
     point() {
-      const {yRatio, low, canvas} = this.Cartesian
+      const {yRatio, low, canvas} = this.Plane
       const {x0, y1, x1} = canvas
       const y = y1 - (this.value - low) * yRatio
 

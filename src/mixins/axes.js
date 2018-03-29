@@ -34,7 +34,7 @@ export default {
 
     labels() {
       let raws = this.raws
-      const board = this.Cartesian
+      const board = this.Plane
       const length = board.len
 
       if (this.isX) {
@@ -47,11 +47,11 @@ export default {
     },
 
     gap() {
-      return this.isX ? this.Cartesian.gap : 0
+      return this.isX ? this.Plane.gap : 0
     },
 
     points() {
-      const {Cartesian: board, isX, labels, inverse, gap} = this
+      const {Plane: board, isX, labels, inverse, gap} = this
       const {x0, y0, y1, width, height} = board.canvas
       let points
 
@@ -81,7 +81,7 @@ export default {
     },
 
     curColor() {
-      return this.color || this.Cartesian.textColor
+      return this.color || this.Plane.textColor
     }
   },
 
@@ -104,7 +104,7 @@ export default {
       format,
       inverse,
       gap,
-      Cartesian: board,
+      Plane: board,
       store
     } = this
     const first = points[0]

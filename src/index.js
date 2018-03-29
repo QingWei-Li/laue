@@ -1,4 +1,5 @@
 import Cartesian from './objects/cartesian'
+import Polar from './objects/polar'
 import Line from './charts/line'
 import Area from './charts/area'
 import Bar from './charts/bar'
@@ -15,6 +16,7 @@ import Legend from './widgets/legend'
 export function Laue(Vue) {
   [
     Cartesian,
+    Polar,
     Line,
     Area,
     Bar,
@@ -34,6 +36,7 @@ export function Laue(Vue) {
 
 export {
   Cartesian,
+  Polar,
   Line,
   Area,
   Bar,

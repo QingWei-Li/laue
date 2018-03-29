@@ -11,7 +11,7 @@ export default {
 
   computed: {
     curColor() {
-      return this.color || this.Cartesian.textColor
+      return this.color || this.Plane.textColor
     }
   }
 }

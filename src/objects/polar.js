@@ -1,14 +1,10 @@
 import plane from '../mixins/plane'
 
 export default {
-  name: 'LaCartesian',
+  name: 'LaPolar',
 
   mixins: [plane],
 
-  /**
-   * @todo Need to optimize. The Props changes will call update even if it does not need.
-   * https://github.com/vuejs/vue/issues/5727
-   */
   render(h) {
     const {viewWidth, height, autoresize} = this
     const slots = this.$slots.default || []
@@ -19,8 +15,7 @@ export default {
     this.snap = {}
 
     const props = []
-    const cartesians = []
-    const objects = []
+    const polars = []
     const widgets = []
     const others = []
 
@@ -38,25 +33,18 @@ export default {
       const {prop} = propsData
 
       switch (sealed.type) {
-        case 'cartesian':
+        case 'polar':
           if (prop && props.indexOf(prop) < 0) {
             props.push(prop)
           }
-          slot.index = cartesians.length
-          cartesians.push(slot)
-          break
-        case 'object':
-          this.addSpace(sealed.space)
-          objects.push(slot)
+          slot.index = polars.length
+          polars.push(slot)
           break
         case 'widget':
           widgets.push(slot)
           break
         default:
           break
-      }
-      if (sealed.preload) {
-        sealed.preload({data: propsData, parent: this, index: slot.index})
       }
     })
 
@@ -80,7 +68,7 @@ export default {
               viewBox: `0 0 ${viewWidth} ${height}`
             }
           },
-          [others, cartesians, objects]
+          [others, polars]
         ),
         widgets
       ]

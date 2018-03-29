@@ -14,7 +14,7 @@
     "dev": "run-p watch:*",
     "build": "run-p build:*",
     "pub": "sh build/release.sh",
-    "dev:test": "jest --watch -u",
+    "dev:test": "jest --watch",
     "test": "jest --coverage",
     "deploy:docs":
       "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git",

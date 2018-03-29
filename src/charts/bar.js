@@ -1,4 +1,4 @@
-import linear from '../mixins/linear'
+import cartesian from '../mixins/cartesian'
 import Trans from '../motions/trans'
 
 const DEFAULT_WIDTH = 20
@@ -6,7 +6,7 @@ const DEFAULT_WIDTH = 20
 export default {
   name: 'LaBar',
 
-  mixins: [linear],
+  mixins: [cartesian],
 
   props: {
     width: {
@@ -28,7 +28,7 @@ export default {
   computed: {
     margin() {
       const {id, width} = this
-      const {snap, distance, stacked} = this.Cartesian
+      const {snap, distance, stacked} = this.Plane
       const index = snap.barMap.indexOf(id)
 
       return stacked ?
@@ -107,7 +107,7 @@ export default {
             props: {
               from: {
                 height: 0,
-                y: this.Cartesian.canvas.y1
+                y: this.Plane.canvas.y1
               },
               trans
             }

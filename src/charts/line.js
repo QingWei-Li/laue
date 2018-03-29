@@ -1,4 +1,4 @@
-import linear from '../mixins/linear'
+import cartesian from '../mixins/cartesian'
 import line from 'd3-shape/src/line'
 import cardinal from 'd3-shape/src/curve/cardinal'
 import {int} from '../utils/math'
@@ -9,7 +9,7 @@ import dashed from '../mixins/dashed'
 export default {
   name: 'LaLine',
 
-  mixins: [linear, dashed],
+  mixins: [cartesian, dashed],
 
   props: {
     curve: [Boolean, Function],

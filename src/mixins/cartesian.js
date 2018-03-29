@@ -4,13 +4,15 @@ import {isNil} from '../utils/core'
 export default {
   mixins: [chart],
 
+  type: 'cartesian',
+
   computed: {
     curPoints() {
       if (this.points) {
         return this.points
       }
 
-      const {gap, xRatio, yRatio, low, canvas} = this.Cartesian
+      const {gap, xRatio, yRatio, low, canvas} = this.Plane
       const {x0, y1} = canvas
 
       return this.values.map((value, i) => {

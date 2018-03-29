@@ -1,7 +1,7 @@
 <template>
-  <la-cartesian :data="values">
+  <la-polar :data="values">
     <la-pie prop="pv" :angles="[-Math.PI / 2, Math.PI / 2]" :radius="[50, 100]"></la-pie>
-  </la-cartesian>
+  </la-polar>
 </template>
 
 <script>

@@ -9,15 +9,15 @@ export default {
 
   computed: {
     raws() {
-      const {prop, Cartesian} = this
+      const {prop, Plane} = this
 
-      return prop ? Cartesian.data.map(o => o[prop]) : null
+      return prop ? Plane.data.map(o => o[prop]) : null
     },
 
     values() {
-      const {prop, Cartesian} = this
+      const {prop, Plane} = this
 
-      return Cartesian.curData.filter(arr => arr.key === prop)[0] || []
+      return Plane.curData.filter(arr => arr.key === prop)[0] || []
     }
   }
 }
