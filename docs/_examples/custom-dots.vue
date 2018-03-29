@@ -1,5 +1,5 @@
 <template>
-  <la-artboard narrow :bound="[0, n => n + 1000]" :data="values">
+  <la-cartesian narrow :bound="[0, n => n + 1000]" :data="values">
     <la-line prop="pv">
       <g
         slot-scope="props"
@@ -21,7 +21,7 @@
     </la-line>
     <la-x-axis prop="name"></la-x-axis>
     <la-y-axis></la-y-axis>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

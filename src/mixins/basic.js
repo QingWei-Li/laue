@@ -1,9 +1,9 @@
 export default {
-  inject: ['Artboard'],
+  inject: ['Cartesian'],
 
   computed: {
     store() {
-      return this.Artboard.store
+      return this.Cartesian.store
     }
   }
 }

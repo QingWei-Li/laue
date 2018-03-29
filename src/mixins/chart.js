@@ -23,7 +23,7 @@ export default {
     },
 
     curColor() {
-      return this.color || this.Artboard.genColor(this.id)
+      return this.color || this.Cartesian.genColor(this.id)
     },
 
     actived() {

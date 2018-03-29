@@ -1,12 +1,12 @@
 <template>
-  <la-artboard :bound="[0, n => n + 1000]" :data="values">
+  <la-cartesian :bound="[0, n => n + 1000]" :data="values">
     <la-line dot curve prop="pv"></la-line>
     <la-line dot curve prop="uv"></la-line>
     <la-line dot curve prop="amt"></la-line>
     <la-x-axis prop="name"></la-x-axis>
     <la-y-axis></la-y-axis>
     <la-tooltip></la-tooltip>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

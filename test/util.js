@@ -1,5 +1,5 @@
 import {mount} from '@vue/test-utils'
-import {Artboard} from '../src'
+import {Cartesian} from '../src'
 
 export async function sleep(ms = 1000) {
   return new Promise(r => setTimeout(r, ms))
@@ -17,7 +17,7 @@ export const DATA = [
   {name: 'Page G', uv: 3490, pv: 4300, amt: 2100}
 ]
 
-export function artboardMount(
+export function cartesianMount(
   slots = noop,
   props = {
     props: {
@@ -27,7 +27,7 @@ export function artboardMount(
 ) {
   return mount({
     render(h) {
-      return h(Artboard, props, slots(h))
+      return h(Cartesian, props, slots(h))
     }
   })
 }

@@ -1,12 +1,12 @@
 <template>
-  <la-artboard narrow stacked :bound="[0]" :data="values">
+  <la-cartesian narrow stacked :bound="[0]" :data="values">
     <la-bar prop="pv"></la-bar>
     <la-bar prop="uv"></la-bar>
     <la-bar prop="amt"></la-bar>
     <la-x-axis prop="name"></la-x-axis>
     <la-y-axis></la-y-axis>
     <la-tooltip></la-tooltip>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

@@ -10,7 +10,7 @@ export default {
         return this.points
       }
 
-      const {gap, xRatio, yRatio, low, canvas} = this.Artboard
+      const {gap, xRatio, yRatio, low, canvas} = this.Cartesian
       const {x0, y1} = canvas
 
       return this.values.map((value, i) => {

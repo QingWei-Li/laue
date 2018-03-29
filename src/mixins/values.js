@@ -9,15 +9,15 @@ export default {
 
   computed: {
     raws() {
-      const {prop, Artboard} = this
+      const {prop, Cartesian} = this
 
-      return prop ? Artboard.data.map(o => o[prop]) : null
+      return prop ? Cartesian.data.map(o => o[prop]) : null
     },
 
     values() {
-      const {prop, Artboard} = this
+      const {prop, Cartesian} = this
 
-      return Artboard.curData.filter(arr => arr.key === prop)[0] || []
+      return Cartesian.curData.filter(arr => arr.key === prop)[0] || []
     }
   }
 }

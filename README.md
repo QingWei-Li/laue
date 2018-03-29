@@ -29,9 +29,9 @@ import { Laue } from 'laue';
 Vue.use(Laue);
 
 // On demand
-import { Artboard, Line } from 'laue';
+import { Cartesian, Line } from 'laue';
 
-Vue.component(Artboard.name, Artboard);
+Vue.component(Cartesian.name, Cartesian);
 Vue.component(Line.name, Line);
 ```
 

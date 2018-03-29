@@ -1,10 +1,10 @@
-import {artboardMount, DATA} from './util'
-import {Line, Artboard} from '../src'
+import {cartesianMount, DATA} from './util'
+import {Line, Cartesian} from '../src'
 import {curveBasis} from 'd3-shape'
 
 describe('Props', () => {
   it(':prop - render correctly', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           prop: 'pv'
@@ -17,22 +17,22 @@ describe('Props', () => {
   })
 
   it(':prop - empty data', () => {
-    const wrapper = artboardMount(h => [h(Line)])
+    const wrapper = cartesianMount(h => [h(Line)])
 
     expect(wrapper.find('path').attributes().d).toBeUndefined()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it(':color - default', () => {
-    const wrapper = artboardMount(h => [h(Line)])
+    const wrapper = cartesianMount(h => [h(Line)])
 
     expect(wrapper.find('path').attributes().stroke).toBe(
-      Artboard.props.colors.default()[0]
+      Cartesian.props.colors.default()[0]
     )
   })
 
   it(':color - custom color', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           color: 'red'
@@ -44,7 +44,7 @@ describe('Props', () => {
   })
 
   it(':width', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           width: 30
@@ -56,7 +56,7 @@ describe('Props', () => {
   })
 
   it(':dot', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           dot: true,
@@ -70,7 +70,7 @@ describe('Props', () => {
   })
 
   it(':dashed - bool type', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           dashed: true
@@ -82,7 +82,7 @@ describe('Props', () => {
   })
 
   it(':dashed - string type', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           dashed: '3 4'
@@ -94,7 +94,7 @@ describe('Props', () => {
   })
 
   it(':hideLine', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           hideLine: true,
@@ -107,7 +107,7 @@ describe('Props', () => {
   })
 
   it(':hideLine - hide the line but render dots', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           hideLine: true,
@@ -121,7 +121,7 @@ describe('Props', () => {
   })
 
   it(':curve - smoosh line', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           curve: true,
@@ -134,7 +134,7 @@ describe('Props', () => {
   })
 
   it(':curve - custom function', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           curve: curveBasis,
@@ -147,7 +147,7 @@ describe('Props', () => {
   })
 
   it(':continued - false', () => {
-    const wrapper = artboardMount(
+    const wrapper = cartesianMount(
       h => [
         h(Line, {
           props: {
@@ -169,7 +169,7 @@ describe('Props', () => {
   })
 
   it(':continued - true', () => {
-    const wrapper = artboardMount(
+    const wrapper = cartesianMount(
       h => [
         h(Line, {
           props: {
@@ -189,7 +189,7 @@ describe('Props', () => {
   })
 
   it(':showValue', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           showValue: true,
@@ -205,7 +205,7 @@ describe('Props', () => {
 
 describe('Slots', () => {
   it('default(scoped slot)', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           prop: 'pv'
@@ -230,7 +230,7 @@ describe('Slots', () => {
 
 describe('Mixing', () => {
   it('Multiple lines', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Line, {
         props: {
           prop: 'pv'

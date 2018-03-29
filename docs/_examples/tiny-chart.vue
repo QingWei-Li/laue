@@ -1,10 +1,10 @@
 <template>
   <div>
-    <la-artboard :width="300" :height="75" :data="values">
+    <la-cartesian :width="300" :height="75" :data="values">
       <la-line animated v-if="show === 'line'" prop="value"></la-line>
       <la-area animated v-else-if="show === 'area'" prop="value"></la-area>
       <la-bar animated v-else prop="value"></la-bar>
-    </la-artboard>
+    </la-cartesian>
 
     <label>Choose type:</label>
     <button @click="show = 'line'">line</button>

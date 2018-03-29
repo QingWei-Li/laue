@@ -1,9 +1,9 @@
 <template>
-  <la-artboard autoresize :bound="[0]" :data="values">
+  <la-cartesian autoresize :bound="[0]" :data="values">
     <la-area curve prop="pv"></la-area>
     <la-x-axis prop="name"></la-x-axis>
     <la-y-axis></la-y-axis>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

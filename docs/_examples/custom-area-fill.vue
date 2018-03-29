@@ -1,5 +1,5 @@
 <template>
-  <la-artboard :bound="[0]" :data="values">
+  <la-cartesian :bound="[0]" :data="values">
     <defs>
       <linearGradient id="area-fill" x1="0" y1="0" x2="0" y2="1">
         <stop stop-color="#0076b1" offset="0%" stop-opacity="0.4"></stop>
@@ -10,7 +10,7 @@
     <la-area fill-color="url(#area-fill)" dot curve prop="pv"></la-area>
     <la-x-axis prop="name"></la-x-axis>
     <la-y-axis></la-y-axis>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

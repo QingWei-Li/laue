@@ -1,9 +1,9 @@
-import {artboardMount} from './util'
+import {cartesianMount} from './util'
 import {Area} from '../src'
 
 describe('Props', () => {
   it(':prop - render correctly', () => {
-    const wrapper = artboardMount(h => [
+    const wrapper = cartesianMount(h => [
       h(Area, {
         props: {
           prop: 'pv'

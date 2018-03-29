@@ -22,7 +22,7 @@ export default {
 
   methods: {
     handleMove({x, y}) {
-      const board = this.Artboard
+      const board = this.Cartesian
       const boardRect = board.$el.getBoundingClientRect()
       const rect = this.$el.getBoundingClientRect()
       const relY = y - boardRect.y
@@ -55,12 +55,12 @@ export default {
 
   computed: {
     offsetX() {
-      const board = this.Artboard
+      const board = this.Cartesian
       return board.canvas.x0 + board.gap
     }
   },
   mounted() {
-    const board = this.Artboard
+    const board = this.Cartesian
     const el = board.$el
 
     el.addEventListener('mousemove', debounce(this.handleMove, 10))

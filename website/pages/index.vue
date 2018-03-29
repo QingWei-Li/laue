@@ -16,9 +16,9 @@
     </div>
 
     <div class="chart">
-      <la-artboard class="area" :padding="0" v-show="!$isServer" :height="300" autoresize :bound="[0, 20]" :data="values">
+      <la-cartesian class="area" :padding="0" v-show="!$isServer" :height="300" autoresize :bound="[0, 20]" :data="values">
         <la-area :width="2" curve prop="value"></la-area>
-      </la-artboard>
+      </la-cartesian>
     </div>
   </div>
 </template>

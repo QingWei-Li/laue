@@ -1,5 +1,5 @@
 <template>
-  <la-artboard narrow :bound="[0]" :data="values">
+  <la-cartesian narrow :bound="[0]" :data="values">
     <la-bar label="pv" prop="pv"></la-bar>
     <la-line label="uv" prop="uv"></la-line>
     <la-area label="amt" prop="amt"></la-area>
@@ -9,7 +9,7 @@
     <la-tooltip></la-tooltip>
     <la-legend selectable></la-legend>
     <la-y-marker dashed :value="4000" label="marker"></la-y-marker>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

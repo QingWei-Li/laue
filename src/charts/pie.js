@@ -70,7 +70,7 @@ export default {
   },
 
   render(h) {
-    const {genColor} = this.Artboard
+    const {genColor} = this.Cartesian
     const {animated, arcs, draw} = this
     const paths = arcs.map(draw).map((d, i) => {
       return h('path', {

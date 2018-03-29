@@ -28,7 +28,7 @@ export default {
   computed: {
     margin() {
       const {id, width} = this
-      const {snap, distance, stacked} = this.Artboard
+      const {snap, distance, stacked} = this.Cartesian
       const index = snap.barMap.indexOf(id)
 
       return stacked ?
@@ -107,7 +107,7 @@ export default {
             props: {
               from: {
                 height: 0,
-                y: this.Artboard.canvas.y1
+                y: this.Cartesian.canvas.y1
               },
               trans
             }

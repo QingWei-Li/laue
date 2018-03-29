@@ -1,10 +1,10 @@
 <template>
-  <la-artboard :bound="[n => n - 10, n => n + 10]" :data="values">
+  <la-cartesian :bound="[n => n - 10, n => n + 10]" :data="values">
     <la-line :width="2" dashed dot animated curve prop="value"></la-line>
 
     <la-x-axis></la-x-axis>
     <la-y-axis></la-y-axis>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>

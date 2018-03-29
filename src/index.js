@@ -1,4 +1,4 @@
-import Artboard from './objects/artboard'
+import Cartesian from './objects/cartesian'
 import Line from './charts/line'
 import Area from './charts/area'
 import Bar from './charts/bar'
@@ -14,7 +14,7 @@ import Legend from './widgets/legend'
 
 export function Laue(Vue) {
   [
-    Artboard,
+    Cartesian,
     Line,
     Area,
     Bar,
@@ -33,7 +33,7 @@ export function Laue(Vue) {
 }
 
 export {
-  Artboard,
+  Cartesian,
   Line,
   Area,
   Bar,

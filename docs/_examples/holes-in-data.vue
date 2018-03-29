@@ -1,10 +1,10 @@
 <template>
   <div>
-    <la-artboard :data="values">
+    <la-cartesian :data="values">
       <la-area :continued="continued" dot curve prop="pv"></la-area>
       <la-x-axis></la-x-axis>
       <la-y-axis></la-y-axis>
-    </la-artboard>
+    </la-cartesian>
 
     <button @click="continued = !continued">Toggle continued</button>
   </div>

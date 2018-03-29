@@ -4,7 +4,7 @@ import stackOffsetDiverging from 'd3-shape/src/offset/diverging'
 import {bound} from '../utils/math'
 
 export default {
-  name: 'LaArtboard',
+  name: 'LaCartesian',
 
   props: {
     data: {
@@ -149,7 +149,7 @@ export default {
 
   provide() {
     return {
-      Artboard: this
+      Cartesian: this
     }
   },
 

@@ -1,10 +1,10 @@
-import {Artboard} from '../src'
+import {Cartesian} from '../src'
 import {mount} from '@vue/test-utils'
 import {sleep} from './util'
 
 describe('Props', () => {
   it(':height - should render correctly', () => {
-    const wrapper = mount(Artboard, {
+    const wrapper = mount(Cartesian, {
       propsData: {
         height: 400
       }
@@ -15,7 +15,7 @@ describe('Props', () => {
   })
 
   it(':width - should render correctly', () => {
-    const wrapper = mount(Artboard, {
+    const wrapper = mount(Cartesian, {
       propsData: {
         width: 500
       }
@@ -26,7 +26,7 @@ describe('Props', () => {
   })
 
   it(':autoresize', async function () {
-    const wrapper = mount(Artboard, {
+    const wrapper = mount(Cartesian, {
       propsData: {
         autoresize: true
       }
@@ -38,7 +38,7 @@ describe('Props', () => {
   })
 
   it(':padding - number type', () => {
-    const wrapper = mount(Artboard, {
+    const wrapper = mount(Cartesian, {
       propsData: {
         padding: 20,
         width: 500,
@@ -57,7 +57,7 @@ describe('Props', () => {
   })
 
   it(':padding - array type', () => {
-    const wrapper = mount(Artboard, {
+    const wrapper = mount(Cartesian, {
       propsData: {
         padding: [10, 20, 30, 40],
         width: 500,
@@ -76,7 +76,7 @@ describe('Props', () => {
   })
 
   it('matches snapshot', () => {
-    const wrapper = mount(Artboard)
+    const wrapper = mount(Cartesian)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

@@ -1,5 +1,5 @@
 <template>
-  <la-artboard :data="values">
+  <la-cartesian :data="values">
     <la-line dot label="pv" prop="pv"></la-line>
     <la-line dot label="amt" prop="amt"></la-line>
     <la-line dot label="uv" prop="uv"></la-line>
@@ -19,7 +19,7 @@
         </ul>
       </div>
     </la-tooltip>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <style scoped>

@@ -1,10 +1,10 @@
 <template>
-  <la-artboard :width="300" :height="150" :data="values">
+  <la-cartesian :width="300" :height="150" :data="values">
     <la-line prop="pv"></la-line>
     <la-y-axis></la-y-axis>
     <la-x-axis prop="name"></la-x-axis>
     <la-tooltip></la-tooltip>
-  </la-artboard>
+  </la-cartesian>
 </template>
 
 <script>
