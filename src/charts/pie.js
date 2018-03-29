@@ -90,9 +90,9 @@ export default {
     },
 
     labels() {
-      const {labelProp, Artboard} = this
+      const {labelProp, Cartesian} = this
 
-      return labelProp ? Artboard.data.map(o => o[labelProp]) : null
+      return labelProp ? Cartesian.data.map(o => o[labelProp]) : null
     },
 
     labelSlot() {
