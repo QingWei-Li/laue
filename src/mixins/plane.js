@@ -1,7 +1,6 @@
 import {isArr, isFn, noop, debounce, isNil} from '../utils/core'
 import stack from 'd3-shape/src/stack'
 import stackOffsetDiverging from 'd3-shape/src/offset/diverging'
-import {bound} from '../utils/math'
 
 export default {
   props: {
@@ -25,18 +24,6 @@ export default {
     padding: {
       default: 8,
       type: [Number, Array]
-    },
-
-    bound: {
-      type: Array,
-      default: () => []
-    },
-
-    narrow: [Boolean, Number, Function],
-
-    distance: {
-      default: 0,
-      type: Number
     },
 
     stacked: Boolean,
@@ -99,45 +86,6 @@ export default {
       }
     },
 
-    high() {
-      return this.getBound(this.bound[1], 'max')
-    },
-
-    low() {
-      return this.getBound(this.bound[0], 'min')
-    },
-
-    len() {
-      return this.data.length
-    },
-
-    tempXRatio() {
-      const {len} = this
-      return len <= 1 ? 0 : this.canvas.width / (len - 1)
-    },
-
-    gap() {
-      const {narrow, tempXRatio} = this
-
-      if (isFn(narrow)) {
-        return narrow(tempXRatio)
-      }
-      if (narrow === true) {
-        return tempXRatio / 2
-      }
-      return Number(narrow)
-    },
-
-    xRatio() {
-      return this.tempXRatio ?
-        this.tempXRatio - 2 * this.gap / (this.len - 1) :
-        0
-    },
-
-    yRatio() {
-      return this.canvas.height / (this.high - this.low)
-    },
-
     curData() {
       return stack()
         .keys(this.props)
@@ -160,25 +108,6 @@ export default {
       }
 
       return colors(index)
-    },
-
-    getBound(val, type) {
-      if (typeof val === 'number') {
-        return val
-      }
-
-      const isMin = type === 'min'
-      let result = bound(this.curData, type, isMin ? 0 : 1)
-
-      if (isMin && result === 0) {
-        result = bound(this.curData, 'min', 1)
-      }
-
-      if (isFn(val)) {
-        return val(result)
-      }
-
-      return result
     },
 
     resize() {
