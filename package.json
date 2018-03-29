@@ -65,6 +65,7 @@
     "banner-cli": "^0.11.1",
     "buble": "^0.19.3",
     "buble-jest": "^1.0.0",
+    "conventional-changelog": "^1.1.23",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
     "eslint-plugin-jest": "^21.15.0",
