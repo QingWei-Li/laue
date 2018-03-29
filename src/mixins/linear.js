@@ -47,6 +47,7 @@ export default {
             value: this.raws[i],
             index: i,
             actived: actived === i,
+            color: this.curColor,
             style: {
               transition: this.trans
             }

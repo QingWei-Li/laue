@@ -74,17 +74,20 @@ export default {
     const id = decodeURIComponent(this.$route.hash);
 
     if (id) {
-      this.$nextTick(() => {
-        const target = this.$el.querySelector(id);
-        const docEl = document.documentElement;
-        const docRect = docEl.getBoundingClientRect();
-        const elRect = target.getBoundingClientRect();
-        const a = this.$refs.toc.querySelector(`a[href='${id}']`);
+      const target = this.$el.querySelector(id);
 
-        a.classList.add('active');
-        last = a;
-        window.scrollTo(elRect.left - docRect.left, elRect.top - docRect.top);
-      });
+      if (target) {
+        this.$nextTick(() => {
+          const docEl = document.documentElement;
+          const docRect = docEl.getBoundingClientRect();
+          const elRect = target.getBoundingClientRect();
+          const a = this.$refs.toc.querySelector(`a[href='${id}']`);
+
+          a.classList.add('active');
+          last = a;
+          window.scrollTo(elRect.left - docRect.left, elRect.top - docRect.top);
+        });
+      }
     }
   }
 };
