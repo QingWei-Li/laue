@@ -16,7 +16,7 @@
     </div>
 
     <div class="chart">
-      <la-artboard :padding="0" v-show="!$isServer" :height="400" autoresize :bound="[0, 20]" :data="values">
+      <la-artboard class="area" :padding="0" v-show="!$isServer" :height="300" autoresize :bound="[0, 20]" :data="values">
         <la-area :width="2" curve prop="value"></la-area>
       </la-artboard>
     </div>
@@ -58,16 +58,20 @@ export default {
   margin-top -150px
 
 .content
-  padding 0 20vw
+  padding-left 20vw
   display flex
   align-items center
   height 100vh
 
 .chart
   position absolute
-  bottom -10px
+  bottom 0
   left 0
   right 0
+  z-index -1
+
+.area>>>svg
+  display block
 
 h1
   font-size 50px
@@ -82,14 +86,21 @@ p
 
 .button
   background #0e99e5
-  border-radius 3px
+  border-radius 4px
   font-size 18px
   color #fff
-  padding 14px 16px
+  padding 12px 16px
   cursor pointer
   outline none
   display inline-block
   text-decoration none
+  border-bottom 4px solid #0b75b1
+
+  &:hover
+    opacity 0.8
+
+  &:active
+    background #0b75b1
 
 footer
   margin-top 30px
