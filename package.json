@@ -4,6 +4,7 @@
   "description": "Modern charts for Vue.js",
   "main": "dist/laue.umd.js",
   "module": "dist/laue.js",
+  "sideEffects": false,
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
