@@ -7,7 +7,7 @@
 
 > 🖖📈 Modern charts for Vue.js
 
-Documentation: https://laue.cinwell.com
+Documentation: https://laue.js.org
 
 ## Features
 
