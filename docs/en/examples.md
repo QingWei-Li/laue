@@ -2,7 +2,7 @@
 
 ## Tiny chart
 
-An tiny example, you can use [Line](api#line), [Area](api#area) or [Bar](api#bar) chart.
+A tiny example, you can use [Line](api#line), [Area](api#area) or [Bar](api#bar) chart.
 
 [tiny-chart.vue](../_examples/tiny-chart.vue)
 
