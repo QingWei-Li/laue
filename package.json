@@ -14,12 +14,11 @@
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
     "build": "run-p build:*",
-    "pub": "sh build/release.sh",
+    "pub": "sh ./scripts/release.sh",
     "dev:test": "jest --watch",
     "test": "jest --coverage",
     "deploy:docs":
-      "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git",
-    "deploy": "sh ./scripts/release.sh"
+      "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git"
   },
   "repository": "QingWei-Li/laue",
   "files": ["dist", "src"],
