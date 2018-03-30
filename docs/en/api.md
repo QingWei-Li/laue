@@ -84,6 +84,15 @@ When you use the bar chart, it's best to configure the `narrow` for cartesian so
 
 ## Pie
 
+| Name      | Description                                 | Required | Type                     | Default          |
+| --------- | ------------------------------------------- | -------- | ------------------------ | ---------------- |
+| prop      | Field name.                                 | true     | `String`                 | -                |
+| translate | Transalate the center of the pie chart.     | false    | `Array<String> | String` | [50%, 50%]       |
+| radius    | Specific the inner radius and outer radius. | false    | `Array<Number> | Number` | [0, 100]         |
+| angles    | Specific the start angle and end angle.     | false    | `Array<Number> | Number` | [0, Math.PI * 2] |
+| showLabel | Whether to display the label of each fan.   | false    | `Boolean`                | false            |
+| labelProp | The label to diplay as label.               | false    | `String`                 | label            |
+
 * Parent: [Polar](#polar)
 
 # Objects
