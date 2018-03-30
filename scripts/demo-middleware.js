@@ -18,8 +18,12 @@ module.exports = function (src) {
         filename
       })
 
-      // Add live editor?
-      return `<div class="demo"><${tag}></${tag}></div>\n\n\`\`\`html\n${content}\n\`\`\``
+      const editorHTML = `<a target="_blank" href="https://vuep.run/qingwei-li/laue/docs${cap[1].replace(
+        /^\.\./,
+        ''
+      )}">Play it!</a>`
+
+      return `<div class="demo"><${tag}></${tag}></div><div class="playit">${editorHTML}</div>\n\n\`\`\`html\n${content}\n\`\`\``
     })
   }
 
