@@ -1,6 +1,6 @@
 {
   "name": "laue",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Modern charts for Vue.js",
   "main": "dist/laue.umd.js",
   "module": "dist/laue.js",
@@ -8,8 +8,7 @@
   "scripts": {
     "watch:lib": "rollup -c -w",
     "watch:docs": "nuxt",
-    "build:lib":
-      "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
+    "build:lib": "rollup -c --environment BUILD:production && banner-cli 'dist/*.js'",
     "build:docs": "nuxt generate",
     "lint": "eslint src --fix",
     "dev": "run-p watch:*",
@@ -17,11 +16,13 @@
     "pub": "sh ./scripts/release.sh",
     "dev:test": "jest --watch",
     "test": "jest --coverage",
-    "deploy:docs":
-      "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git"
+    "deploy:docs": "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git"
   },
   "repository": "QingWei-Li/laue",
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "keywords": [
     "chart",
     "svg",
@@ -41,7 +42,10 @@
   "eslintConfig": {
     "extends": "xo-space/browser",
     "rules": {
-      "semi": [2, "never"],
+      "semi": [
+        2,
+        "never"
+      ],
       "no-mixed-operators": "off"
     }
   },
@@ -49,16 +53,22 @@
     "transform": {
       "^.+\\.js$": "buble-jest"
     },
-    "transformIgnorePatterns": ["/node_modules/(?!d3-)"],
-    "snapshotSerializers": ["jest-serializer-vue"],
-    "collectCoverageFrom": ["<rootDir>/src/**/*.js"]
+    "transformIgnorePatterns": [
+      "/node_modules/(?!d3-)"
+    ],
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ]
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.12",
     "banner-cli": "^0.11.1",
     "buble": "^0.19.3",
     "buble-jest": "^1.0.0",
-    "conventional-changelog": "^1.1.23",
+    "conventional-changelog-cli": "^1.3.21",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
     "eslint-plugin-jest": "^21.15.0",
