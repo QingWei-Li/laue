@@ -21,6 +21,7 @@
       "gh-pages -d website/dist -t -r git@github.com:QingWei-Li/laue.git",
     "deploy": "sh ./scripts/release.sh"
   },
+  "repository": "QingWei-Li/laue",
   "files": ["dist", "src"],
   "keywords": [
     "chart",
