@@ -21,7 +21,7 @@ module.exports = function (src) {
       const editorHTML = `<a target="_blank" href="https://vuep.run/qingwei-li/laue/docs${cap[1].replace(
         /^\.\./,
         ''
-      )}">Try it!</a>`
+      )}?pkg=laue">Try it!</a>`
 
       return `<div class="demo"><${tag}></${tag}></div><div class="playit">${editorHTML}</div>\n\n\`\`\`html\n${content}\n\`\`\``
     })
