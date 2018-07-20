@@ -46,7 +46,7 @@ This is recommended way to register the components you need. If you build tool s
   <la-cartesian :data="values">
     <la-line prop="value"></la-line>
   </la-cartesian>
-<template>
+</template>
 
 <script>
 import { Cartesian, Line } from 'laue'
