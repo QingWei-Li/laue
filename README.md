@@ -1,3 +1,7 @@
+<h1 align=center>
+<img src="logo/512px.svg" width=25%>
+</h1>
+
 # Laue
 
 [![Build Status](https://img.shields.io/travis/QingWei-Li/laue.svg?style=flat-square)](https://travis-ci.org/QingWei-Li/laue)
