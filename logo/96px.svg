@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="96px" height="96px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 96 96"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil2 {fill:#373435}
+    .fil3 {fill:#F8B330}
+    .fil0 {fill:#36499A}
+    .fil1 {fill:#36499A;fill-rule:nonzero}
+    .fil4 {fill:#FEFEFE;fill-rule:nonzero;fill-opacity:0.250980}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_279579624">
+   <polygon class="fil0" points="21,55 75,17 73,14 19,53 "/>
+   <path class="fil1" d="M13 0l70 0c3,0 7,2 9,4 2,2 4,6 4,9l0 70c0,3 -2,7 -4,9 -2,2 -6,4 -9,4l-70 0c-3,0 -7,-2 -9,-4 -2,-2 -4,-6 -4,-9l0 -70c0,-3 2,-7 4,-9 2,-2 6,-4 9,-4zm70 7l-70 0c-1,0 -3,1 -4,2 -1,1 -2,3 -2,4l0 70c0,1 1,3 2,4 1,1 3,2 4,2l70 0c1,0 3,-1 4,-2 1,-1 2,-3 2,-4l0 -70c0,-1 -1,-3 -2,-4 -1,-1 -3,-2 -4,-2z"/>
+   <rect class="fil2" x="56" y="42" width="0.730697" height="37.1052"/>
+   <polygon class="fil0" points="63,74 63,85 51,85 51,74 "/>
+   <polygon class="fil0" points="63,61 63,72 51,72 51,61 "/>
+   <rect class="fil2" x="74" y="30" width="0.730697" height="49.4741"/>
+   <rect class="fil2" x="39" y="55" width="0.730697" height="24.7367"/>
+   <rect class="fil2" x="21" y="67" width="0.730697" height="12.3685"/>
+   <polygon class="fil0" points="16,61 28,61 28,72 16,72 "/>
+   <polygon class="fil0" points="28,74 28,85 16,85 16,74 "/>
+   <polygon class="fil3" points="45,74 45,85 33,85 33,74 "/>
+   <polygon class="fil3" points="45,61 45,72 33,72 33,61 "/>
+   <polygon class="fil0" points="63,49 63,60 51,60 51,49 "/>
+   <polygon class="fil3" points="80,49 80,60 68,60 68,49 "/>
+   <polygon class="fil3" points="80,37 80,48 68,48 68,37 "/>
+   <polygon class="fil0" points="63,37 63,48 51,48 51,37 "/>
+   <polygon class="fil3" points="80,24 80,35 68,35 68,24 "/>
+   <polygon class="fil3" points="45,49 45,60 33,60 33,49 "/>
+   <circle class="fil0" cx="74" cy="16" r="4"/>
+   <polygon class="fil3" points="80,61 80,72 68,72 68,61 "/>
+   <polygon class="fil3" points="80,74 80,85 68,85 68,74 "/>
+   <circle class="fil3" cx="57" cy="28" r="4"/>
+   <circle class="fil0" cx="39" cy="41" r="4"/>
+   <circle class="fil3" cx="22" cy="53" r="4"/>
+   <path class="fil4" d="M13 0l70 0c3,0 7,2 9,4 2,2 4,6 4,9l0 27c-14,0 -29,3 -45,8 -21,8 -39,19 -51,30l0 -65c0,-3 2,-7 4,-9 2,-2 6,-4 9,-4z"/>
+  </g>
+ </g>
+</svg>
