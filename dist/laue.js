@@ -1,5 +1,5 @@
 /*!
- * Laue v0.0.0
+ * Laue v0.1.1
  * https://laue.js.org
  *
  * Copyright (c) 2018 qingwei-li
@@ -2372,7 +2372,9 @@ var axes = {
 
     format: Function,
 
-    gridline: Boolean
+    gridline: Boolean,
+
+    interval: [Function, Number]
   },
 
   mixins: [object, values, dashed],
@@ -2443,6 +2445,21 @@ var axes = {
 
     curColor: function curColor() {
       return this.color || this.Plane.textColor
+    },
+
+    handleInterval: function handleInterval() {
+      var ref = this;
+      var interval = ref.interval;
+
+      if (typeof interval === 'number') {
+        return function (i) {
+          return i % interval === 0
+        }
+      }
+
+      if (isFn(interval)) {
+        return interval
+      }
     }
   },
 
@@ -2483,34 +2500,42 @@ var axes = {
     var textYOffset = (isX ? lineSize : 0) * 1.5;
     var textXOffset = (isX ? 0 : lineSize) * 1.5;
 
-    var ticks = labels.map(function (value, i) {
-      var point = points[i];
+    var ticks = labels
+      .map(function (value, i) {
+        var point = points[i];
 
-      return h('g', [
-        tickSize &&
-          h('line', {
-            attrs: {
-              x1: point[0] - xLineOffset,
-              x2: point[0],
-              y1: point[1] + yLineOffset,
-              y2: point[1],
-              stroke: curColor
-            }
-          }),
-        h(
-          'text',
-          {
-            attrs: {
-              x: point[0] - textXOffset,
-              y: point[1] + textYOffset,
-              dy: spanYOffset + 'em',
-              stroke: 'none'
-            }
-          },
-          tspanSlot ? tspanSlot({value: value}) : isFn(format) ? format(value) : value
-        )
-      ])
-    });
+        if (this$1.handleInterval && !this$1.handleInterval(i)) {
+          return false
+        }
+
+        return h('g', [
+          tickSize &&
+            h('line', {
+              attrs: {
+                x1: point[0] - xLineOffset,
+                x2: point[0],
+                y1: point[1] + yLineOffset,
+                y2: point[1],
+                stroke: curColor
+              }
+            }),
+          h(
+            'text',
+            {
+              attrs: {
+                x: point[0] - textXOffset,
+                y: point[1] + textYOffset,
+                dy: spanYOffset + 'em',
+                stroke: 'none'
+              }
+            },
+            tspanSlot ?
+              tspanSlot({value: value}) :
+              isFn(format) ? format(value) : value
+          )
+        ])
+      })
+      .filter(Boolean);
 
     return h(
       'g',
