@@ -104,3 +104,7 @@ The width of the chart is automatically changed when the window triggers the res
 ## Mixed
 
 [mixed.vue](../_examples/mixed.vue)
+
+## Large Data
+
+[large-data.vue](../_examples/large-data.vue)

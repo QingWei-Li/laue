@@ -22,7 +22,9 @@ export default {
 
     format: Function,
 
-    gridline: Boolean
+    gridline: Boolean,
+
+    interval: [Function, Number]
   },
 
   mixins: [object, values, dashed],
@@ -82,6 +84,20 @@ export default {
 
     curColor() {
       return this.color || this.Plane.textColor
+    },
+
+    handleInterval() {
+      const {interval} = this
+
+      if (typeof interval === 'number') {
+        return function (i) {
+          return i % interval === 0
+        }
+      }
+
+      if (isFn(interval)) {
+        return interval
+      }
     }
   },
 
@@ -121,34 +137,42 @@ export default {
     const textYOffset = (isX ? lineSize : 0) * 1.5
     const textXOffset = (isX ? 0 : lineSize) * 1.5
 
-    const ticks = labels.map((value, i) => {
-      const point = points[i]
+    const ticks = labels
+      .map((value, i) => {
+        const point = points[i]
 
-      return h('g', [
-        tickSize &&
-          h('line', {
-            attrs: {
-              x1: point[0] - xLineOffset,
-              x2: point[0],
-              y1: point[1] + yLineOffset,
-              y2: point[1],
-              stroke: curColor
-            }
-          }),
-        h(
-          'text',
-          {
-            attrs: {
-              x: point[0] - textXOffset,
-              y: point[1] + textYOffset,
-              dy: spanYOffset + 'em',
-              stroke: 'none'
-            }
-          },
-          tspanSlot ? tspanSlot({value}) : isFn(format) ? format(value) : value
-        )
-      ])
-    })
+        if (this.handleInterval && !this.handleInterval(i)) {
+          return false
+        }
+
+        return h('g', [
+          tickSize &&
+            h('line', {
+              attrs: {
+                x1: point[0] - xLineOffset,
+                x2: point[0],
+                y1: point[1] + yLineOffset,
+                y2: point[1],
+                stroke: curColor
+              }
+            }),
+          h(
+            'text',
+            {
+              attrs: {
+                x: point[0] - textXOffset,
+                y: point[1] + textYOffset,
+                dy: spanYOffset + 'em',
+                stroke: 'none'
+              }
+            },
+            tspanSlot ?
+              tspanSlot({value}) :
+              isFn(format) ? format(value) : value
+          )
+        ])
+      })
+      .filter(Boolean)
 
     return h(
       'g',

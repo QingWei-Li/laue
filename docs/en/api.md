@@ -2,7 +2,7 @@
 
 ## Line
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### Line - Props
 
@@ -30,7 +30,7 @@
 
 ## Area
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### Area - Props
 
@@ -59,7 +59,7 @@
 
 ## Bar
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 When you use the bar chart, it's best to configure the `narrow` for cartesian so that there is enough space on both sides of the X axis.
 
@@ -93,7 +93,7 @@ When you use the bar chart, it's best to configure the `narrow` for cartesian so
 | showLabel | Whether to display the label of each fan.   | false    | `Boolean`                | false            |
 | labelProp | The label to diplay as label.               | false    | `String`                 | label            |
 
-* Parent: [Polar](#polar)
+- Parent: [Polar](#polar)
 
 # Objects
 
@@ -147,75 +147,79 @@ A polar coordinates.
 
 ## XAxis
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### XAxis - Props
 
-| Name     | Description                       | Required | Type               | Default                  |
-| -------- | --------------------------------- | -------- | ------------------ | ------------------------ |
-| prop     | Field name.                       | true     | `String`           | -                        |
-| color    | Axis and text color.              | -        | `String`           | `textColor` of cartesian |
-| tickSize | The width of tick.                | -        | `Number`           | 5                        |
-| fontSize | Font size.                        | -        | `Number`           | 15                       |
-| format   | Format data, such as append unit. | -        | `Function`         | -                        |
-| gridline | Display grideline.                | -        | `Boolean`          | false                    |
-| dashed   | Gridline style.                   | -        | `Boolean | String` | false                    |
+| Name     | Description                                     | Required | Type                | Default                  |
+| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop     | Field name.                                     | true     | `String`            | -                        |
+| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize | Font size.                                      | -        | `Number`            | 15                       |
+| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
+| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
+| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxis
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### YAxis - Props
 
-| Name     | Description                       | Required | Type               | Default                  |
-| -------- | --------------------------------- | -------- | ------------------ | ------------------------ |
-| prop     | Field name.                       | true     | `String`           | -                        |
-| color    | Axis and text color.              | -        | `String`           | `textColor` of cartesian |
-| tickSize | The width of tick.                | -        | `Number`           | 5                        |
-| fontSize | Font size.                        | -        | `Number`           | 15                       |
-| format   | Format data, such as append unit. | -        | `Function`         | -                        |
-| gridline | Display grideline.                | -        | `Boolean`          | false                    |
-| dashed   | Gridline style.                   | -        | `Boolean | String` | false                    |
+| Name     | Description                                     | Required | Type                | Default                  |
+| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop     | Field name.                                     | true     | `String`            | -                        |
+| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize | Font size.                                      | -        | `Number`            | 15                       |
+| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
+| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
+| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## XAxisInverse
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 Display on the other side of X axis.
 
 ### XAxisInverse - Props
 
-| Name     | Description                       | Required | Type               | Default                  |
-| -------- | --------------------------------- | -------- | ------------------ | ------------------------ |
-| prop     | Field name.                       | true     | `String`           | -                        |
-| color    | Axis and text color.              | -        | `String`           | `textColor` of cartesian |
-| tickSize | The width of tick.                | -        | `Number`           | 5                        |
-| fontSize | Font size.                        | -        | `Number`           | 15                       |
-| format   | Format data, such as append unit. | -        | `Function`         | -                        |
-| gridline | Display grideline.                | -        | `Boolean`          | false                    |
-| dashed   | Gridline style.                   | -        | `Boolean | String` | false                    |
+| Name     | Description                                     | Required | Type                | Default                  |
+| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop     | Field name.                                     | true     | `String`            | -                        |
+| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize | Font size.                                      | -        | `Number`            | 15                       |
+| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
+| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
+| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxisInverse
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 Display on the other side of Y axis.
 
 ### YAxisInverse - Props
 
-| Name     | Description                       | Required | Type               | Default                  |
-| -------- | --------------------------------- | -------- | ------------------ | ------------------------ |
-| prop     | Field name.                       | true     | `String`           | -                        |
-| color    | Axis and text color.              | -        | `String`           | `textColor` of cartesian |
-| tickSize | The width of tick.                | -        | `Number`           | 5                        |
-| fontSize | Font size.                        | -        | `Number`           | 15                       |
-| format   | Format data, such as append unit. | -        | `Function`         | -                        |
-| gridline | Display grideline.                | -        | `Boolean`          | false                    |
-| dashed   | Grid dotted line.                 | -        | `Boolean | String` | false                    |
+| Name     | Description                                     | Required | Type                | Default                  |
+| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop     | Field name.                                     | true     | `String`            | -                        |
+| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize | Font size.                                      | -        | `Number`            | 15                       |
+| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
+| dashed   | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YMarker
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### YMarker - Props
 
@@ -229,7 +233,7 @@ Display on the other side of Y axis.
 
 ## YRegion
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 Draw a range.
 
@@ -249,7 +253,7 @@ Draw a range.
 
 ## Tooltip
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### Tooltip - Props
 
@@ -267,7 +271,7 @@ Draw a range.
 
 ## Legend
 
-* Parent: [Cartesian](#cartesian)
+- Parent: [Cartesian](#cartesian)
 
 ### Legend - Props
 
