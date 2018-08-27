@@ -1,5 +1,5 @@
 import values from './values'
-import {genTicks} from '../utils/math'
+import {genTicks, genExactNbTicks} from '../utils/math'
 import {isFn} from '../utils/core'
 import object from './object'
 import dashed from './dashed'
@@ -24,7 +24,11 @@ export default {
 
     gridline: Boolean,
 
-    interval: [Function, Number]
+    interval: [Function, Number],
+
+    ticks: Array,
+
+    nbTicks: Number
   },
 
   mixins: [object, values, dashed],
@@ -110,7 +114,10 @@ export default {
   },
 
   render(h) {
+    let { ticks } = this
+
     const {
+      nbTicks,
       points,
       labels,
       tickSize,
@@ -137,7 +144,44 @@ export default {
     const textYOffset = (isX ? lineSize : 0) * 1.5
     const textXOffset = (isX ? 0 : lineSize) * 1.5
 
-    const ticks = labels
+    if (ticks || nbTicks) {
+      const yBasis = board.height - board.offset[2]
+
+      if (nbTicks) {
+        ticks = genExactNbTicks(board.low, board.high, nbTicks)
+      }
+
+      ticks = ticks.map((value) => {
+        return h('g', [
+          tickSize &&
+          h('line', {
+            attrs: {
+              x1: 0 - xLineOffset + board.offset[3],
+              x2:6 - xLineOffset + board.offset[3],
+              y1: yBasis - value * board.yRatio,
+              y2: yBasis - value * board.yRatio - yLineOffset,
+              stroke: curColor
+            }
+          }),
+          h(
+            'text',
+            {
+              attrs: {
+                x: 0 - textXOffset+ board.offset[3],
+                y: board.height - board.offset[2] - value * board.yRatio - textYOffset,
+                dy: spanYOffset + 'em',
+                stroke: 'none'
+              }
+            },
+            tspanSlot ?
+              tspanSlot({value}) :
+              isFn(format) ? format(value) : value
+          )
+        ])
+      })
+    }
+
+    else ticks = labels
       .map((value, i) => {
         const point = points[i]
 

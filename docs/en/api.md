@@ -178,6 +178,8 @@ A polar coordinates.
 | gridline | Display grideline.                              | -        | `Boolean`           | false                    |
 | dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
 | interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| nbTicks  | Renders a fixed number of ticks.                | -        | `Number`            | -                        |
+| ticks    | Renders a fixed list of ticks.                  | -        | `Array`             | -                        |
 
 ## XAxisInverse
 
