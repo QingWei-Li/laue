@@ -285,7 +285,7 @@ var plane = {
   mounted: function mounted() {
     if (this.autoresize) {
       this.resize();
-      window.addEventListener('resize', debounce(this.resize));
+      typeof window !== 'undefined' && window.addEventListener('resize', debounce(this.resize));
     }
   }
 }
@@ -337,6 +337,20 @@ function genTicks(min, max, count) {
     ticks$$1.pop();
     ticks$$1[ticks$$1.length - 1] = max;
   }
+
+  return ticks$$1
+}
+
+function genExactNbTicks(min, max, count) {
+  var diff = max - min;
+  var step = diff / (count - 1);
+  var ticks$$1 = [];
+
+  for (var i = 0; i < count; i++) {
+    ticks$$1.push(i * step);
+  }
+
+  ticks$$1.push(max);
 
   return ticks$$1
 }
@@ -874,7 +888,7 @@ Path.prototype = path.prototype = {
     }
 
     // Or, is (x1,y1) coincident with (x0,y0)? Do nothing.
-    else if (!(l01_2 > epsilon)) {}
+    else if (!(l01_2 > epsilon)){ }
 
     // Or, are (x0,y0), (x1,y1) and (x2,y2) collinear?
     // Equivalently, is (x1,y1) coincident with (x2,y2)?
@@ -2374,7 +2388,11 @@ var axes = {
 
     gridline: Boolean,
 
-    interval: [Function, Number]
+    interval: [Function, Number],
+
+    ticks: Array,
+
+    nbTicks: Number
   },
 
   mixins: [object, values, dashed],
@@ -2475,17 +2493,21 @@ var axes = {
     var this$1 = this;
 
     var ref = this;
-    var points = ref.points;
-    var labels = ref.labels;
-    var tickSize = ref.tickSize;
-    var fontSize = ref.fontSize;
-    var curColor = ref.curColor;
-    var isX = ref.isX;
-    var format = ref.format;
-    var inverse = ref.inverse;
-    var gap = ref.gap;
-    var board = ref.Plane;
-    var store = ref.store;
+    var ticks = ref.ticks;
+
+    var ref$1 = this;
+    var nbTicks = ref$1.nbTicks;
+    var points = ref$1.points;
+    var labels = ref$1.labels;
+    var tickSize = ref$1.tickSize;
+    var fontSize = ref$1.fontSize;
+    var curColor = ref$1.curColor;
+    var isX = ref$1.isX;
+    var format = ref$1.format;
+    var inverse = ref$1.inverse;
+    var gap = ref$1.gap;
+    var board = ref$1.Plane;
+    var store = ref$1.store;
     var first = points[0];
     var end = points[points.length - 1];
     var tspanSlot = this.$scopedSlots.default;
@@ -2500,7 +2522,44 @@ var axes = {
     var textYOffset = (isX ? lineSize : 0) * 1.5;
     var textXOffset = (isX ? 0 : lineSize) * 1.5;
 
-    var ticks = labels
+    if (ticks || nbTicks) {
+      var yBasis = board.height - board.offset[2];
+
+      if (nbTicks) {
+        ticks = genExactNbTicks(board.low, board.high, nbTicks);
+      }
+
+      ticks = ticks.map(function (value) {
+        return h('g', [
+          tickSize &&
+          h('line', {
+            attrs: {
+              x1: 0 - xLineOffset + board.offset[3],
+              x2:6 - xLineOffset + board.offset[3],
+              y1: yBasis - value * board.yRatio,
+              y2: yBasis - value * board.yRatio - yLineOffset,
+              stroke: curColor
+            }
+          }),
+          h(
+            'text',
+            {
+              attrs: {
+                x: 0 - textXOffset+ board.offset[3],
+                y: board.height - board.offset[2] - value * board.yRatio - textYOffset,
+                dy: spanYOffset + 'em',
+                stroke: 'none'
+              }
+            },
+            tspanSlot ?
+              tspanSlot({value: value}) :
+              isFn(format) ? format(value) : value
+          )
+        ])
+      });
+    }
+
+    else { ticks = labels
       .map(function (value, i) {
         var point = points[i];
 
@@ -2535,7 +2594,7 @@ var axes = {
           )
         ])
       })
-      .filter(Boolean);
+      .filter(Boolean); }
 
     return h(
       'g',
