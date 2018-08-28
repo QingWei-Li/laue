@@ -42,9 +42,18 @@ export default {
     },
 
     curRadius() {
-      const {radius} = this
+      let innerRadius = isArr(this.radius) ? this.radius[0] : 0
+      let outerRadius = isArr(this.radius) ? this.radius[1] : 100
 
-      return isArr(radius) ? radius : [0, radius]
+      if (this.min && this.$parent.fillContainer) {
+        outerRadius = this.min / 2
+
+        if (this.showLabel) {
+          outerRadius -= this.min / 4
+        }
+      }
+
+      return [innerRadius, outerRadius]
     },
 
     curAngles() {
@@ -61,8 +70,21 @@ export default {
 
     drawText() {
       return arc()
-        .innerRadius(this.curRadius[1] * 0.7)
-        .outerRadius(this.curRadius[1] * 0.7)
+        .innerRadius((this.$parent.fillContainer ? 0 : this.curRadius[1]) * 0.7)
+        .outerRadius((this.$parent.fillContainer ? this.min : this.curRadius[1]) * 0.7)
+    },
+
+    drawTextLabels() {
+      const innerRadius = this.$parent.fillContainer ? (this.radius[0] + this.min / 5) : this.curRadius[1] * 0.7
+      const outerRadius = this.$parent.fillContainer ? (this.radius[0] + this.min / 5) : this.curRadius[1] * 0.7
+
+      return arc()
+        .innerRadius(innerRadius)
+        .outerRadius(outerRadius)
+    },
+
+    min() {
+      return this.$parent.min
     },
 
     valueSlot() {
@@ -103,7 +125,7 @@ export default {
       const h = this.$createElement
 
       return this.arcs.map((arc, i) => {
-        const point = this.drawText.centroid(arc)
+        const point = this.drawTextLabels.centroid(arc)
 
         return h(
           'text',
