@@ -23,6 +23,7 @@ export default {
     format: Function,
 
     gridline: Boolean,
+    gridlineInterval: [Function, Number],
 
     interval: [Function, Number]
   },
@@ -97,6 +98,20 @@ export default {
 
       if (isFn(interval)) {
         return interval
+      }
+    },
+
+    handleGridlineInterval() {
+      const {gridlineInterval} = this
+
+      if (typeof gridlineInterval === 'number') {
+        return function (i) {
+          return i % gridlineInterval === 0
+        }
+      }
+
+      if (isFn(gridlineInterval)) {
+        return gridlineInterval
       }
     }
   },
@@ -204,9 +219,9 @@ export default {
             ticks
           )
         ].concat(
-          this.gridline &&
-            points.map((p, i) =>
-              h('line', {
+          this.gridline && points.reduce((all, p, i) => {
+            if (!this.handleGridlineInterval || this.handleGridlineInterval(i)) {
+              all.push(h('line', {
                 attrs: {
                   x1: p[0],
                   y1: p[1],
@@ -217,8 +232,10 @@ export default {
                   opacity: isX && store.activedIndex === i ? 1 : 0.3,
                   'stroke-dasharray': this.curDashed
                 }
-              })
-            )
+              }))
+            }
+            return all
+          }, [])
         )
       ]
     )
