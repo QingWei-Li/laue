@@ -2373,6 +2373,7 @@ var axes = {
     format: Function,
 
     gridline: Boolean,
+    gridlineInterval: [Function, Number],
 
     interval: [Function, Number]
   },
@@ -2459,6 +2460,21 @@ var axes = {
 
       if (isFn(interval)) {
         return interval
+      }
+    },
+
+    handleGridlineInterval: function handleGridlineInterval() {
+      var ref = this;
+      var gridlineInterval = ref.gridlineInterval;
+
+      if (typeof gridlineInterval === 'number') {
+        return function (i) {
+          return i % gridlineInterval === 0
+        }
+      }
+
+      if (isFn(gridlineInterval)) {
+        return gridlineInterval
       }
     }
   },
@@ -2567,8 +2583,9 @@ var axes = {
             ticks
           )
         ].concat(
-          this.gridline &&
-            points.map(function (p, i) { return h('line', {
+          this.gridline && points.reduce(function (all, p, i) {
+            if (!this$1.handleGridlineInterval || this$1.handleGridlineInterval(i)) {
+              all.push(h('line', {
                 attrs: {
                   x1: p[0],
                   y1: p[1],
@@ -2579,8 +2596,10 @@ var axes = {
                   opacity: isX && store.activedIndex === i ? 1 : 0.3,
                   'stroke-dasharray': this$1.curDashed
                 }
-              }); }
-            )
+              }));
+            }
+            return all
+          }, [])
         )
       ]
     )
