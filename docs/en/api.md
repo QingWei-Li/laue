@@ -151,16 +151,17 @@ A polar coordinates.
 
 ### XAxis - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxis
 
@@ -168,16 +169,17 @@ A polar coordinates.
 
 ### YAxis - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## XAxisInverse
 
@@ -187,16 +189,17 @@ Display on the other side of X axis.
 
 ### XAxisInverse - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxisInverse
 
@@ -206,16 +209,17 @@ Display on the other side of Y axis.
 
 ### YAxisInverse - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YMarker
 
