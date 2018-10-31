@@ -23,6 +23,7 @@ export default {
     format: Function,
 
     gridline: Boolean,
+
     gridlineInterval: [Function, Number],
 
     interval: [Function, Number],
@@ -129,7 +130,7 @@ export default {
   },
 
   render(h) {
-    let { ticks } = this
+    let {ticks} = this
 
     const {
       nbTicks,
@@ -166,52 +167,15 @@ export default {
         ticks = genExactNbTicks(board.low, board.high, nbTicks)
       }
 
-      ticks = ticks.map((value) => {
-        return h('g', [
-          tickSize &&
-          h('line', {
-            attrs: {
-              x1: 0 - xLineOffset + board.offset[3],
-              x2:6 - xLineOffset + board.offset[3],
-              y1: yBasis - value * board.yRatio,
-              y2: yBasis - value * board.yRatio - yLineOffset,
-              stroke: curColor
-            }
-          }),
-          h(
-            'text',
-            {
-              attrs: {
-                x: 0 - textXOffset+ board.offset[3],
-                y: board.height - board.offset[2] - value * board.yRatio - textYOffset,
-                dy: spanYOffset + 'em',
-                stroke: 'none'
-              }
-            },
-            tspanSlot ?
-              tspanSlot({value}) :
-              isFn(format) ? format(value) : value
-          )
-        ])
-      })
-    }
-
-    else ticks = labels
-      .map((value, i) => {
-        const point = points[i]
-
-        if (this.handleInterval && !this.handleInterval(i)) {
-          return false
-        }
-
+      ticks = ticks.map(value => {
         return h('g', [
           tickSize &&
             h('line', {
               attrs: {
-                x1: point[0] - xLineOffset,
-                x2: point[0],
-                y1: point[1] + yLineOffset,
-                y2: point[1],
+                x1: 0 - xLineOffset + board.offset[3],
+                x2: 6 - xLineOffset + board.offset[3],
+                y1: yBasis - value * board.yRatio,
+                y2: yBasis - value * board.yRatio - yLineOffset,
                 stroke: curColor
               }
             }),
@@ -219,8 +183,12 @@ export default {
             'text',
             {
               attrs: {
-                x: point[0] - textXOffset,
-                y: point[1] + textYOffset,
+                x: 0 - textXOffset + board.offset[3],
+                y:
+                  board.height -
+                  board.offset[2] -
+                  value * board.yRatio -
+                  textYOffset,
                 dy: spanYOffset + 'em',
                 stroke: 'none'
               }
@@ -231,7 +199,44 @@ export default {
           )
         ])
       })
-      .filter(Boolean)
+    } else {
+      ticks = labels
+        .map((value, i) => {
+          const point = points[i]
+
+          if (this.handleInterval && !this.handleInterval(i)) {
+            return false
+          }
+
+          return h('g', [
+            tickSize &&
+              h('line', {
+                attrs: {
+                  x1: point[0] - xLineOffset,
+                  x2: point[0],
+                  y1: point[1] + yLineOffset,
+                  y2: point[1],
+                  stroke: curColor
+                }
+              }),
+            h(
+              'text',
+              {
+                attrs: {
+                  x: point[0] - textXOffset,
+                  y: point[1] + textYOffset,
+                  dy: spanYOffset + 'em',
+                  stroke: 'none'
+                }
+              },
+              tspanSlot ?
+                tspanSlot({value}) :
+                isFn(format) ? format(value) : value
+            )
+          ])
+        })
+        .filter(Boolean)
+    }
 
     return h(
       'g',
@@ -263,23 +268,29 @@ export default {
             ticks
           )
         ].concat(
-          this.gridline && points.reduce((all, p, i) => {
-            if (!this.handleGridlineInterval || this.handleGridlineInterval(i)) {
-              all.push(h('line', {
-                attrs: {
-                  x1: p[0],
-                  y1: p[1],
-                  x2: isX ? p[0] : board.canvas.x1,
-                  y2: isX ? board.canvas.y0 : p[1]
-                },
-                style: {
-                  opacity: isX && store.activedIndex === i ? 1 : 0.3,
-                  'stroke-dasharray': this.curDashed
-                }
-              }))
-            }
-            return all
-          }, [])
+          this.gridline &&
+            points.reduce((all, p, i) => {
+              if (
+                !this.handleGridlineInterval ||
+                this.handleGridlineInterval(i)
+              ) {
+                all.push(
+                  h('line', {
+                    attrs: {
+                      x1: p[0],
+                      y1: p[1],
+                      x2: isX ? p[0] : board.canvas.x1,
+                      y2: isX ? board.canvas.y0 : p[1]
+                    },
+                    style: {
+                      opacity: isX && store.activedIndex === i ? 1 : 0.3,
+                      'stroke-dasharray': this.curDashed
+                    }
+                  })
+                )
+              }
+              return all
+            }, [])
         )
       ]
     )
