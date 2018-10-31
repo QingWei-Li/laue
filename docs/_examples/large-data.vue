@@ -1,8 +1,8 @@
 <template>
-  <la-cartesian :bound="[-2, 12]" :data="values">
+  <la-cartesian :data="values">
     <la-line :width="2" prop="value"></la-line>
-    <la-x-axis :interval="i => i === 0 || i === values.length - 1 || i % 10 === 0"></la-x-axis>
-    <la-y-axis :interval="20" :format="v => Math.round(v)"></la-y-axis>
+    <la-x-axis :interval="i => i === 0 || i === values.length - 1 || i % 50 === 0"></la-x-axis>
+    <la-y-axis :interval="100" :format="v => Math.round(v)"></la-y-axis>
   </la-cartesian>
 </template>
 
@@ -12,9 +12,12 @@ export default {
     const data = {
       values: []
     }
-    for (let i = 0; i < 100; i++) {
+    let lastValue = 0
+    for (let i = 0; i < 500; i++) {
+      lastValue += Math.random() * 10 - 5
+
       data.values.push({
-        value: Math.round(Math.random() * 10)
+        value: lastValue
       })
     }
     return data
