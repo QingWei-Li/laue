@@ -129,15 +129,16 @@ A polar coordinates.
 
 ### Polar - Props
 
-| Name       | Description                                             | Required | Type            | Default                                                                           |
-| ---------- | ------------------------------------------------------- | -------- | --------------- | --------------------------------------------------------------------------------- |
-| data       | An array of objects.                                    | true     | `Array<Object>` | -                                                                                 |
-| height     | The height of SVG.                                      | -        | `Number`        | 300                                                                               |
-| width      | The width of SVG.                                       | -        | `Number`        | 600                                                                               |
-| autoresize | Automatically changes the width when the window resize. | -        | `Boolean`       | false                                                                             |
-| stacked    | Stacking charts.                                        | -        | `Boolean`       | false                                                                             |
-| colors     | Chart color from colors.                                | true     | `Array<String>` | ['#3fb1e3',<br>'#6be6c1',<br>'#626c91',<br>'#a0a7e6',<br>'#c4ebad',<br>'#96dee8'] |
-| textColor  | Text color.                                             | true     | `String`        | #999                                                                              |
+| Name         | Description                                             | Required | Type            | Default                                                                           |
+| ----------   | ------------------------------------------------------- | -------- | --------------- | --------------------------------------------------------------------------------- |
+| data         | An array of objects.                                    | true     | `Array<Object>` | -                                                                                 |
+| height       | The height of SVG.                                      | -        | `Number`        | 300                                                                               |
+| width        | The width of SVG.                                       | -        | `Number`        | 600                                                                               |
+| autoresize   | Automatically changes the width when the window resize. | -        | `Boolean`       | false                                                                             |
+| stacked      | Stacking charts.                                        | -        | `Boolean`       | false                                                                             |
+| colors       | Chart color from colors.                                | true     | `Array<String>` | ['#3fb1e3',<br>'#6be6c1',<br>'#626c91',<br>'#a0a7e6',<br>'#c4ebad',<br>'#96dee8'] |
+| textColor    | Text color.                                             | true     | `String`        | #999                                                                              |
+| fillContaier | Allows the contained pie to fill its container          | -        | `Boolean`       | false                                                                             |
 
 ### Polar - Slots
 
@@ -151,16 +152,17 @@ A polar coordinates.
 
 ### XAxis - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxis
 
@@ -180,6 +182,7 @@ A polar coordinates.
 | interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 | nbTicks  | Renders a fixed number of ticks.                | -        | `Number`            | -                        |
 | ticks    | Renders a fixed list of ticks.                  | -        | `Array`             | -                        |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
 
 ## XAxisInverse
 
@@ -189,16 +192,17 @@ Display on the other side of X axis.
 
 ### XAxisInverse - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YAxisInverse
 
@@ -208,16 +212,17 @@ Display on the other side of Y axis.
 
 ### YAxisInverse - Props
 
-| Name     | Description                                     | Required | Type                | Default                  |
-| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop     | Field name.                                     | true     | `String`            | -                        |
-| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize | Font size.                                      | -        | `Number`            | 15                       |
-| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
-| dashed   | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
-| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| Name              | Description                                     | Required | Type                | Default                  |
+| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop              | Field name.                                     | true     | `String`            | -                        |
+| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
+| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
+| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
+| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## YMarker
 

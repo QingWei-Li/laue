@@ -116,3 +116,7 @@ The width of the chart is automatically changed when the window triggers the res
 ## Fixed number of ticks
 
 [fixed-ticks-number.vue](../_examples/fixed-ticks-number.vue)
+
+## Pie filling container
+
+[fill-container-pie.vue](../_examples/fill-container-pie.vue)

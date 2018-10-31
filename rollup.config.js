@@ -19,9 +19,9 @@ configs.push({
   input: 'src/index.js',
   output: {
     format: 'es',
-    file: 'dist/laue.js'
+    file: 'dist/laue.js',
+    banner
   },
-  banner,
   plugins: [buble(), nodeResolve()]
 })
 
@@ -34,9 +34,9 @@ if (process.env.BUILD === 'production') {
       format: 'umd',
       name: 'Laue',
       file: 'dist/laue.umd.js',
-      sourcemap: true
+      sourcemap: true,
+      banner
     },
-    banner,
     plugins: [buble(), nodeResolve(), uglify(), filesize()]
   })
 }
