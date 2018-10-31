@@ -5,6 +5,16 @@ export default {
 
   mixins: [plane],
 
+  props: {
+    fillContainer: Boolean
+  },
+
+  computed: {
+    min() {
+      return Math.min(this.viewWidth, this.height)
+    }
+  },
+
   render(h) {
     const {viewWidth, height, autoresize} = this
     const slots = this.$slots.default || []
@@ -63,9 +73,10 @@ export default {
           'svg',
           {
             attrs: {
-              width: viewWidth,
-              height,
-              viewBox: `0 0 ${viewWidth} ${height}`
+              width: this.fillContainer ? '100%' : viewWidth,
+              height: this.fillContainer ? '100%' : height,
+              viewBox: this.fillContainer ? `0 0 ${this.min} ${this.min}` : `0 0 ${viewWidth} ${height}`,
+              preserveAspectRatio: 'xMinYMin'
             }
           },
           [others, polars]

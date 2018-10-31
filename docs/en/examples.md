@@ -108,3 +108,7 @@ The width of the chart is automatically changed when the window triggers the res
 ## Large Data
 
 [large-data.vue](../_examples/large-data.vue)
+
+## Pie filling container
+
+[fill-container-pie.vue](../_examples/fill-container-pie.vue)
