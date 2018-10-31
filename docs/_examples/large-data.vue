@@ -1,5 +1,5 @@
 <template>
-  <la-cartesian :data="values">
+  <la-cartesian :bound="[100, -100]" :data="values">
     <la-line :width="2" prop="value"></la-line>
     <la-x-axis :interval="i => i === 0 || i === values.length - 1 || i % 50 === 0"></la-x-axis>
     <la-y-axis :interval="100" :format="v => Math.round(v)"></la-y-axis>
