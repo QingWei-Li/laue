@@ -170,17 +170,19 @@ A polar coordinates.
 
 ### YAxis - Props
 
-| Name              | Description                                     | Required | Type                | Default                  |
-| ----------------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
-| prop              | Field name.                                     | true     | `String`            | -                        |
-| color             | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
-| tickSize          | The width of tick.                              | -        | `Number`            | 5                        |
-| fontSize          | Font size.                                      | -        | `Number`            | 15                       |
-| format            | Format data, such as append unit.               | -        | `Function`          | -                        |
-| gridline          | Display grideline.                              | -        | `Boolean`           | false                    |
+| Name     | Description                                     | Required | Type                | Default                  |
+| -------- | ----------------------------------------------- | -------- | ------------------- | ------------------------ |
+| prop     | Field name.                                     | true     | `String`            | -                        |
+| color    | Axis and text color.                            | -        | `String`            | `textColor` of cartesian |
+| tickSize | The width of tick.                              | -        | `Number`            | 5                        |
+| fontSize | Font size.                                      | -        | `Number`            | 15                       |
+| format   | Format data, such as append unit.               | -        | `Function`          | -                        |
+| gridline | Display grideline.                              | -        | `Boolean`           | false                    |
+| dashed   | Gridline style.                                 | -        | `Boolean | String`  | false                    |
+| interval | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
+| nbTicks  | Renders a fixed number of ticks.                | -        | `Number`            | -                        |
+| ticks    | Renders a fixed list of ticks.                  | -        | `Array`             | -                        |
 | gridlineInterval  | Display grid-lines base on an interval          | -        | `Function | Number` | -                        |
-| dashed            | Grid dotted line.                               | -        | `Boolean | String`  | false                    |
-| interval          | Display tick based on the ticks of the interval | -        | `Function | Number` | -                        |
 
 ## XAxisInverse
 

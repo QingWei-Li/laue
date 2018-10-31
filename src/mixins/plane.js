@@ -132,7 +132,9 @@ export default {
   mounted() {
     if (this.autoresize) {
       this.resize()
-      window.addEventListener('resize', debounce(this.resize))
+      if (typeof window !== 'undefined') {
+        window.addEventListener('resize', debounce(this.resize))
+      }
     }
   }
 }
