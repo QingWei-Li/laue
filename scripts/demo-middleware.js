@@ -18,7 +18,7 @@ module.exports = function (src) {
         filename
       })
 
-      const editorHTML = `<a target="_blank" href="https://vuep.run/qingwei-li/laue/docs${cap[1].replace(
+      const editorHTML = `<a target="_blank" href="https://vuep.netlify.com/qingwei-li/laue/docs${cap[1].replace(
         /^\.\./,
         ''
       )}?pkg=laue">Try it!</a>`
