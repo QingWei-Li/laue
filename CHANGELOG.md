@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/QingWei-Li/laue/compare/v0.2.0...v0.2.1) (2019-05-14)
+
+
+### Bug Fixes
+
+* fixed [#22](https://github.com/QingWei-Li/laue/issues/22) ([884b006](https://github.com/QingWei-Li/laue/commit/884b006))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/QingWei-Li/laue/compare/v0.1.1...v0.2.0) (2018-10-31)
 

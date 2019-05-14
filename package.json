@@ -1,6 +1,6 @@
 {
   "name": "laue",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Modern charts for Vue.js",
   "main": "dist/laue.umd.js",
   "module": "dist/laue.js",
