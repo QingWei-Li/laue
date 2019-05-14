@@ -199,4 +199,34 @@ describe('Mixing', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('all values are equal to 0', () => {
+    const wrapper = cartesianMount(
+      h => [
+        h(Line, {
+          props: {
+            prop: 'pv'
+          }
+        }),
+        h(YAxis),
+        h(XAxis, {
+          props: {
+            label: 'name'
+          }
+        })
+      ],
+      {
+        props: {
+          data: [
+            {pv: 0, name: 'a'},
+            {pv: 0, name: 'b'},
+            {pv: 0, name: 'c'},
+            {pv: 0, name: 'd'}
+          ]
+        }
+      }
+    )
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })

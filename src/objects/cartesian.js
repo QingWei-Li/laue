@@ -58,7 +58,7 @@ export default {
     },
 
     yRatio() {
-      return this.canvas.height / (this.high - this.low)
+      return this.canvas.height / (this.high - this.low || 1)
     }
   },
 

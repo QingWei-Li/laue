@@ -84,6 +84,46 @@ exports[`Mixing Y and X 1`] = `
 </div>
 `;
 
+exports[`Mixing all values are equal to 0 1`] = `
+<div style="position: relative; width: 600px;">
+  <svg width="600" height="300" viewBox="0 0 600 300">
+    <g>
+      <path stroke="#3fb1e3" fill="none" stroke-width="1" d="M48,268L222.66666666666666,268L397.3333333333333,268L572,268" style="stroke-dasharray: none;"></path>
+    </g>
+    <g stroke="#999">
+      <line x2="48" y2="268" x1="48" y1="268"></line>
+      <g text-anchor="end" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="43" x2="48" y1="268" y2="268" stroke="#999"></line>
+          <text x="40.5" y="268" dy="0.355em" stroke="none">0</text>
+        </g>
+      </g>
+    </g>
+    <g stroke="#999">
+      <line x2="572" y2="268" x1="48" y1="268"></line>
+      <g text-anchor="middle" font-size="15" fill="#999" stroke="none">
+        <g>
+          <line x1="48" x2="48" y1="273" y2="268" stroke="#999"></line>
+          <text x="48" y="275.5" dy="0.71em" stroke="none">1</text>
+        </g>
+        <g>
+          <line x1="222.66666666666666" x2="222.66666666666666" y1="273" y2="268" stroke="#999"></line>
+          <text x="222.66666666666666" y="275.5" dy="0.71em" stroke="none">2</text>
+        </g>
+        <g>
+          <line x1="397.3333333333333" x2="397.3333333333333" y1="273" y2="268" stroke="#999"></line>
+          <text x="397.3333333333333" y="275.5" dy="0.71em" stroke="none">3</text>
+        </g>
+        <g>
+          <line x1="572" x2="572" y1="273" y2="268" stroke="#999"></line>
+          <text x="572" y="275.5" dy="0.71em" stroke="none">4</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
 exports[`Mixing inverse 1`] = `
 <div style="position: relative; width: 600px;">
   <svg width="600" height="300" viewBox="0 0 600 300">

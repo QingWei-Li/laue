@@ -13,6 +13,10 @@ export function genTicks(min, max, count) {
     [min, max] = [max, min]
   }
 
+  if (min === 0 && max === 0) {
+    return [0]
+  }
+
   const step = tickStep(min, max, count)
   const first = Math.floor(min / step) * step
   const ticks = [first]
